@@ -43,6 +43,7 @@ public class CCE_Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         signinbtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,6 +108,7 @@ public class CCE_Login extends javax.swing.JFrame {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 50, 20, 40));
 
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 5, true));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         emailField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         emailField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
@@ -115,6 +117,7 @@ public class CCE_Login extends javax.swing.JFrame {
                 emailFieldActionPerformed(evt);
             }
         });
+        jPanel4.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 179, 641, 46));
 
         passwordField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         passwordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
@@ -123,53 +126,30 @@ public class CCE_Login extends javax.swing.JFrame {
                 passwordFieldActionPerformed(evt);
             }
         });
+        jPanel4.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 334, 597, 48));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         jLabel6.setText("Email:");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 114, 121, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         jLabel7.setText("Password:");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 269, -1, -1));
 
         signinbtn.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         signinbtn.setForeground(new java.awt.Color(0, 204, 0));
         signinbtn.setText("SIGN IN");
         signinbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        jPanel4.add(signinbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 400, 116, -1));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(362, 362, 362))
-                    .addComponent(emailField, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
-                    .addComponent(passwordField))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(signinbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(322, 322, 322))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(signinbtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 36)); // NOI18N
+        jLabel1.setText("<");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 820, 550));
 
@@ -223,6 +203,12 @@ public class CCE_Login extends javax.swing.JFrame {
         this.setExtendedState(JFrame.ICONIFIED);
     }//GEN-LAST:event_minimizebtnMouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -261,6 +247,7 @@ public class CCE_Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel closebtn;
     private javax.swing.JTextField emailField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

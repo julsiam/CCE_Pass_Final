@@ -259,7 +259,7 @@ public class DeathCertificate extends javax.swing.JFrame {
         jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 130, -1));
 
         jLabel29.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel29.setText("Place of Marriage");
+        jLabel29.setText("Place of Death");
         jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 110, 130, -1));
 
         jTextField20.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
@@ -296,7 +296,7 @@ public class DeathCertificate extends javax.swing.JFrame {
         jPanel4.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 130, -1));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel33.setText("Date of Marriage");
+        jLabel33.setText("Date of Death");
         jPanel4.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 130, -1));
 
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));

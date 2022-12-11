@@ -175,10 +175,8 @@ public class Login extends javax.swing.JFrame {
             MongoCursor<Document> query = collection.find(identify).iterator();
             if (identify == (dbconnection)) {
                 if (query.hasNext()) {
-                    ShowData form = new ShowData();
-                    form.setVisible(true);
-                    form.pack();
-                    form.setLocationRelativeTo(null);
+                    ShowData data = new ShowData();
+                    data.setVisible(true);
                     this.dispose();
                 }
 
