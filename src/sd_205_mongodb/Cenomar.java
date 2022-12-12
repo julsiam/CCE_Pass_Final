@@ -40,8 +40,8 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        cLname = new javax.swing.JTextField();
+        birthdateField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -52,17 +52,17 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        cPBcity = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        cPBcountry = new javax.swing.JTextField();
+        cPBprov = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        sexCombo = new javax.swing.JComboBox<>();
+        cMname = new javax.swing.JTextField();
+        cFname = new javax.swing.JTextField();
+        issuedidCombo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -71,26 +71,26 @@ public class Cenomar extends javax.swing.JFrame {
         jSeparator25 = new javax.swing.JSeparator();
         jLabel30 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
-        backBtn1 = new javax.swing.JButton();
+        submitBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
+        cFFname = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        cFMname = new javax.swing.JTextField();
         jSeparator17 = new javax.swing.JSeparator();
         jSeparator23 = new javax.swing.JSeparator();
-        jTextField21 = new javax.swing.JTextField();
+        cFLname = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
         jSeparator24 = new javax.swing.JSeparator();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
+        cMMname = new javax.swing.JTextField();
+        cMLname = new javax.swing.JTextField();
         jSeparator26 = new javax.swing.JSeparator();
         jLabel31 = new javax.swing.JLabel();
-        jTextField25 = new javax.swing.JTextField();
+        cMFname = new javax.swing.JTextField();
         jSeparator27 = new javax.swing.JSeparator();
         jLabel32 = new javax.swing.JLabel();
         minimizebtn = new javax.swing.JLabel();
@@ -152,14 +152,14 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel4.setText("Last Name");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 50, 130, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField1.setBorder(null);
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 250, 30));
+        cLname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cLname.setBorder(null);
+        jPanel2.add(cLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 250, 30));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField2.setText("dd/mm/yy");
-        jTextField2.setBorder(null);
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, 30));
+        birthdateField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        birthdateField.setText("dd/mm/yy");
+        birthdateField.setBorder(null);
+        jPanel2.add(birthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel11.setText("First Name");
@@ -197,9 +197,9 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel15.setText("Place of Birth (Province)");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 170, 20));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField4.setBorder(null);
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 180, 250, 30));
+        cPBcity.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cPBcity.setBorder(null);
+        jPanel2.add(cPBcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 180, 250, 30));
 
         jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 250, 10));
@@ -207,13 +207,13 @@ public class Cenomar extends javax.swing.JFrame {
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 250, 10));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField5.setBorder(null);
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 250, 30));
+        cPBcountry.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cPBcountry.setBorder(null);
+        jPanel2.add(cPBcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 250, 30));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField6.setBorder(null);
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 250, 30));
+        cPBprov.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cPBprov.setBorder(null);
+        jPanel2.add(cPBprov, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 250, 30));
 
         jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 250, 10));
@@ -222,23 +222,28 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel16.setText("Date of Birth");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 100, 20));
 
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-sex-", "Male", "Female" }));
-        jComboBox3.setBorder(null);
-        jPanel2.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 220, 30));
+        sexCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sexCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-sex-", "Male", "Female" }));
+        sexCombo.setBorder(null);
+        jPanel2.add(sexCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 220, 30));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField8.setBorder(null);
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 250, 30));
+        cMname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cMname.setBorder(null);
+        jPanel2.add(cMname, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 250, 30));
 
-        jTextField11.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField11.setBorder(null);
-        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 250, 30));
+        cFname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cFname.setBorder(null);
+        jPanel2.add(cFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 250, 30));
 
-        jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-issued id-", "Male", "Female" }));
-        jComboBox4.setBorder(null);
-        jPanel2.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 890, 30));
+        issuedidCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        issuedidCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Choose ID-", "Philippine Identification Card", "Driver’s License Issued by the Land Transportation Office (LTO)", "Philippines National Police (PNP) ID/Police Clearance", "Department of Social Welfare and Development (DSWD) Certification/4Ps ID", "Barangay ID/Certification with picture and signature", "Person with Disability (PWD) ID issued by the National Council on Disability Affairs (NCDA) OR it’s regional counterpart, Office of the Mayor, Office of the Barangay Captain, DSWD Office", "IDs issued by National Government Offices (e,g,.AFP,DAR,DENR,DOH,DOJ) including Government Owned and Controlled Operations", "IDs issued by the Offices of the Local Chief Executives ( Governor, Vice Governor, Mayor, Vice Mayor", "Tax Identification Card (TIN) with a picture and signature issued by the Bureau of International Revenue", "School/ Student ID for currently - enrolled students, 18 years old and above , issued by reputable schools/ college/ universities recognized by the Department of Education", "Barangay ID/ Certification with picture and signature", "Company IDs issued by private entities or institutions registered with, supervised or regulated by Bangkong Sentral ng Pilipinas (BSP), Security Exchange and Commission (SEC)", "Social Security System (SSS) Unified Multi-Purpose ID" }));
+        issuedidCombo.setBorder(null);
+        issuedidCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                issuedidComboActionPerformed(evt);
+            }
+        });
+        jPanel2.add(issuedidCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 890, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 1340, 310));
 
@@ -251,7 +256,7 @@ public class Cenomar extends javax.swing.JFrame {
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 190, -1));
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Purpose of your request?-", "yes", "no" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Purpose-", "Passport / Travel", "School Requirement", "Local Employment", "Foreign Employment", "Marriage", "Claims / Benefits / Loans", "Late Registration" }));
         jComboBox2.setBorder(null);
         jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 260, 30));
 
@@ -282,15 +287,15 @@ public class Cenomar extends javax.swing.JFrame {
         });
         jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 760, 90, 30));
 
-        backBtn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        backBtn1.setText("Submit Request");
-        backBtn1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51), 3));
-        backBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+        submitBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        submitBtn.setText("Submit Request");
+        submitBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51), 3));
+        submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backBtn1MouseClicked(evt);
+                submitBtnMouseClicked(evt);
             }
         });
-        jPanel1.add(backBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 760, 130, 30));
+        jPanel1.add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 760, 130, 30));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
@@ -312,9 +317,9 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel27.setText("First Name");
         jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, 130, -1));
 
-        jTextField19.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField19.setBorder(null);
-        jPanel4.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 170, 30));
+        cFFname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cFFname.setBorder(null);
+        jPanel4.add(cFFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 170, 30));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel28.setText("Middle Name");
@@ -324,9 +329,9 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel29.setText("Last Name");
         jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 130, -1));
 
-        jTextField20.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField20.setBorder(null);
-        jPanel4.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 170, 30));
+        cFMname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cFMname.setBorder(null);
+        jPanel4.add(cFMname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 170, 30));
 
         jSeparator17.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 170, 10));
@@ -334,9 +339,9 @@ public class Cenomar extends javax.swing.JFrame {
         jSeparator23.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 170, 10));
 
-        jTextField21.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField21.setBorder(null);
-        jPanel4.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 30));
+        cFLname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cFLname.setBorder(null);
+        jPanel4.add(cFLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 30));
 
         jSeparator19.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, 170, 10));
@@ -344,13 +349,13 @@ public class Cenomar extends javax.swing.JFrame {
         jSeparator24.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 170, 10));
 
-        jTextField23.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField23.setBorder(null);
-        jPanel4.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 90, 170, 30));
+        cMMname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cMMname.setBorder(null);
+        jPanel4.add(cMMname, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 90, 170, 30));
 
-        jTextField24.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField24.setBorder(null);
-        jPanel4.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 90, 170, 30));
+        cMLname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cMLname.setBorder(null);
+        jPanel4.add(cMLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 90, 170, 30));
 
         jSeparator26.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator26, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 120, 170, 10));
@@ -359,9 +364,9 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel31.setText("Your Father's Name ");
         jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jTextField25.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField25.setBorder(null);
-        jPanel4.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 90, 170, 30));
+        cMFname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        cMFname.setBorder(null);
+        jPanel4.add(cMFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 90, 170, 30));
 
         jSeparator27.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator27, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 120, 170, 10));
@@ -434,9 +439,9 @@ public class Cenomar extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backBtnMouseClicked
 
-    private void backBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtn1MouseClicked
+    private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_backBtn1MouseClicked
+    }//GEN-LAST:event_submitBtnMouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         CCE_Login a = new CCE_Login();
@@ -457,6 +462,10 @@ public class Cenomar extends javax.swing.JFrame {
     private void closebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closebtnMouseClicked
         this.dispose();
     }//GEN-LAST:event_closebtnMouseClicked
+
+    private void issuedidComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issuedidComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_issuedidComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,13 +504,24 @@ public class Cenomar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton backBtn1;
+    private javax.swing.JTextField birthdateField;
+    private javax.swing.JTextField cFFname;
+    private javax.swing.JTextField cFLname;
+    private javax.swing.JTextField cFMname;
+    private javax.swing.JTextField cFname;
+    private javax.swing.JTextField cLname;
+    private javax.swing.JTextField cMFname;
+    private javax.swing.JTextField cMLname;
+    private javax.swing.JTextField cMMname;
+    private javax.swing.JTextField cMname;
+    private javax.swing.JTextField cPBcity;
+    private javax.swing.JTextField cPBcountry;
+    private javax.swing.JTextField cPBprov;
     private javax.swing.JLabel closebtn;
     private javax.swing.JLabel homeBtn;
+    private javax.swing.JComboBox<String> issuedidCombo;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -548,20 +568,9 @@ public class Cenomar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel minimizebtn;
+    private javax.swing.JComboBox<String> sexCombo;
+    private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 }

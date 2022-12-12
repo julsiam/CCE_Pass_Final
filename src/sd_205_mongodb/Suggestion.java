@@ -59,7 +59,7 @@ public class Suggestion extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
-        backBtn1 = new javax.swing.JButton();
+        commentBtn = new javax.swing.JButton();
         minimizebtn = new javax.swing.JLabel();
         closebtn = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -199,20 +199,20 @@ public class Suggestion extends javax.swing.JFrame {
         });
         jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 720, 90, 30));
 
-        backBtn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        backBtn1.setText("Comment");
-        backBtn1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51), 3));
-        backBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+        commentBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        commentBtn.setText("Comment");
+        commentBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51), 3));
+        commentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backBtn1MouseClicked(evt);
+                commentBtnMouseClicked(evt);
             }
         });
-        backBtn1.addActionListener(new java.awt.event.ActionListener() {
+        commentBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtn1ActionPerformed(evt);
+                commentBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(backBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 720, 130, 30));
+        jPanel1.add(commentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 720, 130, 30));
 
         minimizebtn.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         minimizebtn.setForeground(new java.awt.Color(102, 102, 102));
@@ -276,9 +276,9 @@ public class Suggestion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backBtnMouseClicked
 
-    private void backBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtn1MouseClicked
+    private void commentBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentBtnMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_backBtn1MouseClicked
+    }//GEN-LAST:event_commentBtnMouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         CCE_Login a = new CCE_Login();
@@ -296,9 +296,9 @@ public class Suggestion extends javax.swing.JFrame {
         this.setExtendedState(JFrame.ICONIFIED);
     }//GEN-LAST:event_minimizebtnMouseClicked
 
-    private void backBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtn1ActionPerformed
+    private void commentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_backBtn1ActionPerformed
+    }//GEN-LAST:event_commentBtnActionPerformed
 
     private void closebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closebtnMouseClicked
         this.dispose();
@@ -341,8 +341,8 @@ public class Suggestion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton backBtn1;
     private javax.swing.JLabel closebtn;
+    private javax.swing.JButton commentBtn;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

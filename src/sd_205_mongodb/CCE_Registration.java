@@ -4,7 +4,14 @@
  */
 package sd_205_mongodb;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Iterator;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.bson.Document;
 
 /**
  *
@@ -19,6 +26,16 @@ public class CCE_Registration extends javax.swing.JFrame {
         initComponents();
     }
 
+//    MongoClient mongo;
+//    MongoDatabase dbconnection;
+//    MongoCollection<org.bson.Document> collection;
+    public void MongoConnect() {
+
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoDatabase database = mongo.getDatabase("CCE_Pass");
+        database.createCollection("staff");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,24 +47,31 @@ public class CCE_Registration extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        minimizebtn = new javax.swing.JLabel();
-        closebtn = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        signin = new javax.swing.JLabel();
-        signup = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
-        nameField = new javax.swing.JTextField();
+        sexField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         signupbtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        cpasswordField = new javax.swing.JPasswordField();
+        cPasswordField = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
-        nameField1 = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+        staffNameField = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        addressField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        ageField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        minimizebtn = new javax.swing.JLabel();
+        closebtn = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jSeparator13 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -58,6 +82,123 @@ public class CCE_Registration extends javax.swing.JFrame {
         logo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 32, -1, 79));
 
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 5, true));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        sexField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        sexField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        jPanel4.add(sexField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 310, 46));
+
+        passwordField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        passwordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        jPanel4.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 670, 48));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabel6.setText("Sex:");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 121, -1));
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabel7.setText("Password:");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
+
+        signupbtn.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        signupbtn.setForeground(new java.awt.Color(0, 204, 0));
+        signupbtn.setText("SIGN UP");
+        signupbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        signupbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signupbtnMouseClicked(evt);
+            }
+        });
+        signupbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupbtnActionPerformed(evt);
+            }
+        });
+        jPanel4.add(signupbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 570, 116, 40));
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabel8.setText("Confirm Password:");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, -1));
+
+        cPasswordField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        cPasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        cPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cPasswordFieldActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 670, 48));
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabel9.setText("Email:");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 121, -1));
+
+        emailField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        emailField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        emailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailFieldActionPerformed(evt);
+            }
+        });
+        jPanel4.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 670, 46));
+
+        staffNameField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        staffNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        staffNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staffNameFieldActionPerformed(evt);
+            }
+        });
+        jPanel4.add(staffNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 88, 310, 46));
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabel11.setText("Name:");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 121, -1));
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabel12.setText("Address:");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 121, -1));
+
+        addressField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        addressField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        addressField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressFieldActionPerformed(evt);
+            }
+        });
+        jPanel4.add(addressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 310, 46));
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabel13.setText("Age:");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 121, -1));
+
+        ageField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        ageField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        jPanel4.add(ageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 310, 46));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel1.setText("Back");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 50, 30));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 820, 630));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Duplicate-amico 1.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 150, 460, 490));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo.png"))); // NOI18N
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 90));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 1130, 10));
+
         minimizebtn.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         minimizebtn.setForeground(new java.awt.Color(102, 102, 102));
         minimizebtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -67,7 +208,7 @@ public class CCE_Registration extends javax.swing.JFrame {
                 minimizebtnMouseClicked(evt);
             }
         });
-        jPanel1.add(minimizebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1450, 10, 30, 30));
+        jPanel1.add(minimizebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1470, 0, 30, 30));
 
         closebtn.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         closebtn.setForeground(new java.awt.Color(102, 102, 102));
@@ -78,143 +219,30 @@ public class CCE_Registration extends javax.swing.JFrame {
                 closebtnMouseClicked(evt);
             }
         });
-        jPanel1.add(closebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1490, 10, 30, 30));
+        jPanel1.add(closebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 30, 30));
 
-        jSeparator1.setBackground(new java.awt.Color(0, 153, 51));
-        jSeparator1.setForeground(new java.awt.Color(0, 204, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 1090, 10));
-
-        signin.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        signin.setText("Sign in");
-        signin.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel16.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jLabel16.setText("Sign-in");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signinMouseClicked(evt);
+                jLabel16MouseClicked(evt);
             }
         });
-        jPanel1.add(signin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 60, -1, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, 60, 30));
 
-        signup.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        signup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        signup.setText("Sign up");
-        signup.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jLabel17.setText("Sign-up");
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signupMouseClicked(evt);
+                jLabel17MouseClicked(evt);
             }
         });
-        jPanel1.add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 60, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 20, 80, 30));
 
-        jSeparator2.setForeground(new java.awt.Color(0, 204, 0));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 50, 20, 40));
-
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 5, true));
-
-        nameField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        nameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
-        nameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameFieldActionPerformed(evt);
-            }
-        });
-
-        passwordField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        passwordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel6.setText("Name:");
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel7.setText("Password:");
-
-        signupbtn.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        signupbtn.setForeground(new java.awt.Color(0, 204, 0));
-        signupbtn.setText("SIGN UP");
-        signupbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
-        signupbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signupbtnActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel8.setText("Confirm Password:");
-
-        cpasswordField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        cpasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
-        cpasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpasswordFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel9.setText("Email:");
-
-        nameField1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        nameField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
-        nameField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameField1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
-                    .addComponent(passwordField)
-                    .addComponent(jLabel8)
-                    .addComponent(cpasswordField)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameField1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE))
-                .addContainerGap(87, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(signupbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(339, 339, 339))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel9)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(nameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(cpasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(signupbtn)
-                .addGap(31, 31, 31))
-        );
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 820, 600));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Duplicate-amico 1.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, 460, 490));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo.png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 290, 90));
+        jSeparator13.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator13.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator13.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 20, 20, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,6 +262,26 @@ public class CCE_Registration extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signupbtnActionPerformed
+
+    private void cPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cPasswordFieldActionPerformed
+
+    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailFieldActionPerformed
+
+    private void staffNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_staffNameFieldActionPerformed
+
+    private void addressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressFieldActionPerformed
+
     private void minimizebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizebtnMouseClicked
         this.setExtendedState(JFrame.ICONIFIED);
     }//GEN-LAST:event_minimizebtnMouseClicked
@@ -242,37 +290,59 @@ public class CCE_Registration extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_closebtnMouseClicked
 
-    private void signinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinMouseClicked
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         CCE_Login a = new CCE_Login();
         a.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_signinMouseClicked
+    }//GEN-LAST:event_jLabel16MouseClicked
 
-    private void signupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupMouseClicked
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         CCE_Registration a = new CCE_Registration();
         a.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_signupMouseClicked
+    }//GEN-LAST:event_jLabel17MouseClicked
 
-    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameFieldActionPerformed
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
+    private void signupbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupbtnMouseClicked
+        if (this.staffNameField.getText().isEmpty() || this.ageField.getText().isEmpty() || this.addressField.getText().isEmpty() || this.sexField.getText().isEmpty() || this.emailField.getText().isEmpty() || this.passwordField.getText().isEmpty() || this.cPasswordField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fill out all the fields!", "Alert", JOptionPane.ERROR_MESSAGE);
 
-    private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_signupbtnActionPerformed
+        } else if (this.passwordField.getText() == null ? this.cPasswordField.getText() != null : !this.passwordField.getText().equals(this.cPasswordField.getText())) {
+            JOptionPane.showMessageDialog(null, "Password doesn't Match!", "Alert", JOptionPane.ERROR_MESSAGE);
+            this.passwordField.setText("");
+            this.cPasswordField.setText("");
+        } else {
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase database = mongo.getDatabase("CCE_Pass");
+            database.getCollection("staff");
+            
+            Document d = new Document("name", this.staffNameField.getText());
+            d.append("sex", this.sexField.getText());
+            d.append("age", this.ageField.getText());
+            d.append("address", this.addressField.getText());
+            d.append("email", this.emailField.getText());
+            d.append("password", this.passwordField.getText());
+            database.getCollection("staff").insertOne(d);
 
-    private void cpasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpasswordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpasswordFieldActionPerformed
+            JOptionPane.showMessageDialog(this, "Registered Successfully");
+            CCE_Login login = new CCE_Login(); //maopen ang new window
+            login.setVisible(true);
+            this.dispose();
+        }
 
-    private void nameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameField1ActionPerformed
+        this.staffNameField.setText("");
+        this.sexField.setText("");
+        this.ageField.setText("");
+        this.addressField.setText("");
+        this.emailField.setText("");
+        this.passwordField.setText("");
+        this.cPasswordField.setText("");
+    }//GEN-LAST:event_signupbtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -310,9 +380,18 @@ public class CCE_Registration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addressField;
+    private javax.swing.JTextField ageField;
+    private javax.swing.JPasswordField cPasswordField;
     private javax.swing.JLabel closebtn;
-    private javax.swing.JPasswordField cpasswordField;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -320,15 +399,13 @@ public class CCE_Registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel minimizebtn;
-    private javax.swing.JTextField nameField;
-    private javax.swing.JTextField nameField1;
     private javax.swing.JPasswordField passwordField;
-    private javax.swing.JLabel signin;
-    private javax.swing.JLabel signup;
+    private javax.swing.JTextField sexField;
     private javax.swing.JButton signupbtn;
+    private javax.swing.JTextField staffNameField;
     // End of variables declaration//GEN-END:variables
 }

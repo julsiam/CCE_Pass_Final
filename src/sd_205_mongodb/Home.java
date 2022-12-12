@@ -352,21 +352,21 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_deathBtnMouseClicked
 
     private void businessBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessBtnMouseClicked
-//        BusinessPermit bp = new Businesspermit();
-//        bp.setVisible(true);
-//        this.dispose();
+        BusinessPermit bp = new BusinessPermit();
+        bp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_businessBtnMouseClicked
 
     private void scholarshipBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scholarshipBtnMouseClicked
-//       Scholarship s = new Scholarship();
-//        s.setVisible(true);
-//        this.dispose();
+       Scholarship s = new Scholarship();
+        s.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_scholarshipBtnMouseClicked
 
     private void votersBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_votersBtnMouseClicked
-//        VotersCertificate vc = new VotersCertificate();
-//        vc.setVisible(true);
-//        this.dispose();
+        VotersCertificate vc = new VotersCertificate();
+        vc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_votersBtnMouseClicked
 
     private void appointmentBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointmentBtnMouseClicked

@@ -4,8 +4,13 @@
  */
 package sd_205_mongodb;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import java.awt.Frame;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.bson.Document;
 
 /**
  *
@@ -19,7 +24,14 @@ public class MarriageCertificate extends javax.swing.JFrame {
     public MarriageCertificate() {
         initComponents();
     }
+    
+    public void MongoConnect() {
 
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoDatabase marriageCollection = mongo.getDatabase("CCE_Pass");
+        marriageCollection.createCollection("marriage"); //to create the collection from db
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,8 +52,8 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        mLname = new javax.swing.JTextField();
+        birthdateField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -52,47 +64,47 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        mPBcity = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        mPBcountry = new javax.swing.JTextField();
+        mPBprov = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        sexCombo = new javax.swing.JComboBox<>();
+        mMname = new javax.swing.JTextField();
+        mFname = new javax.swing.JTextField();
+        issuedidCombo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        purposeCombo = new javax.swing.JComboBox<>();
+        lateRegCombo = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
-        jTextField22 = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
         jSeparator25 = new javax.swing.JSeparator();
         jLabel30 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
+        mSFname = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        mSMname = new javax.swing.JTextField();
         jSeparator17 = new javax.swing.JSeparator();
         jSeparator23 = new javax.swing.JSeparator();
-        jTextField21 = new javax.swing.JTextField();
+        mSLname = new javax.swing.JTextField();
         jSeparator24 = new javax.swing.JSeparator();
         jLabel31 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        dateofmarriageField = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
-        jTextField7 = new javax.swing.JTextField();
+        placeofmarriageField = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
-        backBtn1 = new javax.swing.JButton();
+        submitBtn = new javax.swing.JButton();
         minimizebtn = new javax.swing.JLabel();
         closebtn = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -152,14 +164,14 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jLabel4.setText("Last Name");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 50, 130, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField1.setBorder(null);
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 250, 30));
+        mLname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mLname.setBorder(null);
+        jPanel2.add(mLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 250, 30));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField2.setText("dd/mm/yy");
-        jTextField2.setBorder(null);
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, 30));
+        birthdateField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        birthdateField.setText("dd/mm/yy");
+        birthdateField.setBorder(null);
+        jPanel2.add(birthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel11.setText("First Name");
@@ -197,9 +209,9 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jLabel15.setText("Place of Birth (Province)");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 170, 20));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField4.setBorder(null);
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 180, 250, 30));
+        mPBcity.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mPBcity.setBorder(null);
+        jPanel2.add(mPBcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 180, 250, 30));
 
         jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 250, 10));
@@ -207,13 +219,13 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 250, 10));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField5.setBorder(null);
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 250, 30));
+        mPBcountry.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mPBcountry.setBorder(null);
+        jPanel2.add(mPBcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 250, 30));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField6.setBorder(null);
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 250, 30));
+        mPBprov.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mPBprov.setBorder(null);
+        jPanel2.add(mPBprov, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 250, 30));
 
         jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 250, 10));
@@ -222,23 +234,23 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jLabel16.setText("Date of Birth");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 100, 20));
 
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-sex-", "Male", "Female" }));
-        jComboBox3.setBorder(null);
-        jPanel2.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 220, 30));
+        sexCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sexCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-sex-", "Male", "Female" }));
+        sexCombo.setBorder(null);
+        jPanel2.add(sexCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 220, 30));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField8.setBorder(null);
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 250, 30));
+        mMname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mMname.setBorder(null);
+        jPanel2.add(mMname, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 250, 30));
 
-        jTextField11.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField11.setBorder(null);
-        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 250, 30));
+        mFname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mFname.setBorder(null);
+        jPanel2.add(mFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 250, 30));
 
-        jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-issued id-", "Male", "Female" }));
-        jComboBox4.setBorder(null);
-        jPanel2.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 890, 30));
+        issuedidCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        issuedidCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Choose ID-", "Philippine Identification Card", "Driver’s License Issued by the Land Transportation Office (LTO)", "Philippines National Police (PNP) ID/Police Clearance", "Department of Social Welfare and Development (DSWD) Certification/4Ps ID", "Barangay ID/Certification with picture and signature", "Person with Disability (PWD) ID issued by the National Council on Disability Affairs (NCDA) OR it’s regional counterpart, Office of the Mayor, Office of the Barangay Captain, DSWD Office", "IDs issued by National Government Offices (e,g,.AFP,DAR,DENR,DOH,DOJ) including Government Owned and Controlled Operations", "IDs issued by the Offices of the Local Chief Executives ( Governor, Vice Governor, Mayor, Vice Mayor", "Tax Identification Card (TIN) with a picture and signature issued by the Bureau of International Revenue", "School/ Student ID for currently - enrolled students, 18 years old and above , issued by reputable schools/ college/ universities recognized by the Department of Education", "Barangay ID/ Certification with picture and signature", "Company IDs issued by private entities or institutions registered with, supervised or regulated by Bangkong Sentral ng Pilipinas (BSP), Security Exchange and Commission (SEC)", "Social Security System (SSS) Unified Multi-Purpose ID" }));
+        issuedidCombo.setBorder(null);
+        jPanel2.add(issuedidCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 890, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 1340, 310));
 
@@ -254,23 +266,23 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jLabel25.setText("Late Registration");
         jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Purpose of your request?-", "yes", "no" }));
-        jComboBox2.setBorder(null);
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 260, 30));
+        purposeCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        purposeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Purpose-", "Passport / Travel", "School Requirement", "Local Employment", "Foreign Employment", "Marriage", "Claims / Benefits / Loans", "Late Registration" }));
+        purposeCombo.setBorder(null);
+        jPanel3.add(purposeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 260, 30));
 
-        jComboBox5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Was the certificate registered late?-", "yes", "no" }));
-        jComboBox5.setBorder(null);
-        jPanel3.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, 30));
+        lateRegCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lateRegCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Was the certificate registered late?-", "YES", "NO" }));
+        lateRegCombo.setBorder(null);
+        jPanel3.add(lateRegCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 270, 30));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel18.setText("Purpose of Request");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 190, -1));
 
-        jTextField22.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField22.setBorder(null);
-        jPanel3.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 90, 230, 30));
+        phoneField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        phoneField.setBorder(null);
+        jPanel3.add(phoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 90, 230, 30));
 
         jSeparator25.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator25, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 120, 230, 10));
@@ -293,9 +305,9 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jLabel26.setText("First Name");
         jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 130, -1));
 
-        jTextField19.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField19.setBorder(null);
-        jPanel4.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 170, 30));
+        mSFname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mSFname.setBorder(null);
+        jPanel4.add(mSFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 170, 30));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel28.setText("Middle Name");
@@ -305,9 +317,9 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jLabel29.setText("Place of Marriage");
         jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 60, 130, -1));
 
-        jTextField20.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField20.setBorder(null);
-        jPanel4.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 170, 30));
+        mSMname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mSMname.setBorder(null);
+        jPanel4.add(mSMname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 170, 30));
 
         jSeparator17.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 170, 10));
@@ -315,9 +327,9 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jSeparator23.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 170, 10));
 
-        jTextField21.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField21.setBorder(null);
-        jPanel4.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 30));
+        mSLname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mSLname.setBorder(null);
+        jPanel4.add(mSLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 30));
 
         jSeparator24.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 170, 10));
@@ -333,10 +345,10 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 120, 250, 10));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField3.setText("dd/mm/yy");
-        jTextField3.setBorder(null);
-        jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 250, 30));
+        dateofmarriageField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        dateofmarriageField.setText("dd/mm/yy");
+        dateofmarriageField.setBorder(null);
+        jPanel4.add(dateofmarriageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 250, 30));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel32.setText("Last Name");
@@ -349,9 +361,9 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 120, 250, 10));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField7.setBorder(null);
-        jPanel4.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 90, 250, 30));
+        placeofmarriageField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        placeofmarriageField.setBorder(null);
+        jPanel4.add(placeofmarriageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 90, 250, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 1340, 150));
 
@@ -370,20 +382,20 @@ public class MarriageCertificate extends javax.swing.JFrame {
         });
         jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 760, 90, 30));
 
-        backBtn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        backBtn1.setText("Submit Request");
-        backBtn1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51), 3));
-        backBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+        submitBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        submitBtn.setText("Submit Request");
+        submitBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51), 3));
+        submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backBtn1MouseClicked(evt);
+                submitBtnMouseClicked(evt);
             }
         });
-        backBtn1.addActionListener(new java.awt.event.ActionListener() {
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtn1ActionPerformed(evt);
+                submitBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(backBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 760, 130, 30));
+        jPanel1.add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 760, 130, 30));
 
         minimizebtn.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         minimizebtn.setForeground(new java.awt.Color(102, 102, 102));
@@ -447,9 +459,56 @@ public class MarriageCertificate extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backBtnMouseClicked
 
-    private void backBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtn1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backBtn1MouseClicked
+    private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
+        if (this.mFname.getText().isEmpty() || this.mMname.getText().isEmpty() || this.mLname.getText().isEmpty() || this.birthdateField.getText().isEmpty() || this.mPBcountry.getText().isEmpty() || this.mPBcity.getText().isEmpty() || this.mPBprov.getText().isEmpty() || this.mSFname.getText().isEmpty() || this.mSMname.getText().isEmpty() || this.mSLname.getText().isEmpty() || this.dateofmarriageField.getText().isEmpty() || this.placeofmarriageField.getText().isEmpty() || this.phoneField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fill out all required fields!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase marriageCollection = mongo.getDatabase("CCE_Pass");
+            marriageCollection.getCollection("marriage"); //to get the collection from db
+            
+            Document d = new Document("sex", this.sexCombo.getSelectedItem());
+            d.append("fname", this.mFname.getText());
+            d.append("mname", this.mMname.getText());
+            d.append("lname", this.mLname.getText());
+            d.append("birthdate", this.birthdateField.getText());
+            d.append("birthplace(country)", this.mPBcountry.getText());
+            d.append("birthplace(province)", this.mPBprov.getText());
+            d.append("birthplace(city)", this.mPBcity.getText());
+            d.append("gov'tId", this.issuedidCombo.getSelectedItem());
+            d.append("sfname", this.mSFname.getText());
+            d.append("smname", this.mSMname.getText());
+            d.append("slname", this.mSLname.getText());
+            d.append("marriage_date", this.dateofmarriageField.getText());
+            d.append("marriageplace", this.placeofmarriageField.getText());
+            d.append("lateRegField", this.lateRegCombo.getSelectedItem());
+            d.append("purpose", this.purposeCombo.getSelectedItem());
+            d.append("phone", this.phoneField.getText());
+            d.append("status", "Pending");
+
+            marriageCollection.getCollection("marriage").insertOne(d);
+            JOptionPane.showMessageDialog(this, "Request Sent Successfully");
+        }
+
+        this.sexCombo.setSelectedIndex(0);
+        this.mFname.setText("");
+        this.mMname.setText("");
+        this.mLname.setText("");
+        this.birthdateField.setText("");
+        this.mPBcountry.setText("");
+        this.mPBprov.setText("");
+        this.mPBcity.setText("");
+        this.issuedidCombo.setSelectedIndex(0);
+        this.mSFname.setText("");
+        this.mSMname.setText("");
+        this.mSLname.setText("");
+        this.dateofmarriageField.setText("");
+        this.placeofmarriageField.setText("");
+        this.lateRegCombo.setSelectedIndex(0);
+        this.purposeCombo.setSelectedIndex(0);
+        this.phoneField.setText("");
+    }//GEN-LAST:event_submitBtnMouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         CCE_Login a = new CCE_Login();
@@ -471,9 +530,9 @@ public class MarriageCertificate extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_backBtnActionPerformed
 
-    private void backBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtn1ActionPerformed
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_backBtn1ActionPerformed
+    }//GEN-LAST:event_submitBtnActionPerformed
 
     private void closebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closebtnMouseClicked
         this.dispose();
@@ -516,14 +575,12 @@ public class MarriageCertificate extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton backBtn1;
+    private javax.swing.JTextField birthdateField;
     private javax.swing.JLabel closebtn;
+    private javax.swing.JTextField dateofmarriageField;
     private javax.swing.JLabel homeBtn;
+    private javax.swing.JComboBox<String> issuedidCombo;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -570,19 +627,21 @@ public class MarriageCertificate extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JComboBox<String> lateRegCombo;
+    private javax.swing.JTextField mFname;
+    private javax.swing.JTextField mLname;
+    private javax.swing.JTextField mMname;
+    private javax.swing.JTextField mPBcity;
+    private javax.swing.JTextField mPBcountry;
+    private javax.swing.JTextField mPBprov;
+    private javax.swing.JTextField mSFname;
+    private javax.swing.JTextField mSLname;
+    private javax.swing.JTextField mSMname;
     private javax.swing.JLabel minimizebtn;
+    private javax.swing.JTextField phoneField;
+    private javax.swing.JTextField placeofmarriageField;
+    private javax.swing.JComboBox<String> purposeCombo;
+    private javax.swing.JComboBox<String> sexCombo;
+    private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 }
