@@ -169,7 +169,6 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jPanel2.add(mLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 250, 30));
 
         birthdateField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        birthdateField.setText("dd/mm/yy");
         birthdateField.setBorder(null);
         jPanel2.add(birthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, 30));
 
@@ -231,8 +230,8 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 250, 10));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel16.setText("Date of Birth");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 100, 20));
+        jLabel16.setText("Date of Birth (mm/dd/yy)");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 180, 20));
 
         sexCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sexCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-sex-", "Male", "Female" }));
@@ -346,7 +345,6 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 120, 250, 10));
 
         dateofmarriageField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        dateofmarriageField.setText("dd/mm/yy");
         dateofmarriageField.setBorder(null);
         jPanel4.add(dateofmarriageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 250, 30));
 
@@ -355,8 +353,8 @@ public class MarriageCertificate extends javax.swing.JFrame {
         jPanel4.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 130, -1));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel33.setText("Date of Marriage");
-        jPanel4.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 130, -1));
+        jLabel33.setText("Date of Marriage (mm/dd/yy)");
+        jPanel4.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 200, -1));
 
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 120, 250, 10));

@@ -64,6 +64,7 @@ public class CCE_Registration extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         ageField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        showpass = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -115,7 +116,7 @@ public class CCE_Registration extends javax.swing.JFrame {
                 signupbtnActionPerformed(evt);
             }
         });
-        jPanel4.add(signupbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 570, 116, 40));
+        jPanel4.add(signupbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 620, 116, 40));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel8.setText("Confirm Password:");
@@ -184,9 +185,19 @@ public class CCE_Registration extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 50, 30));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 650, 50, 30));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 820, 630));
+        showpass.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        showpass.setText("Show Password");
+        showpass.setBorder(null);
+        showpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showpassActionPerformed(evt);
+            }
+        });
+        jPanel4.add(showpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 570, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 820, 690));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Duplicate-amico 1.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 150, 460, 490));
@@ -344,6 +355,19 @@ public class CCE_Registration extends javax.swing.JFrame {
         this.cPasswordField.setText("");
     }//GEN-LAST:event_signupbtnMouseClicked
 
+    private void showpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpassActionPerformed
+       if (evt.getSource() == showpass) {
+            if (showpass.isSelected()) {
+                passwordField.setEchoChar((char) 0);
+                cPasswordField.setEchoChar((char) 0);
+
+            } else {
+                passwordField.setEchoChar('*');
+                cPasswordField.setEchoChar('*');
+            }
+        }
+    }//GEN-LAST:event_showpassActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -405,6 +429,7 @@ public class CCE_Registration extends javax.swing.JFrame {
     private javax.swing.JLabel minimizebtn;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField sexField;
+    private javax.swing.JCheckBox showpass;
     private javax.swing.JButton signupbtn;
     private javax.swing.JTextField staffNameField;
     // End of variables declaration//GEN-END:variables

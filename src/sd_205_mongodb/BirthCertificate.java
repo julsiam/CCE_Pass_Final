@@ -174,7 +174,6 @@ public class BirthCertificate extends javax.swing.JFrame {
         jPanel2.add(lnameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 250, 30));
 
         birthdateField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        birthdateField.setText("dd/mm/yy");
         birthdateField.setBorder(null);
         jPanel2.add(birthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, 30));
 
@@ -236,8 +235,8 @@ public class BirthCertificate extends javax.swing.JFrame {
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 250, 10));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel16.setText("Date of Birth");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 100, 20));
+        jLabel16.setText("Date of Birth (mm/dd/yy)");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 170, 20));
 
         sexCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sexCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-sex-", "Male", "Female" }));

@@ -10,6 +10,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.bson.types.ObjectId;
@@ -120,7 +121,7 @@ public class StaffHome extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        marriageReqTable = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -137,34 +138,34 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
+        marriageslname = new javax.swing.JTextField();
+        marriagesex = new javax.swing.JTextField();
+        marriagefname = new javax.swing.JTextField();
+        marriagemname = new javax.swing.JTextField();
+        marriagelname = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
-        jTextField28 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
-        jTextField30 = new javax.swing.JTextField();
-        jTextField31 = new javax.swing.JTextField();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
-        jTextField37 = new javax.swing.JTextField();
-        jTextField38 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        marriagebday = new javax.swing.JTextField();
+        marriageissuedId = new javax.swing.JTextField();
+        marriagebirthplaceProvince = new javax.swing.JTextField();
+        marriagebirthplaceCounty = new javax.swing.JTextField();
+        marriagebirthplaceCity = new javax.swing.JTextField();
+        marriagelatereg = new javax.swing.JTextField();
+        marriagesmname = new javax.swing.JTextField();
+        marriagesfname = new javax.swing.JTextField();
+        marriagestatus = new javax.swing.JTextField();
+        marriagemarriagePlace = new javax.swing.JTextField();
+        marriagemarriageDate = new javax.swing.JTextField();
+        marriagephone = new javax.swing.JTextField();
+        marriageCancelBtn = new javax.swing.JButton();
+        marriageUpdateBtn = new javax.swing.JButton();
+        marriageDeleteBtn = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        cenomarReqTable = new javax.swing.JTable();
         jLabel40 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -182,35 +183,35 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel56 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
-        jTextField35 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
+        cenomarflname = new javax.swing.JTextField();
+        cenomarsex = new javax.swing.JTextField();
+        cenomarfname = new javax.swing.JTextField();
+        cenomarmname = new javax.swing.JTextField();
+        cenomarlname = new javax.swing.JTextField();
         jLabel60 = new javax.swing.JLabel();
-        jTextField42 = new javax.swing.JTextField();
-        jTextField43 = new javax.swing.JTextField();
-        jTextField44 = new javax.swing.JTextField();
-        jTextField45 = new javax.swing.JTextField();
-        jTextField46 = new javax.swing.JTextField();
-        jTextField48 = new javax.swing.JTextField();
-        jTextField49 = new javax.swing.JTextField();
-        jTextField50 = new javax.swing.JTextField();
-        jTextField51 = new javax.swing.JTextField();
-        jTextField52 = new javax.swing.JTextField();
-        jTextField53 = new javax.swing.JTextField();
-        jTextField54 = new javax.swing.JTextField();
-        jTextField55 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        cenomarbday = new javax.swing.JTextField();
+        cenomarissuedId = new javax.swing.JTextField();
+        cenomarbplaceProvince = new javax.swing.JTextField();
+        cenomarbplaceCountry = new javax.swing.JTextField();
+        cenomarbplaceCity = new javax.swing.JTextField();
+        cenomarfmname = new javax.swing.JTextField();
+        cenomarffname = new javax.swing.JTextField();
+        cenomarstatus = new javax.swing.JTextField();
+        cenomarmmname = new javax.swing.JTextField();
+        cenomarmlname = new javax.swing.JTextField();
+        cenomarPurpose = new javax.swing.JTextField();
+        cenomarmfname = new javax.swing.JTextField();
+        cenomarphone = new javax.swing.JTextField();
+        cenomarCancelBtn = new javax.swing.JButton();
+        cenomarUpdateBtn = new javax.swing.JButton();
+        cenomarDeleteBtn = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
         jLabel57 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        deathReqTable = new javax.swing.JTable();
         jLabel61 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
@@ -227,38 +228,38 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel76 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
-        jTextField56 = new javax.swing.JTextField();
-        jTextField57 = new javax.swing.JTextField();
-        jTextField58 = new javax.swing.JTextField();
-        jTextField59 = new javax.swing.JTextField();
+        deathsex = new javax.swing.JTextField();
+        deathfname = new javax.swing.JTextField();
+        deathmname = new javax.swing.JTextField();
+        deathlname = new javax.swing.JTextField();
         jLabel79 = new javax.swing.JLabel();
-        jTextField60 = new javax.swing.JTextField();
-        jTextField61 = new javax.swing.JTextField();
-        jTextField62 = new javax.swing.JTextField();
-        jTextField63 = new javax.swing.JTextField();
-        jTextField64 = new javax.swing.JTextField();
-        jTextField65 = new javax.swing.JTextField();
-        jTextField67 = new javax.swing.JTextField();
-        jTextField68 = new javax.swing.JTextField();
-        jTextField69 = new javax.swing.JTextField();
-        jTextField70 = new javax.swing.JTextField();
-        jTextField71 = new javax.swing.JTextField();
-        jTextField72 = new javax.swing.JTextField();
-        jTextField73 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        deathbday = new javax.swing.JTextField();
+        deathissuedId = new javax.swing.JTextField();
+        deathbplaceprovince = new javax.swing.JTextField();
+        deathbplacecountry = new javax.swing.JTextField();
+        deathbplacecity = new javax.swing.JTextField();
+        deathlatereg = new javax.swing.JTextField();
+        deathwhose = new javax.swing.JTextField();
+        deathstatus = new javax.swing.JTextField();
+        deathdmname = new javax.swing.JTextField();
+        deathdlname = new javax.swing.JTextField();
+        deathpurpose = new javax.swing.JTextField();
+        deathdfname = new javax.swing.JTextField();
+        deathphone = new javax.swing.JTextField();
+        deathCancelBtn = new javax.swing.JButton();
+        deathUpdateBtn = new javax.swing.JButton();
+        deathDeleteBtn = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
         jLabel71 = new javax.swing.JLabel();
-        jTextField74 = new javax.swing.JTextField();
+        deathplace = new javax.swing.JTextField();
         jLabel80 = new javax.swing.JLabel();
-        jTextField75 = new javax.swing.JTextField();
+        deathdate = new javax.swing.JTextField();
         voterspanel = new javax.swing.JPanel();
         jPanel32 = new javax.swing.JPanel();
         jPanel33 = new javax.swing.JPanel();
         jLabel122 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable8 = new javax.swing.JTable();
+        votersReqTable = new javax.swing.JTable();
         jLabel123 = new javax.swing.JLabel();
         jLabel124 = new javax.swing.JLabel();
         jLabel125 = new javax.swing.JLabel();
@@ -266,25 +267,25 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel127 = new javax.swing.JLabel();
         jLabel128 = new javax.swing.JLabel();
         jLabel129 = new javax.swing.JLabel();
-        jTextField113 = new javax.swing.JTextField();
-        jTextField114 = new javax.swing.JTextField();
-        jTextField115 = new javax.swing.JTextField();
+        votersfname = new javax.swing.JTextField();
+        votersmname = new javax.swing.JTextField();
+        voterslname = new javax.swing.JTextField();
         jLabel131 = new javax.swing.JLabel();
-        jTextField116 = new javax.swing.JTextField();
-        jTextField117 = new javax.swing.JTextField();
-        jTextField118 = new javax.swing.JTextField();
-        jTextField119 = new javax.swing.JTextField();
-        jTextField121 = new javax.swing.JTextField();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
+        votersemail = new javax.swing.JTextField();
+        votersId = new javax.swing.JTextField();
+        votersphone = new javax.swing.JTextField();
+        votersbplace = new javax.swing.JTextField();
+        votersstatus = new javax.swing.JTextField();
+        votersCancelBtn = new javax.swing.JButton();
+        votersUpdateBtn = new javax.swing.JButton();
+        votersDeleteBtn = new javax.swing.JButton();
         jPanel34 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
         jLabel92 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        businessReqTable = new javax.swing.JTable();
         jLabel97 = new javax.swing.JLabel();
         jLabel100 = new javax.swing.JLabel();
         jLabel101 = new javax.swing.JLabel();
@@ -301,44 +302,44 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel113 = new javax.swing.JLabel();
         jLabel114 = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
-        jTextField47 = new javax.swing.JTextField();
-        jTextField66 = new javax.swing.JTextField();
-        jTextField90 = new javax.swing.JTextField();
-        jTextField92 = new javax.swing.JTextField();
-        jTextField93 = new javax.swing.JTextField();
+        businesspostal = new javax.swing.JTextField();
+        businessType = new javax.swing.JTextField();
+        businessreg = new javax.swing.JTextField();
+        businesspayment = new javax.swing.JTextField();
+        businessdate = new javax.swing.JTextField();
         jLabel116 = new javax.swing.JLabel();
-        jTextField94 = new javax.swing.JTextField();
-        jTextField96 = new javax.swing.JTextField();
-        jTextField97 = new javax.swing.JTextField();
-        jTextField99 = new javax.swing.JTextField();
-        jTextField100 = new javax.swing.JTextField();
-        jTextField101 = new javax.swing.JTextField();
-        jTextField102 = new javax.swing.JTextField();
-        jTextField103 = new javax.swing.JTextField();
-        jTextField104 = new javax.swing.JTextField();
-        jTextField105 = new javax.swing.JTextField();
-        jTextField106 = new javax.swing.JTextField();
-        jTextField107 = new javax.swing.JTextField();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
+        businesstin = new javax.swing.JTextField();
+        businessto = new javax.swing.JTextField();
+        businessfrom = new javax.swing.JTextField();
+        businesscontact = new javax.swing.JTextField();
+        businessadd = new javax.swing.JTextField();
+        businesstrade = new javax.swing.JTextField();
+        businessstatus = new javax.swing.JTextField();
+        businessownersadd = new javax.swing.JTextField();
+        businessownerspostal = new javax.swing.JTextField();
+        businessmobile = new javax.swing.JTextField();
+        businesshotline = new javax.swing.JTextField();
+        businessphone = new javax.swing.JTextField();
+        businessCancelBtn = new javax.swing.JButton();
+        businessUpdateBtn = new javax.swing.JButton();
+        businessDeleteBtn = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jLabel117 = new javax.swing.JLabel();
-        jTextField108 = new javax.swing.JTextField();
+        businessfname = new javax.swing.JTextField();
         jLabel118 = new javax.swing.JLabel();
-        jTextField109 = new javax.swing.JTextField();
+        businessmname = new javax.swing.JTextField();
         jLabel119 = new javax.swing.JLabel();
-        jTextField110 = new javax.swing.JTextField();
+        businesslname = new javax.swing.JTextField();
         jLabel120 = new javax.swing.JLabel();
-        jTextField111 = new javax.swing.JTextField();
-        jTextField112 = new javax.swing.JTextField();
+        businessemployee = new javax.swing.JTextField();
+        businessbusinessarea = new javax.swing.JTextField();
         jLabel121 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
         jLabel96 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable9 = new javax.swing.JTable();
+        scholarReqTable = new javax.swing.JTable();
         jLabel105 = new javax.swing.JLabel();
         jLabel132 = new javax.swing.JLabel();
         jLabel133 = new javax.swing.JLabel();
@@ -357,31 +358,31 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel146 = new javax.swing.JLabel();
         jLabel147 = new javax.swing.JLabel();
         jLabel148 = new javax.swing.JLabel();
-        jTextField95 = new javax.swing.JTextField();
-        jTextField98 = new javax.swing.JTextField();
-        jTextField122 = new javax.swing.JTextField();
-        jTextField123 = new javax.swing.JTextField();
-        jTextField124 = new javax.swing.JTextField();
+        scholarattended = new javax.swing.JTextField();
+        scholarsex = new javax.swing.JTextField();
+        scholarfname = new javax.swing.JTextField();
+        scholarmname = new javax.swing.JTextField();
+        scholarlname = new javax.swing.JTextField();
         jLabel149 = new javax.swing.JLabel();
-        jTextField125 = new javax.swing.JTextField();
-        jTextField126 = new javax.swing.JTextField();
-        jTextField127 = new javax.swing.JTextField();
-        jTextField128 = new javax.swing.JTextField();
-        jTextField129 = new javax.swing.JTextField();
-        jTextField130 = new javax.swing.JTextField();
-        jTextField131 = new javax.swing.JTextField();
-        jTextField132 = new javax.swing.JTextField();
-        jTextField133 = new javax.swing.JTextField();
-        jTextField134 = new javax.swing.JTextField();
-        jTextField135 = new javax.swing.JTextField();
-        jTextField136 = new javax.swing.JTextField();
-        jTextField137 = new javax.swing.JTextField();
-        jTextField138 = new javax.swing.JTextField();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
+        scholarbdate = new javax.swing.JTextField();
+        scholarpresadd = new javax.swing.JTextField();
+        scholarcitizenship = new javax.swing.JTextField();
+        scholarcivil = new javax.swing.JTextField();
+        scholarphone = new javax.swing.JTextField();
+        scholarfemployer = new javax.swing.JTextField();
+        scholarsector = new javax.swing.JTextField();
+        scholarzipcode = new javax.swing.JTextField();
+        scholarstatus = new javax.swing.JTextField();
+        scholarfaddress = new javax.swing.JTextField();
+        scholarfphone = new javax.swing.JTextField();
+        scholarfoccupation = new javax.swing.JTextField();
+        scholarffname = new javax.swing.JTextField();
+        scholarfedu = new javax.swing.JTextField();
         jPanel37 = new javax.swing.JPanel();
-        jTextField120 = new javax.swing.JTextField();
+        scholarCancelBtn = new javax.swing.JButton();
+        scholarDeleteBtn = new javax.swing.JButton();
+        scholarUpdateBtn = new javax.swing.JButton();
+        scholarschooladd = new javax.swing.JTextField();
         jLabel150 = new javax.swing.JLabel();
         jLabel151 = new javax.swing.JLabel();
         jLabel152 = new javax.swing.JLabel();
@@ -389,20 +390,20 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel154 = new javax.swing.JLabel();
         jLabel155 = new javax.swing.JLabel();
         jLabel156 = new javax.swing.JLabel();
-        jTextField139 = new javax.swing.JTextField();
-        jTextField140 = new javax.swing.JTextField();
-        jTextField141 = new javax.swing.JTextField();
-        jTextField142 = new javax.swing.JTextField();
-        jTextField143 = new javax.swing.JTextField();
-        jTextField144 = new javax.swing.JTextField();
-        jTextField145 = new javax.swing.JTextField();
+        scholarmemployer = new javax.swing.JTextField();
+        scholarmaddress = new javax.swing.JTextField();
+        scholarmphone = new javax.swing.JTextField();
+        scholarmoccupation = new javax.swing.JTextField();
+        scholarmfname = new javax.swing.JTextField();
+        scholarmedu = new javax.swing.JTextField();
+        scholarsiblings = new javax.swing.JTextField();
         jLabel157 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel72 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        appointReqTable = new javax.swing.JTable();
         jLabel81 = new javax.swing.JLabel();
         jLabel84 = new javax.swing.JLabel();
         jLabel85 = new javax.swing.JLabel();
@@ -411,19 +412,19 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel89 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
         jLabel95 = new javax.swing.JLabel();
-        jTextField76 = new javax.swing.JTextField();
-        jTextField77 = new javax.swing.JTextField();
-        jTextField78 = new javax.swing.JTextField();
+        appointfname = new javax.swing.JTextField();
+        appointmname = new javax.swing.JTextField();
+        appointlname = new javax.swing.JTextField();
         jLabel98 = new javax.swing.JLabel();
-        jTextField79 = new javax.swing.JTextField();
-        jTextField80 = new javax.swing.JTextField();
-        jTextField82 = new javax.swing.JTextField();
-        jTextField83 = new javax.swing.JTextField();
-        jTextField85 = new javax.swing.JTextField();
-        jTextField86 = new javax.swing.JTextField();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        appointemail = new javax.swing.JTextField();
+        appointdate = new javax.swing.JTextField();
+        appointphone = new javax.swing.JTextField();
+        appointsubject = new javax.swing.JTextField();
+        appointtime = new javax.swing.JTextField();
+        appointstatus = new javax.swing.JTextField();
+        appointCancelBtn = new javax.swing.JButton();
+        appointUpdateBtn = new javax.swing.JButton();
+        appointDeleteBtn = new javax.swing.JButton();
         jPanel25 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
@@ -436,15 +437,15 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel91 = new javax.swing.JLabel();
         jLabel93 = new javax.swing.JLabel();
         jLabel94 = new javax.swing.JLabel();
-        jTextField81 = new javax.swing.JTextField();
-        jTextField84 = new javax.swing.JTextField();
-        jTextField87 = new javax.swing.JTextField();
+        suggestionfname = new javax.swing.JTextField();
+        suggestionmname = new javax.swing.JTextField();
+        suggestionlname = new javax.swing.JTextField();
         jLabel99 = new javax.swing.JLabel();
-        jTextField88 = new javax.swing.JTextField();
-        jTextField89 = new javax.swing.JTextField();
-        jTextField91 = new javax.swing.JTextField();
+        suggestionemail = new javax.swing.JTextField();
+        suggestiondetails = new javax.swing.JTextField();
+        suggestionsubject = new javax.swing.JTextField();
         jPanel28 = new javax.swing.JPanel();
-        jButton18 = new javax.swing.JButton();
+        suggestionDeleteBtn = new javax.swing.JButton();
         homePane = new javax.swing.JLabel();
         birthPane = new javax.swing.JLabel();
         cenomarPane = new javax.swing.JLabel();
@@ -456,7 +457,7 @@ public class StaffHome extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         suggestionsPane = new javax.swing.JLabel();
-        homeBtn2 = new javax.swing.JLabel();
+        signout = new javax.swing.JLabel();
         jPanel40 = new javax.swing.JPanel();
         jSeparator6 = new javax.swing.JSeparator();
         staffNameTop = new javax.swing.JTextField();
@@ -816,7 +817,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel14.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 250, 50));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        marriageReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -846,7 +847,7 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(marriageReqTable);
 
         jPanel14.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
@@ -913,39 +914,39 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel41.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel41.setText("Phone Number");
         jPanel14.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 470, 120, -1));
-        jPanel14.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
-        jPanel14.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
-        jPanel14.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
-        jPanel14.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
-        jPanel14.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
+        jPanel14.add(marriageslname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
+        jPanel14.add(marriagesex, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+        jPanel14.add(marriagefname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
+        jPanel14.add(marriagemname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
+        jPanel14.add(marriagelname, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
 
         jLabel42.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel42.setText("Birthdate");
         jPanel14.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, -1));
-        jPanel14.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
-        jPanel14.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 270, -1));
-        jPanel14.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
-        jPanel14.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
-        jPanel14.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, -1));
-        jPanel14.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 180, -1));
-        jPanel14.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
-        jPanel14.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
-        jPanel14.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 180, -1));
-        jPanel14.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
-        jPanel14.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
-        jPanel14.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, 180, -1));
+        jPanel14.add(marriagebday, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
+        jPanel14.add(marriageissuedId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 270, -1));
+        jPanel14.add(marriagebirthplaceProvince, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
+        jPanel14.add(marriagebirthplaceCounty, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
+        jPanel14.add(marriagebirthplaceCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, -1));
+        jPanel14.add(marriagelatereg, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 180, -1));
+        jPanel14.add(marriagesmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
+        jPanel14.add(marriagesfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
+        jPanel14.add(marriagestatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 180, -1));
+        jPanel14.add(marriagemarriagePlace, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
+        jPanel14.add(marriagemarriageDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
+        jPanel14.add(marriagephone, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, 180, -1));
 
-        jButton4.setText("Cancel");
-        jButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel14.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
+        marriageCancelBtn.setText("Cancel");
+        marriageCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel14.add(marriageCancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
 
-        jButton5.setText("UPDATE");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel14.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
+        marriageUpdateBtn.setText("UPDATE");
+        marriageUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel14.add(marriageUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
 
-        jButton6.setText("DELETE");
-        jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel14.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
+        marriageDeleteBtn.setText("DELETE");
+        marriageDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel14.add(marriageDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
 
@@ -979,7 +980,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel17.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 290, 50));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        cenomarReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -1009,7 +1010,7 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(cenomarReqTable);
 
         jPanel17.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
@@ -1080,40 +1081,40 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel59.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel59.setText("Phone Number");
         jPanel17.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 470, 120, -1));
-        jPanel17.add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
-        jPanel17.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
-        jPanel17.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
-        jPanel17.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
-        jPanel17.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
+        jPanel17.add(cenomarflname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
+        jPanel17.add(cenomarsex, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+        jPanel17.add(cenomarfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
+        jPanel17.add(cenomarmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
+        jPanel17.add(cenomarlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
 
         jLabel60.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel60.setText("Birthdate");
         jPanel17.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, -1));
-        jPanel17.add(jTextField42, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
-        jPanel17.add(jTextField43, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 270, -1));
-        jPanel17.add(jTextField44, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
-        jPanel17.add(jTextField45, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
-        jPanel17.add(jTextField46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, -1));
-        jPanel17.add(jTextField48, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
-        jPanel17.add(jTextField49, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
-        jPanel17.add(jTextField50, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 180, -1));
-        jPanel17.add(jTextField51, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
-        jPanel17.add(jTextField52, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, -1));
-        jPanel17.add(jTextField53, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 180, -1));
-        jPanel17.add(jTextField54, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
-        jPanel17.add(jTextField55, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 490, 180, -1));
+        jPanel17.add(cenomarbday, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
+        jPanel17.add(cenomarissuedId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 270, -1));
+        jPanel17.add(cenomarbplaceProvince, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
+        jPanel17.add(cenomarbplaceCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
+        jPanel17.add(cenomarbplaceCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, -1));
+        jPanel17.add(cenomarfmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
+        jPanel17.add(cenomarffname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
+        jPanel17.add(cenomarstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 180, -1));
+        jPanel17.add(cenomarmmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
+        jPanel17.add(cenomarmlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, -1));
+        jPanel17.add(cenomarPurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 180, -1));
+        jPanel17.add(cenomarmfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
+        jPanel17.add(cenomarphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 490, 180, -1));
 
-        jButton7.setText("Cancel");
-        jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel17.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
+        cenomarCancelBtn.setText("Cancel");
+        cenomarCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel17.add(cenomarCancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
 
-        jButton8.setText("UPDATE");
-        jButton8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel17.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
+        cenomarUpdateBtn.setText("UPDATE");
+        cenomarUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel17.add(cenomarUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
 
-        jButton9.setText("Delete");
-        jButton9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel17.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
+        cenomarDeleteBtn.setText("Delete");
+        cenomarDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel17.add(cenomarDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
 
@@ -1147,7 +1148,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel20.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 230, 50));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        deathReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -1177,7 +1178,7 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(deathReqTable);
 
         jPanel20.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
@@ -1244,39 +1245,44 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel78.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel78.setText("Phone Number");
         jPanel20.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 120, -1));
-        jPanel20.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
-        jPanel20.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
-        jPanel20.add(jTextField58, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
-        jPanel20.add(jTextField59, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
+        jPanel20.add(deathsex, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+        jPanel20.add(deathfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
+        jPanel20.add(deathmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
+        jPanel20.add(deathlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
 
         jLabel79.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel79.setText("Birthdate");
         jPanel20.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, -1));
-        jPanel20.add(jTextField60, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
-        jPanel20.add(jTextField61, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 270, -1));
-        jPanel20.add(jTextField62, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
-        jPanel20.add(jTextField63, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
-        jPanel20.add(jTextField64, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, -1));
-        jPanel20.add(jTextField65, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 180, -1));
-        jPanel20.add(jTextField67, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 350, -1));
-        jPanel20.add(jTextField68, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 180, -1));
-        jPanel20.add(jTextField69, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
-        jPanel20.add(jTextField70, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, -1));
-        jPanel20.add(jTextField71, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 180, -1));
-        jPanel20.add(jTextField72, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
-        jPanel20.add(jTextField73, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 560, 180, -1));
+        jPanel20.add(deathbday, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
+        jPanel20.add(deathissuedId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 270, -1));
+        jPanel20.add(deathbplaceprovince, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
+        jPanel20.add(deathbplacecountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
+        jPanel20.add(deathbplacecity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, -1));
+        jPanel20.add(deathlatereg, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 180, -1));
+        jPanel20.add(deathwhose, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 350, -1));
+        jPanel20.add(deathstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 180, -1));
+        jPanel20.add(deathdmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
+        jPanel20.add(deathdlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, -1));
+        jPanel20.add(deathpurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 180, -1));
+        jPanel20.add(deathdfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
+        jPanel20.add(deathphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 560, 180, -1));
 
-        jButton10.setText("Cancel");
-        jButton10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel20.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
+        deathCancelBtn.setText("Cancel");
+        deathCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel20.add(deathCancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
 
-        jButton11.setText("UPDATE");
-        jButton11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel20.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
+        deathUpdateBtn.setText("UPDATE");
+        deathUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel20.add(deathUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
 
-        jButton12.setText("Delete");
-        jButton12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel20.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
+        deathDeleteBtn.setText("Delete");
+        deathDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        deathDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deathDeleteBtnActionPerformed(evt);
+            }
+        });
+        jPanel20.add(deathDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
 
@@ -1296,12 +1302,12 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel71.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel71.setText("Place of Death");
         jPanel20.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 470, 180, -1));
-        jPanel20.add(jTextField74, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 490, 210, -1));
+        jPanel20.add(deathplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 490, 210, -1));
 
         jLabel80.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel80.setText("Date of Death");
         jPanel20.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 210, -1));
-        jPanel20.add(jTextField75, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 220, -1));
+        jPanel20.add(deathdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 220, -1));
 
         jPanel6.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 650));
 
@@ -1320,7 +1326,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel32.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 230, 50));
 
-        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+        votersReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -1350,7 +1356,7 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane8.setViewportView(jTable8);
+        jScrollPane8.setViewportView(votersReqTable);
 
         jPanel32.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
@@ -1381,30 +1387,30 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel129.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel129.setText("STATUS");
         jPanel32.add(jLabel129, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 430, 70, -1));
-        jPanel32.add(jTextField113, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
-        jPanel32.add(jTextField114, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 130, -1));
-        jPanel32.add(jTextField115, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 130, -1));
+        jPanel32.add(votersfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+        jPanel32.add(votersmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 130, -1));
+        jPanel32.add(voterslname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 130, -1));
 
         jLabel131.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel131.setText("Email Address");
         jPanel32.add(jLabel131, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 190, -1));
-        jPanel32.add(jTextField116, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 240, -1));
-        jPanel32.add(jTextField117, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 300, -1));
-        jPanel32.add(jTextField118, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, 250, -1));
-        jPanel32.add(jTextField119, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 330, -1));
-        jPanel32.add(jTextField121, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 180, -1));
+        jPanel32.add(votersemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 240, -1));
+        jPanel32.add(votersId, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 300, -1));
+        jPanel32.add(votersphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, 250, -1));
+        jPanel32.add(votersbplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 330, -1));
+        jPanel32.add(votersstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 180, -1));
 
-        jButton20.setText("Cancel");
-        jButton20.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel32.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
+        votersCancelBtn.setText("Cancel");
+        votersCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel32.add(votersCancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
 
-        jButton21.setText("UPDATE");
-        jButton21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel32.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
+        votersUpdateBtn.setText("UPDATE");
+        votersUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel32.add(votersUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
 
-        jButton22.setText("Delete");
-        jButton22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel32.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
+        votersDeleteBtn.setText("Delete");
+        votersDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel32.add(votersDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel34.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
 
@@ -1438,7 +1444,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel29.add(jPanel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 230, 50));
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        businessReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -1468,7 +1474,7 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(jTable7);
+        jScrollPane7.setViewportView(businessReqTable);
 
         jPanel29.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
@@ -1486,7 +1492,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel102.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel102.setText("Application Date");
-        jPanel29.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 90, -1));
+        jPanel29.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 130, -1));
 
         jLabel103.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel103.setText("Ammend From");
@@ -1518,7 +1524,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel111.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel111.setText("Business Hotline Number");
-        jPanel29.add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 150, -1));
+        jPanel29.add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 180, -1));
 
         jLabel112.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel112.setText("Trade Name/Franchise");
@@ -1530,44 +1536,44 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel114.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel114.setText("Mobile Number");
-        jPanel29.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, 70, -1));
+        jPanel29.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, 150, -1));
 
         jLabel115.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel115.setText("Phone Number");
         jPanel29.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 120, -1));
-        jPanel29.add(jTextField47, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
-        jPanel29.add(jTextField66, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
-        jPanel29.add(jTextField90, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
-        jPanel29.add(jTextField92, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
-        jPanel29.add(jTextField93, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
+        jPanel29.add(businesspostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
+        jPanel29.add(businessType, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+        jPanel29.add(businessreg, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
+        jPanel29.add(businesspayment, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
+        jPanel29.add(businessdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
 
         jLabel116.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel116.setText("TIN No.");
         jPanel29.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, -1));
-        jPanel29.add(jTextField94, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
-        jPanel29.add(jTextField96, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
-        jPanel29.add(jTextField97, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
-        jPanel29.add(jTextField99, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 490, 180, -1));
-        jPanel29.add(jTextField100, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
-        jPanel29.add(jTextField101, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
-        jPanel29.add(jTextField102, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 180, -1));
-        jPanel29.add(jTextField103, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
-        jPanel29.add(jTextField104, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, -1));
-        jPanel29.add(jTextField105, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 180, -1));
-        jPanel29.add(jTextField106, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
-        jPanel29.add(jTextField107, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 180, -1));
+        jPanel29.add(businesstin, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
+        jPanel29.add(businessto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
+        jPanel29.add(businessfrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
+        jPanel29.add(businesscontact, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 490, 180, -1));
+        jPanel29.add(businessadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
+        jPanel29.add(businesstrade, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
+        jPanel29.add(businessstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 180, -1));
+        jPanel29.add(businessownersadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
+        jPanel29.add(businessownerspostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, -1));
+        jPanel29.add(businessmobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 180, -1));
+        jPanel29.add(businesshotline, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
+        jPanel29.add(businessphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 180, -1));
 
-        jButton16.setText("Cancel");
-        jButton16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel29.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
+        businessCancelBtn.setText("Cancel");
+        businessCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel29.add(businessCancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
 
-        jButton17.setText("UPDATE");
-        jButton17.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel29.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
+        businessUpdateBtn.setText("UPDATE");
+        businessUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel29.add(businessUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
 
-        jButton19.setText("Delete");
-        jButton19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel29.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
+        businessDeleteBtn.setText("Delete");
+        businessDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel29.add(businessDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel31.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
 
@@ -1587,23 +1593,23 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel117.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel117.setText("First Name");
         jPanel29.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 90, -1));
-        jPanel29.add(jTextField108, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 130, -1));
+        jPanel29.add(businessfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 130, -1));
 
         jLabel118.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel118.setText("Middle Name");
         jPanel29.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 110, -1));
-        jPanel29.add(jTextField109, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 130, -1));
+        jPanel29.add(businessmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 130, -1));
 
         jLabel119.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel119.setText("Last Name");
         jPanel29.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 90, -1));
-        jPanel29.add(jTextField110, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 130, -1));
+        jPanel29.add(businesslname, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 130, -1));
 
         jLabel120.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel120.setText("Employee Total");
         jPanel29.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 120, -1));
-        jPanel29.add(jTextField111, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 180, -1));
-        jPanel29.add(jTextField112, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 180, -1));
+        jPanel29.add(businessemployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 180, -1));
+        jPanel29.add(businessbusinessarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 180, -1));
 
         jLabel121.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel121.setText("Business Area");
@@ -1626,7 +1632,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel35.add(jPanel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 220, 50));
 
-        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+        scholarReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -1656,7 +1662,7 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane9.setViewportView(jTable9);
+        jScrollPane9.setViewportView(scholarReqTable);
 
         jPanel35.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
@@ -1731,57 +1737,67 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel148.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel148.setText("Educational Attainment");
         jPanel35.add(jLabel148, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 460, 150, -1));
-        jPanel35.add(jTextField95, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 220, -1));
-        jPanel35.add(jTextField98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
-        jPanel35.add(jTextField122, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
-        jPanel35.add(jTextField123, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
-        jPanel35.add(jTextField124, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
+        jPanel35.add(scholarattended, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 220, -1));
+        jPanel35.add(scholarsex, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+        jPanel35.add(scholarfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
+        jPanel35.add(scholarmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
+        jPanel35.add(scholarlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
 
         jLabel149.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel149.setText("Birthdate");
         jPanel35.add(jLabel149, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, -1));
-        jPanel35.add(jTextField125, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
-        jPanel35.add(jTextField126, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 210, -1));
-        jPanel35.add(jTextField127, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 370, 120, -1));
-        jPanel35.add(jTextField128, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 140, -1));
-        jPanel35.add(jTextField129, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 370, 120, -1));
-        jPanel35.add(jTextField130, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 180, -1));
-        jPanel35.add(jTextField131, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, 220, -1));
-        jPanel35.add(jTextField132, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 140, -1));
-        jPanel35.add(jTextField133, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, 180, -1));
-        jPanel35.add(jTextField134, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 180, -1));
-        jPanel35.add(jTextField135, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 180, -1));
-        jPanel35.add(jTextField136, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, 180, -1));
-        jPanel35.add(jTextField137, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 180, -1));
-        jPanel35.add(jTextField138, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 480, 180, -1));
-
-        jButton23.setText("Cancel");
-        jButton23.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel35.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 590, 110, 30));
-
-        jButton24.setText("UPDATE");
-        jButton24.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel35.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 590, 110, 30));
-
-        jButton25.setText("Delete");
-        jButton25.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel35.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 590, 110, 30));
+        jPanel35.add(scholarbdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
+        jPanel35.add(scholarpresadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 210, -1));
+        jPanel35.add(scholarcitizenship, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 370, 120, -1));
+        jPanel35.add(scholarcivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 140, -1));
+        jPanel35.add(scholarphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 370, 120, -1));
+        jPanel35.add(scholarfemployer, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 180, -1));
+        jPanel35.add(scholarsector, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, 220, -1));
+        jPanel35.add(scholarzipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 140, -1));
+        jPanel35.add(scholarstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, 180, -1));
+        jPanel35.add(scholarfaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 180, -1));
+        jPanel35.add(scholarfphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 180, -1));
+        jPanel35.add(scholarfoccupation, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, 180, -1));
+        jPanel35.add(scholarffname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 180, -1));
+        jPanel35.add(scholarfedu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 480, 180, -1));
 
         jPanel37.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
+
+        scholarCancelBtn.setText("Cancel");
+        scholarCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+
+        scholarDeleteBtn.setText("Delete");
+        scholarDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+
+        scholarUpdateBtn.setText("UPDATE");
+        scholarUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(scholarUpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scholarDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scholarCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel37Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scholarCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scholarDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scholarUpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel35.add(jPanel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 570, 380, 70));
-        jPanel35.add(jTextField120, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 420, 220, -1));
+        jPanel35.add(jPanel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 580, 380, 70));
+        jPanel35.add(scholarschooladd, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 420, 220, -1));
 
         jLabel150.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel150.setText("School Address");
@@ -1796,7 +1812,7 @@ public class StaffHome extends javax.swing.JFrame {
         jPanel35.add(jLabel152, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 170, -1));
 
         jLabel153.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
-        jLabel153.setText("Father's  Name");
+        jLabel153.setText("Mother's  Name");
         jPanel35.add(jLabel153, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 150, -1));
 
         jLabel154.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
@@ -1810,19 +1826,19 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel156.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel156.setText("Educational Attainment");
         jPanel35.add(jLabel156, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 520, 150, -1));
-        jPanel35.add(jTextField139, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 540, 180, -1));
-        jPanel35.add(jTextField140, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 180, -1));
-        jPanel35.add(jTextField141, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 180, -1));
-        jPanel35.add(jTextField142, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, 180, -1));
-        jPanel35.add(jTextField143, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 180, -1));
-        jPanel35.add(jTextField144, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 540, 180, -1));
-        jPanel35.add(jTextField145, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 600, 180, -1));
+        jPanel35.add(scholarmemployer, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 540, 180, -1));
+        jPanel35.add(scholarmaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 180, -1));
+        jPanel35.add(scholarmphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 180, -1));
+        jPanel35.add(scholarmoccupation, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, 180, -1));
+        jPanel35.add(scholarmfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 180, -1));
+        jPanel35.add(scholarmedu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 540, 180, -1));
+        jPanel35.add(scholarsiblings, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 600, 180, -1));
 
         jLabel157.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel157.setText("Number of Siblings");
         jPanel35.add(jLabel157, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 580, 160, -1));
 
-        jPanel8.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 650));
+        jPanel8.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 670));
 
         panel.addTab("Scholarship Application", jPanel8);
 
@@ -1839,7 +1855,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel23.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 210, 50));
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        appointReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -1869,7 +1885,7 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable5);
+        jScrollPane5.setViewportView(appointReqTable);
 
         jPanel23.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
@@ -1904,31 +1920,31 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel95.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel95.setText("Appoinment Time");
         jPanel23.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 140, -1));
-        jPanel23.add(jTextField76, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
-        jPanel23.add(jTextField77, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 130, -1));
-        jPanel23.add(jTextField78, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 130, -1));
+        jPanel23.add(appointfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+        jPanel23.add(appointmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 130, -1));
+        jPanel23.add(appointlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 130, -1));
 
         jLabel98.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel98.setText("Email Address");
         jPanel23.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 190, -1));
-        jPanel23.add(jTextField79, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 240, -1));
-        jPanel23.add(jTextField80, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 180, -1));
-        jPanel23.add(jTextField82, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, 250, -1));
-        jPanel23.add(jTextField83, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 330, -1));
-        jPanel23.add(jTextField85, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 180, -1));
-        jPanel23.add(jTextField86, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 180, -1));
+        jPanel23.add(appointemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 240, -1));
+        jPanel23.add(appointdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 180, -1));
+        jPanel23.add(appointphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, 250, -1));
+        jPanel23.add(appointsubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 330, -1));
+        jPanel23.add(appointtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 180, -1));
+        jPanel23.add(appointstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 180, -1));
 
-        jButton13.setText("Cancel");
-        jButton13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel23.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
+        appointCancelBtn.setText("Cancel");
+        appointCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel23.add(appointCancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
 
-        jButton14.setText("UPDATE");
-        jButton14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel23.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
+        appointUpdateBtn.setText("UPDATE");
+        appointUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel23.add(appointUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
 
-        jButton15.setText("Delete");
-        jButton15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel23.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
+        appointDeleteBtn.setText("Delete");
+        appointDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        jPanel23.add(appointDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel25.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
 
@@ -2015,21 +2031,21 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel94.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel94.setText("First Name");
         jPanel26.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 90, -1));
-        jPanel26.add(jTextField81, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 220, -1));
-        jPanel26.add(jTextField84, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 220, -1));
-        jPanel26.add(jTextField87, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 220, -1));
+        jPanel26.add(suggestionfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 220, -1));
+        jPanel26.add(suggestionmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 220, -1));
+        jPanel26.add(suggestionlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 220, -1));
 
         jLabel99.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel99.setText("Email Address");
         jPanel26.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 360, 190, -1));
-        jPanel26.add(jTextField88, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, 280, -1));
-        jPanel26.add(jTextField89, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 760, -1));
-        jPanel26.add(jTextField91, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 330, -1));
+        jPanel26.add(suggestionemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, 280, -1));
+        jPanel26.add(suggestiondetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 760, -1));
+        jPanel26.add(suggestionsubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 330, -1));
 
         jPanel28.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
 
-        jButton18.setText("Delete");
-        jButton18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        suggestionDeleteBtn.setText("Delete");
+        suggestionDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -2037,14 +2053,14 @@ public class StaffHome extends javax.swing.JFrame {
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(suggestionDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(suggestionDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
 
@@ -2173,14 +2189,14 @@ public class StaffHome extends javax.swing.JFrame {
         });
         jPanel1.add(suggestionsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 750, 240, 40));
 
-        homeBtn2.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        homeBtn2.setText("Sign out");
-        homeBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+        signout.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        signout.setText("Sign out");
+        signout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                homeBtn2MouseClicked(evt);
+                signoutMouseClicked(evt);
             }
         });
-        jPanel1.add(homeBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 40, 70, 30));
+        jPanel1.add(signout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 40, 70, 30));
 
         jPanel40.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2216,6 +2232,8 @@ public class StaffHome extends javax.swing.JFrame {
 
     private void votersPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_votersPaneMouseClicked
         panel.setSelectedIndex(5);
+        
+        
 
     }//GEN-LAST:event_votersPaneMouseClicked
 
@@ -2233,13 +2251,14 @@ public class StaffHome extends javax.swing.JFrame {
 
     private void birthPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthPaneMouseClicked
         panel.setSelectedIndex(1);
+
         MongoClient mongoClient = null;
         DBCursor cursor = null;
         mongoClient = new MongoClient("localhost", 27017);
         DB db = mongoClient.getDB("CCE_Pass");
-        DBCollection coll = db.getCollection("birth_certificate");
+        DBCollection coll = db.getCollection("birth");
         cursor = coll.find();
-        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", " Father's First Name", "Father's Middle Name", "Father's Last Name", "Mother's First Name", "Mother's Middle Name", "Mother's Last Name", "Purpose", "Late Registration", "Phone Number", "Status"};
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", " Father's First Name", "Father's Middle Name", "Father's Last Name", "Mother's First Name", "Mother's Middle Name", "Mother's Last Name", "Late Registration", "Purpose", "Phone Number", "Status"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         while (cursor.hasNext()) {
             DBObject obj = cursor.next();
@@ -2279,22 +2298,199 @@ public class StaffHome extends javax.swing.JFrame {
 
     private void cenomarPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenomarPaneMouseClicked
         panel.setSelectedIndex(3);
+
+        MongoClient mongoClient = null;
+        DBCursor cursor = null;
+        mongoClient = new MongoClient("localhost", 27017);
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("cenomar");
+        cursor = coll.find();
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", " Father's First Name", "Father's Middle Name", "Father's Last Name", "Mother's First Name", "Mother's Middle Name", "Mother's Last Name", "Purpose", "Phone Number", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String sex = (String) obj.get("sex");
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String bdate = (String) obj.get("birthdate");
+            String bpCountry = (String) obj.get("birthplace(country)");
+            String bpProvince = (String) obj.get("birthplace(province)");
+            String bpCity = (String) obj.get("birthplace(city)");
+            String govID = (String) obj.get("gov'tId");
+            String ffname = (String) obj.get("ffname");
+            String fmname = (String) obj.get("fmname");
+            String flname = (String) obj.get("flname");
+            String mfname = (String) obj.get("mfname");
+            String mmname = (String) obj.get("mmname");
+            String mlname = (String) obj.get("mlname");
+            String purp = (String) obj.get("purpose");
+            String phone = (String) obj.get("phone");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, ffname, fmname, flname, mfname, mmname, mlname, purp, phone, status});
+        }
+        cenomarReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (mongoClient != null) {
+            mongoClient.close();
+        }
     }//GEN-LAST:event_cenomarPaneMouseClicked
 
     private void marriagePaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marriagePaneMouseClicked
         panel.setSelectedIndex(2);
+
+        MongoClient mongoClient = null;
+        DBCursor cursor = null;
+        mongoClient = new MongoClient("localhost", 27017);
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("marriage");
+        cursor = coll.find();
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", "Spouse's First Name", "Spouse's Middle Name", "Spouse's Last Name", "Marriage Date", "Marriage Place", "Late Registration", "Purpose", "Phone Number", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String sex = (String) obj.get("sex");
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String bdate = (String) obj.get("birthdate");
+            String bpCountry = (String) obj.get("birthplace(country)");
+            String bpProvince = (String) obj.get("birthplace(province)");
+            String bpCity = (String) obj.get("birthplace(city)");
+            String govID = (String) obj.get("gov'tId");
+            String sfname = (String) obj.get("sfname");
+            String smname = (String) obj.get("smname");
+            String slname = (String) obj.get("slname");
+            String mdate = (String) obj.get("marriage_date");
+            String mplace = (String) obj.get("marriageplace");
+            String lateReg = (String) obj.get("lateRegField");
+            String purp = (String) obj.get("purpose");
+            String phone = (String) obj.get("phone");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, sfname, smname, slname, mdate, mplace, lateReg, purp, phone, status});
+        }
+        marriageReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (mongoClient != null) {
+            mongoClient.close();
+        }
+
     }//GEN-LAST:event_marriagePaneMouseClicked
 
     private void deathPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deathPaneMouseClicked
         panel.setSelectedIndex(4);
+
+        MongoClient mongoClient = null;
+        DBCursor cursor = null;
+        mongoClient = new MongoClient("localhost", 27017);
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("death");
+        cursor = coll.find();
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", "Relationship", " Deceased First Name", "Deceased Middle Name", "Deceased Last Name", "Date of Death", "Place of Death", "Late Registration", "Purpose", "Phone Number", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String sex = (String) obj.get("sex");
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String bdate = (String) obj.get("birthdate");
+            String bpCountry = (String) obj.get("birthplace(country)");
+            String bpProvince = (String) obj.get("birthplace(province)");
+            String bpCity = (String) obj.get("birthplace(city)");
+            String govID = (String) obj.get("gov'tId");
+            String relationsip = (String) obj.get("relation");
+            String dfname = (String) obj.get("deceasedfname");
+            String dmname = (String) obj.get("deceasedmname");
+            String dlname = (String) obj.get("deceasedlname");
+            String deathDate = (String) obj.get("dateofdeath");
+            String deathPlace = (String) obj.get("placeofdeath");
+            String latereg = (String) obj.get("lateReg");
+            String purp = (String) obj.get("purpose");
+            String phone = (String) obj.get("phone");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, relationsip, dfname, dmname, dlname, deathDate, deathPlace, latereg, purp, phone, status});
+        }
+        deathReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (mongoClient != null) {
+            mongoClient.close();
+        }
     }//GEN-LAST:event_deathPaneMouseClicked
 
     private void businessPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessPaneMouseClicked
         panel.setSelectedIndex(6);
+
+        MongoClient mongoClient = null;
+        DBCursor cursor = null;
+        mongoClient = new MongoClient("localhost", 27017);
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("business");
+        cursor = coll.find();
+        String[] columnNames = {"Business Type", "DTI/SEC/CDA/Reg.No.", "Payment Mode", "Application Date", "TIN", "Ammendment From", "Ammendment To", "First Name", "Middle Name", "Last Name", "Trade Name", "Gov't Tax", "Business Address", "Business Postal Code", "Business Hotline", "Owner's Address", "Owner's Postal Code", ",Mobile Number", "Contact Person", "Phone Number", "Business Area", "Employee Total", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String btype = (String) obj.get("businessType");
+            String regno = (String) obj.get("regNumber");
+            String paymentmode = (String) obj.get("paymentMode");
+            String applicationdate = (String) obj.get("applicationDate");
+            String tin = (String) obj.get("tinNmber");
+            String ammendfrom = (String) obj.get("ammendFrom");
+            String ammendto = (String) obj.get("ammendTo");
+            String fname = (String) obj.get("fname");
+            String mname = (String) obj.get("mname");
+            String lname = (String) obj.get("lname");
+            String trade = (String) obj.get("tradeName");
+            String tax = (String) obj.get("govtTax");
+            String businessAdd = (String) obj.get("businessAdd");
+            String businessPostal = (String) obj.get("businessPostalCode");
+            String businessHotline = (String) obj.get("businessHotline");
+            String ownersadd = (String) obj.get("ownersAdd");
+            String ownerspostal = (String) obj.get("ownersPostalCode");
+            String mobile = (String) obj.get("mobileNumber");
+            String contactperson = (String) obj.get("contactPerson");
+            String phone = (String) obj.get("phone");
+            String businessarea = (String) obj.get("businessArea");
+            String employee = (String) obj.get("employeeTotal");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{btype, regno, paymentmode, applicationdate, tin, ammendfrom, ammendto, fname, mname, lname, trade, tax, businessAdd, businessPostal, businessHotline, ownersadd, ownerspostal, mobile, contactperson, phone, businessarea, employee, status});
+        }
+        businessReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (mongoClient != null) {
+            mongoClient.close();
+        }
     }//GEN-LAST:event_businessPaneMouseClicked
 
     private void scholarshipPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scholarshipPaneMouseClicked
         panel.setSelectedIndex(7);
+        
+        
     }//GEN-LAST:event_scholarshipPaneMouseClicked
 
     private void appointmentPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointmentPaneMouseClicked
@@ -2317,9 +2513,15 @@ public class StaffHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_suggestionsPaneMouseClicked
 
-    private void homeBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtn2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_homeBtn2MouseClicked
+    private void signoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signoutMouseClicked
+        int a = JOptionPane.showConfirmDialog(null, "Are you sure to logout?", "Warning", JOptionPane.YES_NO_OPTION);
+        if (a == JOptionPane.YES_OPTION) {
+            new Home().setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.getRootFrame().dispose();
+        }
+    }//GEN-LAST:event_signoutMouseClicked
 
     private void homeBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtn1MouseClicked
         // TODO add your handling code here:
@@ -2348,11 +2550,15 @@ public class StaffHome extends javax.swing.JFrame {
         motherfnSection.setText(model.getValueAt(i, 12).toString());
         mothermnSection.setText(model.getValueAt(i, 13).toString());
         motherlnSection.setText(model.getValueAt(i, 14).toString());
-        purposeSection.setText(model.getValueAt(i, 15).toString());
-        lateregSection.setText(model.getValueAt(i, 16).toString());
+        lateregSection.setText(model.getValueAt(i, 15).toString());
+        purposeSection.setText(model.getValueAt(i, 16).toString());
         phoneSection.setText(model.getValueAt(i, 17).toString());
         statusSection.setText(model.getValueAt(i, 18).toString());
     }//GEN-LAST:event_birthReqTableMouseClicked
+
+    private void deathDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deathDeleteBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deathDeleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2369,17 +2575,101 @@ public class StaffHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;
     private javax.swing.JTextField ageField;
+    private javax.swing.JButton appointCancelBtn;
+    private javax.swing.JButton appointDeleteBtn;
+    private javax.swing.JTable appointReqTable;
+    private javax.swing.JButton appointUpdateBtn;
+    private javax.swing.JTextField appointdate;
+    private javax.swing.JTextField appointemail;
+    private javax.swing.JTextField appointfname;
+    private javax.swing.JTextField appointlname;
     private javax.swing.JLabel appointmentPane;
+    private javax.swing.JTextField appointmname;
+    private javax.swing.JTextField appointphone;
+    private javax.swing.JTextField appointstatus;
+    private javax.swing.JTextField appointsubject;
+    private javax.swing.JTextField appointtime;
     private javax.swing.JLabel birthPane;
     private javax.swing.JTable birthReqTable;
     private javax.swing.JTextField birthdateSection;
+    private javax.swing.JButton businessCancelBtn;
+    private javax.swing.JButton businessDeleteBtn;
     private javax.swing.JLabel businessPane;
+    private javax.swing.JTable businessReqTable;
+    private javax.swing.JTextField businessType;
+    private javax.swing.JButton businessUpdateBtn;
+    private javax.swing.JTextField businessadd;
+    private javax.swing.JTextField businessbusinessarea;
+    private javax.swing.JTextField businesscontact;
+    private javax.swing.JTextField businessdate;
+    private javax.swing.JTextField businessemployee;
+    private javax.swing.JTextField businessfname;
+    private javax.swing.JTextField businessfrom;
+    private javax.swing.JTextField businesshotline;
+    private javax.swing.JTextField businesslname;
+    private javax.swing.JTextField businessmname;
+    private javax.swing.JTextField businessmobile;
+    private javax.swing.JTextField businessownersadd;
+    private javax.swing.JTextField businessownerspostal;
+    private javax.swing.JTextField businesspayment;
+    private javax.swing.JTextField businessphone;
+    private javax.swing.JTextField businesspostal;
+    private javax.swing.JTextField businessreg;
+    private javax.swing.JTextField businessstatus;
+    private javax.swing.JTextField businesstin;
+    private javax.swing.JTextField businessto;
+    private javax.swing.JTextField businesstrade;
     private javax.swing.JButton cancelBtn;
+    private javax.swing.JButton cenomarCancelBtn;
+    private javax.swing.JButton cenomarDeleteBtn;
     private javax.swing.JLabel cenomarPane;
+    private javax.swing.JTextField cenomarPurpose;
+    private javax.swing.JTable cenomarReqTable;
+    private javax.swing.JButton cenomarUpdateBtn;
+    private javax.swing.JTextField cenomarbday;
+    private javax.swing.JTextField cenomarbplaceCity;
+    private javax.swing.JTextField cenomarbplaceCountry;
+    private javax.swing.JTextField cenomarbplaceProvince;
+    private javax.swing.JTextField cenomarffname;
+    private javax.swing.JTextField cenomarflname;
+    private javax.swing.JTextField cenomarfmname;
+    private javax.swing.JTextField cenomarfname;
+    private javax.swing.JTextField cenomarissuedId;
+    private javax.swing.JTextField cenomarlname;
+    private javax.swing.JTextField cenomarmfname;
+    private javax.swing.JTextField cenomarmlname;
+    private javax.swing.JTextField cenomarmmname;
+    private javax.swing.JTextField cenomarmname;
+    private javax.swing.JTextField cenomarphone;
+    private javax.swing.JTextField cenomarsex;
+    private javax.swing.JTextField cenomarstatus;
     private javax.swing.JTextField citySection;
     private javax.swing.JLabel closebtn;
     private javax.swing.JTextField countrySection;
+    private javax.swing.JButton deathCancelBtn;
+    private javax.swing.JButton deathDeleteBtn;
     private javax.swing.JLabel deathPane;
+    private javax.swing.JTable deathReqTable;
+    private javax.swing.JButton deathUpdateBtn;
+    private javax.swing.JTextField deathbday;
+    private javax.swing.JTextField deathbplacecity;
+    private javax.swing.JTextField deathbplacecountry;
+    private javax.swing.JTextField deathbplaceprovince;
+    private javax.swing.JTextField deathdate;
+    private javax.swing.JTextField deathdfname;
+    private javax.swing.JTextField deathdlname;
+    private javax.swing.JTextField deathdmname;
+    private javax.swing.JTextField deathfname;
+    private javax.swing.JTextField deathissuedId;
+    private javax.swing.JTextField deathlatereg;
+    private javax.swing.JTextField deathlname;
+    private javax.swing.JTextField deathmname;
+    private javax.swing.JTextField deathphone;
+    private javax.swing.JTextField deathplace;
+    private javax.swing.JTextField deathpurpose;
+    private javax.swing.JTextField deathsex;
+    private javax.swing.JTextField deathstatus;
+    private javax.swing.JTextField deathwhose;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField fatherfnSection;
     private javax.swing.JTextField fatherlnSection;
@@ -2387,30 +2677,7 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JTextField firstnameSection;
     private javax.swing.JTextField govidSection;
     private javax.swing.JLabel homeBtn1;
-    private javax.swing.JLabel homeBtn2;
     private javax.swing.JLabel homePane;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -2635,143 +2902,31 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
-    private javax.swing.JTable jTable7;
-    private javax.swing.JTable jTable8;
-    private javax.swing.JTable jTable9;
-    private javax.swing.JTextField jTextField100;
-    private javax.swing.JTextField jTextField101;
-    private javax.swing.JTextField jTextField102;
-    private javax.swing.JTextField jTextField103;
-    private javax.swing.JTextField jTextField104;
-    private javax.swing.JTextField jTextField105;
-    private javax.swing.JTextField jTextField106;
-    private javax.swing.JTextField jTextField107;
-    private javax.swing.JTextField jTextField108;
-    private javax.swing.JTextField jTextField109;
-    private javax.swing.JTextField jTextField110;
-    private javax.swing.JTextField jTextField111;
-    private javax.swing.JTextField jTextField112;
-    private javax.swing.JTextField jTextField113;
-    private javax.swing.JTextField jTextField114;
-    private javax.swing.JTextField jTextField115;
-    private javax.swing.JTextField jTextField116;
-    private javax.swing.JTextField jTextField117;
-    private javax.swing.JTextField jTextField118;
-    private javax.swing.JTextField jTextField119;
-    private javax.swing.JTextField jTextField120;
-    private javax.swing.JTextField jTextField121;
-    private javax.swing.JTextField jTextField122;
-    private javax.swing.JTextField jTextField123;
-    private javax.swing.JTextField jTextField124;
-    private javax.swing.JTextField jTextField125;
-    private javax.swing.JTextField jTextField126;
-    private javax.swing.JTextField jTextField127;
-    private javax.swing.JTextField jTextField128;
-    private javax.swing.JTextField jTextField129;
-    private javax.swing.JTextField jTextField130;
-    private javax.swing.JTextField jTextField131;
-    private javax.swing.JTextField jTextField132;
-    private javax.swing.JTextField jTextField133;
-    private javax.swing.JTextField jTextField134;
-    private javax.swing.JTextField jTextField135;
-    private javax.swing.JTextField jTextField136;
-    private javax.swing.JTextField jTextField137;
-    private javax.swing.JTextField jTextField138;
-    private javax.swing.JTextField jTextField139;
-    private javax.swing.JTextField jTextField140;
-    private javax.swing.JTextField jTextField141;
-    private javax.swing.JTextField jTextField142;
-    private javax.swing.JTextField jTextField143;
-    private javax.swing.JTextField jTextField144;
-    private javax.swing.JTextField jTextField145;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField51;
-    private javax.swing.JTextField jTextField52;
-    private javax.swing.JTextField jTextField53;
-    private javax.swing.JTextField jTextField54;
-    private javax.swing.JTextField jTextField55;
-    private javax.swing.JTextField jTextField56;
-    private javax.swing.JTextField jTextField57;
-    private javax.swing.JTextField jTextField58;
-    private javax.swing.JTextField jTextField59;
-    private javax.swing.JTextField jTextField60;
-    private javax.swing.JTextField jTextField61;
-    private javax.swing.JTextField jTextField62;
-    private javax.swing.JTextField jTextField63;
-    private javax.swing.JTextField jTextField64;
-    private javax.swing.JTextField jTextField65;
-    private javax.swing.JTextField jTextField66;
-    private javax.swing.JTextField jTextField67;
-    private javax.swing.JTextField jTextField68;
-    private javax.swing.JTextField jTextField69;
-    private javax.swing.JTextField jTextField70;
-    private javax.swing.JTextField jTextField71;
-    private javax.swing.JTextField jTextField72;
-    private javax.swing.JTextField jTextField73;
-    private javax.swing.JTextField jTextField74;
-    private javax.swing.JTextField jTextField75;
-    private javax.swing.JTextField jTextField76;
-    private javax.swing.JTextField jTextField77;
-    private javax.swing.JTextField jTextField78;
-    private javax.swing.JTextField jTextField79;
-    private javax.swing.JTextField jTextField80;
-    private javax.swing.JTextField jTextField81;
-    private javax.swing.JTextField jTextField82;
-    private javax.swing.JTextField jTextField83;
-    private javax.swing.JTextField jTextField84;
-    private javax.swing.JTextField jTextField85;
-    private javax.swing.JTextField jTextField86;
-    private javax.swing.JTextField jTextField87;
-    private javax.swing.JTextField jTextField88;
-    private javax.swing.JTextField jTextField89;
-    private javax.swing.JTextField jTextField90;
-    private javax.swing.JTextField jTextField91;
-    private javax.swing.JTextField jTextField92;
-    private javax.swing.JTextField jTextField93;
-    private javax.swing.JTextField jTextField94;
-    private javax.swing.JTextField jTextField95;
-    private javax.swing.JTextField jTextField96;
-    private javax.swing.JTextField jTextField97;
-    private javax.swing.JTextField jTextField98;
-    private javax.swing.JTextField jTextField99;
     private javax.swing.JTextField lastnameSection;
     private javax.swing.JTextField lateregSection;
+    private javax.swing.JButton marriageCancelBtn;
+    private javax.swing.JButton marriageDeleteBtn;
     private javax.swing.JLabel marriagePane;
+    private javax.swing.JTable marriageReqTable;
+    private javax.swing.JButton marriageUpdateBtn;
+    private javax.swing.JTextField marriagebday;
+    private javax.swing.JTextField marriagebirthplaceCity;
+    private javax.swing.JTextField marriagebirthplaceCounty;
+    private javax.swing.JTextField marriagebirthplaceProvince;
+    private javax.swing.JTextField marriagefname;
+    private javax.swing.JTextField marriageissuedId;
+    private javax.swing.JTextField marriagelatereg;
+    private javax.swing.JTextField marriagelname;
+    private javax.swing.JTextField marriagemarriageDate;
+    private javax.swing.JTextField marriagemarriagePlace;
+    private javax.swing.JTextField marriagemname;
+    private javax.swing.JTextField marriagephone;
+    private javax.swing.JTextField marriagesex;
+    private javax.swing.JTextField marriagesfname;
+    private javax.swing.JTextField marriageslname;
+    private javax.swing.JTextField marriagesmname;
+    private javax.swing.JTextField marriagestatus;
     private javax.swing.JTextField middlenameSection;
     private javax.swing.JLabel minimizebtn;
     private javax.swing.JTextField motherfnSection;
@@ -2781,17 +2936,68 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JTextField phoneSection;
     private javax.swing.JTextField provinceSection;
     private javax.swing.JTextField purposeSection;
+    private javax.swing.JButton scholarCancelBtn;
+    private javax.swing.JButton scholarDeleteBtn;
+    private javax.swing.JTable scholarReqTable;
+    private javax.swing.JButton scholarUpdateBtn;
+    private javax.swing.JTextField scholarattended;
+    private javax.swing.JTextField scholarbdate;
+    private javax.swing.JTextField scholarcitizenship;
+    private javax.swing.JTextField scholarcivil;
+    private javax.swing.JTextField scholarfaddress;
+    private javax.swing.JTextField scholarfedu;
+    private javax.swing.JTextField scholarfemployer;
+    private javax.swing.JTextField scholarffname;
+    private javax.swing.JTextField scholarfname;
+    private javax.swing.JTextField scholarfoccupation;
+    private javax.swing.JTextField scholarfphone;
+    private javax.swing.JTextField scholarlname;
+    private javax.swing.JTextField scholarmaddress;
+    private javax.swing.JTextField scholarmedu;
+    private javax.swing.JTextField scholarmemployer;
+    private javax.swing.JTextField scholarmfname;
+    private javax.swing.JTextField scholarmname;
+    private javax.swing.JTextField scholarmoccupation;
+    private javax.swing.JTextField scholarmphone;
+    private javax.swing.JTextField scholarphone;
+    private javax.swing.JTextField scholarpresadd;
+    private javax.swing.JTextField scholarschooladd;
+    private javax.swing.JTextField scholarsector;
+    private javax.swing.JTextField scholarsex;
     private javax.swing.JLabel scholarshipPane;
+    private javax.swing.JTextField scholarsiblings;
+    private javax.swing.JTextField scholarstatus;
+    private javax.swing.JTextField scholarzipcode;
     private javax.swing.JTextField sexField;
     private javax.swing.JTextField sexSection;
+    private javax.swing.JLabel signout;
     private javax.swing.JTextField staffEmailField;
     private javax.swing.JTextField staffNameField;
     private javax.swing.JTextField staffNameTop;
     private javax.swing.JTextField statusSection;
+    private javax.swing.JButton suggestionDeleteBtn;
+    private javax.swing.JTextField suggestiondetails;
+    private javax.swing.JTextField suggestionemail;
+    private javax.swing.JTextField suggestionfname;
+    private javax.swing.JTextField suggestionlname;
+    private javax.swing.JTextField suggestionmname;
     private javax.swing.JLabel suggestionsPane;
+    private javax.swing.JTextField suggestionsubject;
     private javax.swing.JButton updateBtn;
     private javax.swing.JTextField userIdField;
+    private javax.swing.JButton votersCancelBtn;
+    private javax.swing.JButton votersDeleteBtn;
+    private javax.swing.JTextField votersId;
     private javax.swing.JLabel votersPane;
+    private javax.swing.JTable votersReqTable;
+    private javax.swing.JButton votersUpdateBtn;
+    private javax.swing.JTextField votersbplace;
+    private javax.swing.JTextField votersemail;
+    private javax.swing.JTextField votersfname;
+    private javax.swing.JTextField voterslname;
+    private javax.swing.JTextField votersmname;
     private javax.swing.JPanel voterspanel;
+    private javax.swing.JTextField votersphone;
+    private javax.swing.JTextField votersstatus;
     // End of variables declaration//GEN-END:variables
 }

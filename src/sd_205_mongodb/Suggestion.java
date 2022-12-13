@@ -4,8 +4,12 @@
  */
 package sd_205_mongodb;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import java.awt.Frame;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.bson.Document;
 
 /**
  *
@@ -18,6 +22,12 @@ public class Suggestion extends javax.swing.JFrame {
      */
     public Suggestion() {
         initComponents();
+    }
+    
+    public void MongoConnect() {
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoDatabase suggestionsCollection = mongo.getDatabase("CCE_Pass");
+        suggestionsCollection.createCollection("suggestions");
     }
 
     /**
@@ -40,24 +50,24 @@ public class Suggestion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lname = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
+        mname = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        details = new javax.swing.JTextField();
+        subject = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
         commentBtn = new javax.swing.JButton();
         minimizebtn = new javax.swing.JLabel();
@@ -119,9 +129,9 @@ public class Suggestion extends javax.swing.JFrame {
         jLabel4.setText("Last Name");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 50, 130, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField1.setBorder(null);
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 80, 250, 30));
+        lname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        lname.setBorder(null);
+        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 80, 250, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel11.setText("First Name");
@@ -143,17 +153,17 @@ public class Suggestion extends javax.swing.JFrame {
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, 250, 10));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField4.setBorder(null);
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 250, 30));
+        email.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        email.setBorder(null);
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 250, 30));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField8.setBorder(null);
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 250, 30));
+        mname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mname.setBorder(null);
+        jPanel2.add(mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 250, 30));
 
-        jTextField11.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField11.setBorder(null);
-        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 250, 30));
+        fname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        fname.setBorder(null);
+        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 250, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 1340, 260));
 
@@ -179,13 +189,13 @@ public class Suggestion extends javax.swing.JFrame {
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 960, 10));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField5.setBorder(null);
-        jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 960, 30));
+        details.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        details.setBorder(null);
+        jPanel3.add(details, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 960, 30));
 
-        jTextField12.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField12.setBorder(null);
-        jPanel3.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 960, 30));
+        subject.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        subject.setBorder(null);
+        jPanel3.add(subject, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 960, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 1340, 260));
 
@@ -277,7 +287,31 @@ public class Suggestion extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnMouseClicked
 
     private void commentBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentBtnMouseClicked
-        // TODO add your handling code here:
+         if (this.fname.getText().isEmpty() || this.lname.getText().isEmpty() || this.email.getText().isEmpty() || this.subject.getText().isEmpty() || this.details.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fill out all the fields!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase suggestionsCollection = mongo.getDatabase("CCE_Pass");
+            suggestionsCollection.getCollection("suggestions"); //to get the collection from db
+
+            Document d = new Document("fname", this.fname.getText());
+            d.append("mname", this.mname.getText());
+            d.append("lname", this.lname.getText());
+            d.append("email", this.email.getText());
+            d.append("subject", this.subject.getText());
+            d.append("details", this.details.getText());
+
+            suggestionsCollection.getCollection("suggestions").insertOne(d);
+            JOptionPane.showMessageDialog(this, "Your suggestion is succesfully sent!");
+
+        }
+        this.fname.setText("");
+        this.mname.setText("");
+        this.lname.setText("");
+        this.email.setText("");
+        this.subject.setText("");
+        this.details.setText("");
     }//GEN-LAST:event_commentBtnMouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
@@ -343,6 +377,9 @@ public class Suggestion extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel closebtn;
     private javax.swing.JButton commentBtn;
+    private javax.swing.JTextField details;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField fname;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -369,12 +406,9 @@ public class Suggestion extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField lname;
     private javax.swing.JLabel minimizebtn;
+    private javax.swing.JTextField mname;
+    private javax.swing.JTextField subject;
     // End of variables declaration//GEN-END:variables
 }

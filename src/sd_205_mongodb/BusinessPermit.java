@@ -4,7 +4,11 @@
  */
 package sd_205_mongodb;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.bson.Document;
 
 /**
  *
@@ -17,6 +21,12 @@ public class BusinessPermit extends javax.swing.JFrame {
      */
     public BusinessPermit() {
         initComponents();
+    }
+    
+    public void MongoConnect() {
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoDatabase businessCollection = mongo.getDatabase("CCE_Pass");
+        businessCollection.createCollection("business");
     }
 
     /**
@@ -60,7 +70,7 @@ public class BusinessPermit extends javax.swing.JFrame {
         bTypeofBusiness = new javax.swing.JTextField();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel17 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        ammendTo = new javax.swing.JTextField();
         jSeparator15 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -115,6 +125,7 @@ public class BusinessPermit extends javax.swing.JFrame {
         backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -230,8 +241,8 @@ public class BusinessPermit extends javax.swing.JFrame {
         jPanel2.add(bRegNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 150, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel7.setText("Date of Application");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 150, -1));
+        jLabel7.setText("Date of Application (mm/dd/yy)");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 210, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel13.setText("Type of Business");
@@ -248,9 +259,9 @@ public class BusinessPermit extends javax.swing.JFrame {
         jLabel17.setText("Ammendment From");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 30, 160, 20));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField7.setBorder(null);
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 60, 150, 30));
+        ammendTo.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        ammendTo.setBorder(null);
+        jPanel2.add(ammendTo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 60, 150, 30));
 
         jSeparator15.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 90, 150, 10));
@@ -517,7 +528,66 @@ public class BusinessPermit extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
-        // TODO add your handling code here:
+        if (this.bTypeofBusiness.getText().isEmpty() || this.bRegNo.getText().isEmpty() || this.bModePayement.getText().isEmpty() || this.bDateApp.getText().isEmpty() || this.bTinNumber.getText().isEmpty() || this.bAmmendmentForm.getText().isEmpty() || this.ammendTo.getText().isEmpty() || this.bFname.getText().isEmpty()
+                || this.bLname.getText().isEmpty() || this.bTradeNum.getText().isEmpty() || this.bBusinessAdd.getText().isEmpty() || this.bBusinessPostal.getText().isEmpty() || this.bBusinessHotNum.getText().isEmpty() || this.bOwnerAdd.getText().isEmpty() || this.bOwnerPostal.getText().isEmpty() || this.bMnumber.getText().isEmpty()
+                || this.bEmContact.getText().isEmpty() || this.bTeleNum.getText().isEmpty() || this.bBusinessArea.getText().isEmpty() || this.bTotalEmployee.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fill out all the fields!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase businessCollection = mongo.getDatabase("CCE_Pass");
+            businessCollection.getCollection("business"); //to get the collection from db
+
+            Document d = new Document("businessType", this.bTypeofBusiness.getText());
+            d.append("regNumber", this.bRegNo.getText());
+            d.append("paymentMode", this.bModePayement.getText());
+            d.append("applicationDate", this.bDateApp.getText());
+            d.append("tinNmber", this.bTinNumber.getText());
+            d.append("ammendFrom", this.bAmmendmentForm.getText());
+            d.append("ammendTo", this.ammendTo.getText());
+            d.append("fname", this.bFname.getText());
+            d.append("mname", this.bMname.getText());
+            d.append("lname", this.bLname.getText());
+            d.append("tradeName", this.bTradeNum.getText());
+            d.append("govtTax", this.bGovEntityCombo.getSelectedItem());
+            d.append("businessAdd", this.bBusinessAdd.getText());
+            d.append("businessPostalCode", this.bBusinessPostal.getText());
+            d.append("businessHotline", this.bBusinessHotNum.getText());
+            d.append("ownersAdd", this.bOwnerAdd.getText());
+            d.append("ownersPostalCode", this.bOwnerPostal.getText());
+            d.append("mobileNumber", this.bMnumber.getText());
+            d.append("contactPerson", this.bEmContact.getText());
+            d.append("phone", this.bTeleNum.getText());
+            d.append("businessArea", this.bBusinessArea.getText());
+            d.append("employeeTotal", this.bTotalEmployee.getText());
+            d.append("status", "Pending");
+
+            businessCollection.getCollection("business").insertOne(d);
+            JOptionPane.showMessageDialog(this, "Request Sent Successfully");
+
+        }
+        this.bTypeofBusiness.setText("");
+        this.bRegNo.setText("");
+        this.bModePayement.setText("");
+        this.bDateApp.setText("");
+        this.bTinNumber.setText("");
+        this.bAmmendmentForm.setText("");
+        this.ammendTo.setText("");
+        this.bFname.setText("");
+        this.bMname.setText("");
+        this.bLname.setText("");
+        this.bTradeNum.setText("");
+        this.bGovEntityCombo.setSelectedIndex(0);
+        this.bBusinessAdd.setText("");
+        this.bBusinessPostal.setText("");
+        this.bBusinessHotNum.setText("");
+        this.bOwnerAdd.setText("");
+        this.bOwnerPostal.setText("");
+        this.bMnumber.setText("");
+        this.bEmContact.setText("");
+        this.bTeleNum.setText("");
+        this.bBusinessArea.setText("");
+        this.bTotalEmployee.setText("");
     }//GEN-LAST:event_submitBtnMouseClicked
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
@@ -578,6 +648,7 @@ public class BusinessPermit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ammendTo;
     private javax.swing.JTextField bAmmendmentForm;
     private javax.swing.JTextField bBusinessAdd;
     private javax.swing.JTextField bBusinessArea;
@@ -660,7 +731,6 @@ public class BusinessPermit extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel minimizebtn;
     private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables

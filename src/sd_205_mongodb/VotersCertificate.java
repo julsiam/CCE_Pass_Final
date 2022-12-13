@@ -4,7 +4,11 @@
  */
 package sd_205_mongodb;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.bson.Document;
 
 /**
  *
@@ -17,6 +21,12 @@ public class VotersCertificate extends javax.swing.JFrame {
      */
     public VotersCertificate() {
         initComponents();
+    }
+
+    public void MongoConnect() {
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoDatabase votersCollection = mongo.getDatabase("CCE_Pass");
+        votersCollection.createCollection("voters");
     }
 
     /**
@@ -43,8 +53,8 @@ public class VotersCertificate extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        lnameField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
@@ -55,13 +65,13 @@ public class VotersCertificate extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
+        birthPlace = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        mnameField = new javax.swing.JTextField();
+        fnameField = new javax.swing.JTextField();
+        issuedIdCombo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -164,14 +174,13 @@ public class VotersCertificate extends javax.swing.JFrame {
         jLabel4.setText("Last Name");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 50, 130, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField1.setBorder(null);
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 80, 250, 30));
+        lnameField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        lnameField.setBorder(null);
+        jPanel2.add(lnameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 80, 250, 30));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField2.setText("dd/mm/yy");
-        jTextField2.setBorder(null);
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 250, 30));
+        emailField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        emailField.setBorder(null);
+        jPanel2.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 250, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel11.setText("First Name");
@@ -199,7 +208,7 @@ public class VotersCertificate extends javax.swing.JFrame {
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 160, 20));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel15.setText("Place of Birth (Province)");
+        jLabel15.setText("Place of Birth ");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 150, 170, 20));
 
         jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
@@ -208,13 +217,13 @@ public class VotersCertificate extends javax.swing.JFrame {
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 250, 10));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField5.setBorder(null);
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 250, 30));
+        phoneField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        phoneField.setBorder(null);
+        jPanel2.add(phoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 250, 30));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField6.setBorder(null);
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 180, 250, 30));
+        birthPlace.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        birthPlace.setBorder(null);
+        jPanel2.add(birthPlace, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 180, 250, 30));
 
         jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 210, 250, 10));
@@ -223,18 +232,18 @@ public class VotersCertificate extends javax.swing.JFrame {
         jLabel16.setText("Email Address");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 100, 20));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField8.setBorder(null);
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 250, 30));
+        mnameField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        mnameField.setBorder(null);
+        jPanel2.add(mnameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 250, 30));
 
-        jTextField11.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField11.setBorder(null);
-        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 250, 30));
+        fnameField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        fnameField.setBorder(null);
+        jPanel2.add(fnameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 250, 30));
 
-        jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Choose ID-", "Philippine Identification Card", "Philippines National Police (PNP) ID/Police Clearance", "Department of Social Welfare and Development (DSWD) Certification/4Ps ID", "Barangay ID/Certification with picture and signature", "Person with Disability (PWD) ID issued by the National Council on Disability Affairs (NCDA) OR it’s regional counterpart, Office of the Mayor, Office of the Barangay Captain, DSWD Office", "IDs issued by National Government Offices (e,g,.AFP,DAR,DENR,DOH,DOJ) including Government Owned and Controlled Operations", "IDs issued by the Offices of the Local Chief Executives ( Governor, Vice Governor, Mayor, Vice Mayor", "Tax Identification Card (TIN) with a picture and signature issued by the Bureau of International Revenue", "School/ Student ID for currently - enrolled students, 18 years old and above , issued by reputable schools/ college/ universities recognized by the Department of Education", "Barangay ID/ Certification with picture and signature", "Company IDs issued by private entities or institutions registered with, supervised or regulated by Bangkong Sentral ng Pilipinas (BSP), Security Exchange and Commission (SEC)", "Social Security System (SSS) Unified Multi-Purpose ID" }));
-        jComboBox4.setBorder(null);
-        jPanel2.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 890, 30));
+        issuedIdCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        issuedIdCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Choose ID-", "Philippine Identification Card", "Philippines National Police (PNP) ID/Police Clearance", "Department of Social Welfare and Development (DSWD) Certification/4Ps ID", "Barangay ID/Certification with picture and signature", "Person with Disability (PWD) ID issued by the National Council on Disability Affairs (NCDA) OR it’s regional counterpart, Office of the Mayor, Office of the Barangay Captain, DSWD Office", "IDs issued by National Government Offices (e,g,.AFP,DAR,DENR,DOH,DOJ) including Government Owned and Controlled Operations", "IDs issued by the Offices of the Local Chief Executives ( Governor, Vice Governor, Mayor, Vice Mayor", "Tax Identification Card (TIN) with a picture and signature issued by the Bureau of International Revenue", "School/ Student ID for currently - enrolled students, 18 years old and above , issued by reputable schools/ college/ universities recognized by the Department of Education", "Barangay ID/ Certification with picture and signature", "Company IDs issued by private entities or institutions registered with, supervised or regulated by Bangkong Sentral ng Pilipinas (BSP), Security Exchange and Commission (SEC)", "Social Security System (SSS) Unified Multi-Purpose ID" }));
+        issuedIdCombo.setBorder(null);
+        jPanel2.add(issuedIdCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 890, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 1340, 310));
 
@@ -328,7 +337,34 @@ public class VotersCertificate extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnMouseClicked
 
     private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
-        // TODO add your handling code here:
+        if (this.fnameField.getText().isEmpty() || this.lnameField.getText().isEmpty() || this.emailField.getText().isEmpty() || this.phoneField.getText().isEmpty() || this.birthPlace.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fill out all the fields!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase votersCollection = mongo.getDatabase("CCE_Pass");
+            votersCollection.getCollection("voters"); //to get the collection from db
+
+            Document d = new Document("fname", this.fnameField.getText());
+            d.append("mname", this.mnameField.getText());
+            d.append("lname", this.lnameField.getText());
+            d.append("email", this.emailField.getText());
+            d.append("phone", this.phoneField.getText());
+            d.append("birthplace", this.birthPlace.getText());
+            d.append("gov'tId", this.issuedIdCombo.getSelectedItem());
+            d.append("status", "Pending");
+
+            votersCollection.getCollection("voters").insertOne(d);
+            JOptionPane.showMessageDialog(this, "Request Sent Successfully");
+
+        }
+        this.fnameField.setText("");
+        this.mnameField.setText("");
+        this.lnameField.setText("");
+        this.emailField.setText("");
+        this.phoneField.setText("");
+        this.birthPlace.setText("");
+        this.issuedIdCombo.setSelectedIndex(0);
     }//GEN-LAST:event_submitBtnMouseClicked
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
@@ -373,10 +409,13 @@ public class VotersCertificate extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox agreeBox;
     private javax.swing.JButton backBtn;
+    private javax.swing.JTextField birthPlace;
     private javax.swing.JLabel closebtn;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JTextField fnameField;
     private javax.swing.JLabel homeBtn;
+    private javax.swing.JComboBox<String> issuedIdCombo;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -405,13 +444,10 @@ public class VotersCertificate extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField lnameField;
     private javax.swing.JLabel minimizebtn;
+    private javax.swing.JTextField mnameField;
+    private javax.swing.JTextField phoneField;
     private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 }

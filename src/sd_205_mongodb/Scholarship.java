@@ -4,6 +4,11 @@
  */
 package sd_205_mongodb;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import javax.swing.JOptionPane;
+import org.bson.Document;
+
 /**
  *
  * @author User
@@ -15,6 +20,12 @@ public class Scholarship extends javax.swing.JFrame {
      */
     public Scholarship() {
         initComponents();
+    }
+
+    public void MongoConnect() {
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoDatabase scholarshipCollection = mongo.getDatabase("CCE_Pass");
+        scholarshipCollection.createCollection("scholarship");
     }
 
     /**
@@ -120,7 +131,7 @@ public class Scholarship extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jSeparator35 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        signup = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -174,28 +185,27 @@ public class Scholarship extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel3.setText("Zip Code");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 100, 90, 20));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 110, 90, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel4.setText("Birthdate");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 90, -1));
+        jLabel4.setText("Date of Birth (mm/dd/yy)");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 40, 180, -1));
 
         sLname.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         sLname.setBorder(null);
         jPanel2.add(sLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 150, 30));
 
         birthdateField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        birthdateField.setText("dd/mm/yy");
         birthdateField.setBorder(null);
         jPanel2.add(birthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 150, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel11.setText("First Name");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 120, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 120, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel12.setText("Middle Name");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 100, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 100, -1));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 160, 150, 10));
@@ -211,15 +221,15 @@ public class Scholarship extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel10.setText("Sex");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel14.setText("Place of Birth ");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 30, 160, 20));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 40, 160, 20));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel15.setText("Present Address");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 190, 20));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, 190, 20));
 
         zipcodeField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         zipcodeField.setBorder(null);
@@ -261,11 +271,11 @@ public class Scholarship extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel7.setText("Last Name");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 90, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 90, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel18.setText("Civil Status");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 120, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 120, -1));
 
         civilstatusField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         civilstatusField.setBorder(null);
@@ -276,7 +286,7 @@ public class Scholarship extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel19.setText("Citizenship");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 120, -1));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 120, -1));
 
         citizenshipField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         citizenshipField.setBorder(null);
@@ -294,11 +304,11 @@ public class Scholarship extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel30.setText("Tel/Phone Number");
-        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 130, -1));
+        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 130, -1));
 
         jLabel34.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel34.setText("School Last Attended");
-        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 180, -1));
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 180, -1));
 
         jSeparator29.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator29, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 230, 290, 10));
@@ -308,7 +318,7 @@ public class Scholarship extends javax.swing.JFrame {
 
         jLabel35.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel35.setText("School Address");
-        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 170, 170, -1));
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 180, 170, -1));
 
         pastschoolField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         pastschoolField.setBorder(null);
@@ -327,7 +337,7 @@ public class Scholarship extends javax.swing.JFrame {
 
         jLabel33.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel33.setText("School Sector");
-        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 200, 20));
+        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 200, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 1340, 250));
 
@@ -496,14 +506,14 @@ public class Scholarship extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, 60, 30));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel6.setText("Sign-up");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        signup.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        signup.setText("Sign-up");
+        signup.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                signupMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 20, 80, 30));
+        jPanel1.add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 20, 80, 30));
 
         jSeparator11.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
@@ -567,11 +577,11 @@ public class Scholarship extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void signupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupMouseClicked
         CCE_Registration a = new CCE_Registration();
         a.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_signupMouseClicked
 
     private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
         Home home = new Home();
@@ -580,7 +590,80 @@ public class Scholarship extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnMouseClicked
 
     private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
-        // TODO add your handling code here:
+        if (this.sFname.getText().isEmpty() || this.sLname.getText().isEmpty() || this.birthdateField.getText().isEmpty() || this.sPlaceofBirth.getText().isEmpty() || this.civilstatusField.getText().isEmpty()
+                || this.citizenshipField.getText().isEmpty() || this.phoneField.getText().isEmpty() || this.presentaddField.getText().isEmpty() || this.zipcodeField.getText().isEmpty() || this.schoolsectorField.getText().isEmpty() || this.pastschoolField.getText().isEmpty()
+                || this.schooladdField.getText().isEmpty() || this.fathersField.getText().isEmpty() || this.phoneField.getText().isEmpty() || this.fathersoccField.getText().isEmpty() || this.fatheremployerField.getText().isEmpty() || this.fathereduField.getText().isEmpty()
+                || this.mothersField.getText().isEmpty() || this.motheraddField.getText().isEmpty() || this.motherphoneField.getText().isEmpty() || this.mothersoccField.getText().isEmpty() || this.mothersemployerField.getText().isEmpty() || this.motherseduField.getText().isEmpty() || this.siblingField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fill out all the fields!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase scholarshipCollection = mongo.getDatabase("CCE_Pass");
+            scholarshipCollection.getCollection("scholaship"); //to get the collection from db
+
+            Document d = new Document("sex", this.sexCombo.getSelectedItem());
+            d.append("fname", this.sFname.getText());
+            d.append("mname", this.sMname.getText());
+            d.append("lname", this.sLname.getText());
+            d.append("birthdate", this.birthdateField.getText());
+            d.append("birthplace", this.sPlaceofBirth.getText());
+            d.append("civilStatus", this.civilstatusField.getText());
+            d.append("citizenship", this.citizenshipField.getText());
+            d.append("phoneField", this.phoneField.getText());
+            d.append("presentAdd", this.presentaddField.getText());
+            d.append("zipCode", this.zipcodeField.getText());
+            d.append("schoolSector", this.schoolsectorField.getText());
+            d.append("previousSchool", this.pastschoolField.getText());
+            d.append("schoolAdd", this.schooladdField.getText());
+            d.append("fathersName", this.fathersField.getText());
+            d.append("address", this.fatheraddField.getText());
+            d.append("fatherPhone", this.phoneField.getText());
+            d.append("occupation", this.fathersoccField.getText());
+            d.append("employer", this.fatheremployerField.getText());
+            d.append("eduAttainment", this.fathereduField.getText());
+            d.append("mothersName", this.mothersField.getText());
+            d.append("motherAddress", this.motheraddField.getText());
+            d.append("motherPhone", this.motherphoneField.getText());
+            d.append("motherOccupation", this.mothersoccField.getText());
+            d.append("motherEmployer", this.mothersemployerField.getText());
+            d.append("mEduAttainment", this.motherseduField.getText());
+            d.append("mEduAttainment", this.siblingField.getText());
+            d.append("4P's", this.pantawidCombo.getSelectedItem());
+            d.append("status", "Pending");
+
+            scholarshipCollection.getCollection("scholarship").insertOne(d);
+            JOptionPane.showMessageDialog(this, "Request Sent Successfully");
+
+        }
+        this.sexCombo.setSelectedIndex(0);
+        this.sFname.setText("");
+        this.sMname.setText("");
+        this.sLname.setText("");
+        this.birthdateField.setText("");
+        this.sPlaceofBirth.setText("");
+        this.civilstatusField.setText("");
+        this.citizenshipField.setText("");
+        this.phoneField.setText("");
+        this.presentaddField.setText("");
+        this.zipcodeField.setText("");
+        this.schoolsectorField.setText("");
+        this.pastschoolField.setText("");
+        this.schooladdField.setText("");
+        this.fathersField.setText("");
+        this.fatheraddField.setText("");
+        this.phoneField.setText("");
+        this.fathersoccField.setText("");
+        this.fatheremployerField.setText("");
+        this.fathereduField.setText("");
+        this.mothersField.setText("");
+        this.motheraddField.setText("");
+        this.motherphoneField.setText("");
+        this.mothersoccField.setText("");
+        this.mothersemployerField.setText("");
+        this.motherseduField.setText("");
+        this.siblingField.setText("");
+        this.pantawidCombo.setSelectedIndex(0);
+
     }//GEN-LAST:event_submitBtnMouseClicked
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
@@ -666,7 +749,6 @@ public class Scholarship extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -722,6 +804,7 @@ public class Scholarship extends javax.swing.JFrame {
     private javax.swing.JTextField schoolsectorField;
     private javax.swing.JComboBox<String> sexCombo;
     private javax.swing.JTextField siblingField;
+    private javax.swing.JLabel signup;
     private javax.swing.JButton submitBtn;
     private javax.swing.JTextField zipcodeField;
     // End of variables declaration//GEN-END:variables

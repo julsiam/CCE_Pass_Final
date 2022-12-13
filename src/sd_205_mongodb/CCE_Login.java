@@ -26,19 +26,6 @@ public class CCE_Login extends javax.swing.JFrame {
         initComponents();
     }
 
-//    MongoClient mongo;
-//    MongoDatabase dbconnection;
-//    MongoCollection<org.bson.Document> collection;
-//
-//    public void MongoConnect() {
-//        mongo = new MongoClient("localhost", 27017);
-//        dbconnection = mongo.getDatabase("CCE_Pass");
-//        collection = dbconnection.getCollection("staff");
-//
-////        MongoClient mongo = new MongoClient("localhost", 27017);
-////        MongoDatabase database = mongo.getDatabase("CCE_Pass");
-////        collection = database.getCollection("staff");
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,6 +45,7 @@ public class CCE_Login extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         signinbtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        showpass = new javax.swing.JCheckBox();
         jLabel14 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         minimizebtn = new javax.swing.JLabel();
@@ -82,7 +70,6 @@ public class CCE_Login extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         emailField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        emailField.setText(" ");
         emailField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
         emailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +104,7 @@ public class CCE_Login extends javax.swing.JFrame {
                 signinbtnMouseClicked(evt);
             }
         });
-        jPanel4.add(signinbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 120, 40));
+        jPanel4.add(signinbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 120, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel1.setText("Back");
@@ -127,6 +114,16 @@ public class CCE_Login extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 50, 30));
+
+        showpass.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        showpass.setText("Show Password");
+        showpass.setBorder(null);
+        showpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showpassActionPerformed(evt);
+            }
+        });
+        jPanel4.add(showpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 130, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 730, 460));
 
@@ -237,6 +234,7 @@ public class CCE_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void signinbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinbtnMouseClicked
+
         MongoClient mongo = new MongoClient("localhost", 27017);
         MongoDatabase dbconnection = mongo.getDatabase("CCE_Pass");
         MongoCollection<org.bson.Document> collection = dbconnection.getCollection("staff");
@@ -259,6 +257,17 @@ public class CCE_Login extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_signinbtnMouseClicked
+
+    private void showpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpassActionPerformed
+        if (evt.getSource() == showpass) {
+            if (showpass.isSelected()) {
+                passwordField.setEchoChar((char) 0);
+
+            } else {
+                passwordField.setEchoChar('*');
+            }
+        }
+    }//GEN-LAST:event_showpassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +321,7 @@ public class CCE_Login extends javax.swing.JFrame {
     private javax.swing.JLabel logo;
     private javax.swing.JLabel minimizebtn;
     private javax.swing.JPasswordField passwordField;
+    private javax.swing.JCheckBox showpass;
     private javax.swing.JButton signinbtn;
     // End of variables declaration//GEN-END:variables
 }

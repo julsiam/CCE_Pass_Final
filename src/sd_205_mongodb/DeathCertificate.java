@@ -167,7 +167,6 @@ public class DeathCertificate extends javax.swing.JFrame {
         jPanel2.add(dLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 250, 30));
 
         birthdateField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        birthdateField.setText("dd/mm/yy");
         birthdateField.setBorder(null);
         jPanel2.add(birthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 250, 30));
 
@@ -229,8 +228,8 @@ public class DeathCertificate extends javax.swing.JFrame {
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 250, 10));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel16.setText("Date of Birth");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 100, 20));
+        jLabel16.setText("Date of Birth (mm/dd/yy)");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 170, 20));
 
         sexCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sexCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-sex-", "Male", "Female" }));
@@ -297,7 +296,6 @@ public class DeathCertificate extends javax.swing.JFrame {
         jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 250, 10));
 
         dateofdeath.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        dateofdeath.setText("dd/mm/yy");
         dateofdeath.setBorder(null);
         jPanel4.add(dateofdeath, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 250, 30));
 
@@ -306,8 +304,8 @@ public class DeathCertificate extends javax.swing.JFrame {
         jPanel4.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 130, -1));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel33.setText("Date of Death");
-        jPanel4.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 130, -1));
+        jLabel33.setText("Date of Death (mm/dd/yy)");
+        jPanel4.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 190, -1));
 
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 170, 250, 10));
@@ -471,12 +469,13 @@ public class DeathCertificate extends javax.swing.JFrame {
             d.append("birthplace(province)", this.dPBprov.getText());
             d.append("birthplace(city)", this.dPBcity.getText());
             d.append("gov'tId", this.issuedidCombo.getSelectedItem());
+            d.append("relation", this.deathCombo.getSelectedItem());
             d.append("deceasedfname", this.dDFname.getText());
             d.append("deceasedmname", this.dDMname.getText());
             d.append("deceasedlname", this.dDLname.getText());
             d.append("dateofdeath", this.dateofdeath.getText());
             d.append("placeofdeath", this.dPlaceofDeath.getText());
-            d.append("lateRegField", this.lateRegCombo.getSelectedItem());
+            d.append("lateReg", this.lateRegCombo.getSelectedItem());
             d.append("purpose", this.purposeCombo.getSelectedItem());
             d.append("phone", this.phoneField.getText());
             d.append("status", "Pending");
@@ -499,6 +498,7 @@ public class DeathCertificate extends javax.swing.JFrame {
         this.dDLname.setText("");
         this.dateofdeath.setText("");
         this.dPlaceofDeath.setText("");
+        this.deathCombo.setSelectedIndex(0);
         this.lateRegCombo.setSelectedIndex(0);
         this.purposeCombo.setSelectedIndex(0);
         this.phoneField.setText("");

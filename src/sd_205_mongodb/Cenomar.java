@@ -4,8 +4,12 @@
  */
 package sd_205_mongodb;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import java.awt.Frame;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.bson.Document;
 
 /**
  *
@@ -18,6 +22,12 @@ public class Cenomar extends javax.swing.JFrame {
      */
     public Cenomar() {
         initComponents();
+    }
+
+    public void MongoConnect() {
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoDatabase cenomarCollection = mongo.getDatabase("CCE_Pass");
+        cenomarCollection.createCollection("cenomar");
     }
 
     /**
@@ -65,9 +75,9 @@ public class Cenomar extends javax.swing.JFrame {
         issuedidCombo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        purposeCombo = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
-        jTextField22 = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
         jSeparator25 = new javax.swing.JSeparator();
         jLabel30 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
@@ -157,7 +167,6 @@ public class Cenomar extends javax.swing.JFrame {
         jPanel2.add(cLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 250, 30));
 
         birthdateField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        birthdateField.setText("dd/mm/yy");
         birthdateField.setBorder(null);
         jPanel2.add(birthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 250, 30));
 
@@ -219,8 +228,8 @@ public class Cenomar extends javax.swing.JFrame {
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 250, 10));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel16.setText("Date of Birth");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 100, 20));
+        jLabel16.setText("Date of Birth (mm/dd/yy)");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 170, 20));
 
         sexCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sexCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-sex-", "Male", "Female" }));
@@ -255,18 +264,18 @@ public class Cenomar extends javax.swing.JFrame {
         jLabel2.setText("Additional Information");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 190, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Purpose-", "Passport / Travel", "School Requirement", "Local Employment", "Foreign Employment", "Marriage", "Claims / Benefits / Loans", "Late Registration" }));
-        jComboBox2.setBorder(null);
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 260, 30));
+        purposeCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        purposeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Purpose-", "Passport / Travel", "School Requirement", "Local Employment", "Foreign Employment", "Marriage", "Claims / Benefits / Loans", "Late Registration" }));
+        purposeCombo.setBorder(null);
+        jPanel3.add(purposeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 260, 30));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel18.setText("Purpose of Request");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 190, -1));
 
-        jTextField22.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        jTextField22.setBorder(null);
-        jPanel3.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 90, 230, 30));
+        phoneField.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        phoneField.setBorder(null);
+        jPanel3.add(phoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 90, 230, 30));
 
         jSeparator25.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator25, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 120, 230, 10));
@@ -440,7 +449,54 @@ public class Cenomar extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnMouseClicked
 
     private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
-        // TODO add your handling code here:
+        if (this.cFname.getText().isEmpty() || this.cLname.getText().isEmpty() || this.birthdateField.getText().isEmpty() || this.cPBcountry.getText().isEmpty() || this.cPBprov.getText().isEmpty() || this.cPBcity.getText().isEmpty() || this.cFFname.getText().isEmpty() || this.cFLname.getText().isEmpty() || this.cMMname.getText().isEmpty() || this.cMLname.getText().isEmpty() || this.phoneField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fill out all the fields!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase cenomarCollection = mongo.getDatabase("CCE_Pass");
+            cenomarCollection.getCollection("cenomar"); //to get the collection from db
+
+            Document d = new Document("sex", this.sexCombo.getSelectedItem());
+            d.append("fname", this.cFname.getText());
+            d.append("mname", this.cMname.getText());
+            d.append("lname", this.cLname.getText());
+            d.append("birthdate", this.birthdateField.getText());
+            d.append("birthplace(country)", this.cPBcountry.getText());
+            d.append("birthplace(province)", this.cPBprov.getText());
+            d.append("birthplace(city)", this.cPBcity.getText());
+            d.append("gov'tId", this.issuedidCombo.getSelectedItem());
+            d.append("ffname", this.cFFname.getText());
+            d.append("fmname", this.cFMname.getText());
+            d.append("flname", this.cFLname.getText());
+            d.append("mfname", this.cMFname.getText());
+            d.append("mmname", this.cMMname.getText());
+            d.append("mlname", this.cMLname.getText());
+            d.append("purpose", this.purposeCombo.getSelectedItem());
+            d.append("phone", this.phoneField.getText());
+            d.append("status", "Pending");
+
+            cenomarCollection.getCollection("cenomar").insertOne(d);
+            JOptionPane.showMessageDialog(this, "Request Sent Successfully");
+
+        }
+        this.sexCombo.setSelectedIndex(0);
+        this.cFname.setText("");
+        this.cMname.setText("");
+        this.cLname.setText("");
+        this.birthdateField.setText("");
+        this.cPBcountry.setText("");
+        this.cPBprov.setText("");
+        this.cPBcity.setText("");
+        this.issuedidCombo.setSelectedIndex(0);
+        this.cFFname.setText("");
+        this.cFMname.setText("");
+        this.cFLname.setText("");
+        this.cMFname.setText("");
+        this.cMMname.setText("");
+        this.cMLname.setText("");
+        this.purposeCombo.setSelectedIndex(0);
+        this.phoneField.setText("");
     }//GEN-LAST:event_submitBtnMouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
@@ -521,7 +577,6 @@ public class Cenomar extends javax.swing.JFrame {
     private javax.swing.JLabel homeBtn;
     private javax.swing.JComboBox<String> issuedidCombo;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -568,8 +623,9 @@ public class Cenomar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField22;
     private javax.swing.JLabel minimizebtn;
+    private javax.swing.JTextField phoneField;
+    private javax.swing.JComboBox<String> purposeCombo;
     private javax.swing.JComboBox<String> sexCombo;
     private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
