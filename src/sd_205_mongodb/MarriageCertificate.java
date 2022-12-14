@@ -26,7 +26,6 @@ public class MarriageCertificate extends javax.swing.JFrame {
     }
     
     public void MongoConnect() {
-
         MongoClient mongo = new MongoClient("localhost", 27017);
         MongoDatabase marriageCollection = mongo.getDatabase("CCE_Pass");
         marriageCollection.createCollection("marriage"); //to create the collection from db

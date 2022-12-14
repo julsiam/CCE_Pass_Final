@@ -627,7 +627,7 @@ public class Scholarship extends javax.swing.JFrame {
             d.append("motherOccupation", this.mothersoccField.getText());
             d.append("motherEmployer", this.mothersemployerField.getText());
             d.append("mEduAttainment", this.motherseduField.getText());
-            d.append("mEduAttainment", this.siblingField.getText());
+            d.append("totalSiblings", this.siblingField.getText());
             d.append("4P's", this.pantawidCombo.getSelectedItem());
             d.append("status", "Pending");
 

@@ -5,6 +5,10 @@
 package sd_205_mongodb;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -234,27 +238,43 @@ public class CCE_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void signinbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinbtnMouseClicked
+if ("".equals(this.emailField.getText()) || "".equals(this.passwordField.getText())) {
+            JOptionPane.showMessageDialog(this, "Fill up the missing field!", "Alert", JOptionPane.ERROR_MESSAGE);
 
-        MongoClient mongo = new MongoClient("localhost", 27017);
-        MongoDatabase dbconnection = mongo.getDatabase("CCE_Pass");
-        MongoCollection<org.bson.Document> collection = dbconnection.getCollection("staff");
-
-        String email = emailField.getText();
-        String password = passwordField.getText();
-
-        BasicDBObject identify = new BasicDBObject();
-        identify.put("email", email);
-        identify.put("password", password);
-
-        MongoCursor<Document> query = collection.find(identify).iterator();
-
-        if (query.hasNext()) {
-            StaffHome staffhome = new StaffHome();
-            staffhome.setVisible(true);
-            this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Incorrect Username / Password", "Login Error", 2);
+            MongoClient mongo = new MongoClient("localhost", 27017);
+            MongoDatabase dbconnection = mongo.getDatabase("CCE_Pass");
+            MongoCollection<org.bson.Document> collection = dbconnection.getCollection("staff");
 
+            String email = emailField.getText();
+            String password = passwordField.getText();
+
+            BasicDBObject identify = new BasicDBObject();
+            identify.put("email", email);
+            identify.put("password", password);
+
+            MongoCursor<Document> query = collection.find(identify).iterator();
+
+            MongoClient mongoClient;
+            DBCursor cursor;
+            mongoClient = new MongoClient("localhost", 27017);
+            DB db = mongoClient.getDB("CCE_Pass");
+            DBCollection coll = db.getCollection("staff");
+            cursor = coll.find();
+            
+            if (query.hasNext()) {
+                while (cursor.hasNext()) {
+                    DBObject obj = cursor.next();
+                    String btype = (String) obj.get("name");
+                    StaffHome staffhome = new StaffHome();
+                    staffhome.setVisible(true);
+                    staffhome.userNameField.setText(("Welcome on board, " + btype));
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect Username / Password", "Login Error", 2);
+
+            }
         }
     }//GEN-LAST:event_signinbtnMouseClicked
 

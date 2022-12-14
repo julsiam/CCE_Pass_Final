@@ -4,16 +4,22 @@
  */
 package sd_205_mongodb;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.eq;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import org.bson.types.ObjectId;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 
 /**
  *
@@ -21,11 +27,409 @@ import org.bson.types.ObjectId;
  */
 public class StaffHome extends javax.swing.JFrame {
 
-    /**
-     * Creates new form StaffHome
-     */
+//    MongoClient mongoClient;
+//    DB dbName;
+//    DBCollection birthCollection, appointmentCollection, suggestionsCollection;
+    BasicDBObject backup;
+
     public StaffHome() {
         initComponents();
+    }
+
+    public void displayBirth() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("birth");
+        cursor = coll.find();
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", " Father's First Name", "Father's Middle Name", "Father's Last Name", "Mother's First Name", "Mother's Middle Name", "Mother's Last Name", "Late Registration", "Purpose", "Phone Number", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String sex = (String) obj.get("sex");
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String bdate = (String) obj.get("birthdate");
+            String bpCountry = (String) obj.get("birthplace(country)");
+            String bpProvince = (String) obj.get("birthplace(province)");
+            String bpCity = (String) obj.get("birthplace(city)");
+            String govID = (String) obj.get("gov'tId");
+            String ffname = (String) obj.get("ffname");
+            String fmname = (String) obj.get("fmname");
+            String flname = (String) obj.get("flname");
+            String mfname = (String) obj.get("mfname");
+            String mmname = (String) obj.get("mmname");
+            String mlname = (String) obj.get("mlname");
+            String lateReg = (String) obj.get("lateRegField");
+            String purp = (String) obj.get("purpose");
+            String phone = (String) obj.get("phone");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, ffname, fmname, flname, mfname, mmname, mlname, lateReg, purp, phone, status});
+        }
+        birthReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void displayMarriage() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("marriage");
+        cursor = coll.find();
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", "Spouse's First Name", "Spouse's Middle Name", "Spouse's Last Name", "Marriage Date", "Marriage Place", "Late Registration", "Purpose", "Phone Number", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String sex = (String) obj.get("sex");
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String bdate = (String) obj.get("birthdate");
+            String bpCountry = (String) obj.get("birthplace(country)");
+            String bpProvince = (String) obj.get("birthplace(province)");
+            String bpCity = (String) obj.get("birthplace(city)");
+            String govID = (String) obj.get("gov'tId");
+            String sfname = (String) obj.get("sfname");
+            String smname = (String) obj.get("smname");
+            String slname = (String) obj.get("slname");
+            String mdate = (String) obj.get("marriage_date");
+            String mplace = (String) obj.get("marriageplace");
+            String lateReg = (String) obj.get("lateRegField");
+            String purp = (String) obj.get("purpose");
+            String phone = (String) obj.get("phone");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, sfname, smname, slname, mdate, mplace, lateReg, purp, phone, status});
+        }
+        marriageReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void displayCenomar() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("cenomar");
+        cursor = coll.find();
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", " Father's First Name", "Father's Middle Name", "Father's Last Name", "Mother's First Name", "Mother's Middle Name", "Mother's Last Name", "Purpose", "Phone Number", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String sex = (String) obj.get("sex");
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String bdate = (String) obj.get("birthdate");
+            String bpCountry = (String) obj.get("birthplace(country)");
+            String bpProvince = (String) obj.get("birthplace(province)");
+            String bpCity = (String) obj.get("birthplace(city)");
+            String govID = (String) obj.get("gov'tId");
+            String ffname = (String) obj.get("ffname");
+            String fmname = (String) obj.get("fmname");
+            String flname = (String) obj.get("flname");
+            String mfname = (String) obj.get("mfname");
+            String mmname = (String) obj.get("mmname");
+            String mlname = (String) obj.get("mlname");
+            String purp = (String) obj.get("purpose");
+            String phone = (String) obj.get("phone");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, ffname, fmname, flname, mfname, mmname, mlname, purp, phone, status});
+        }
+        cenomarReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void displayDeath() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("death");
+        cursor = coll.find();
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", "Relationship", " Deceased First Name", "Deceased Middle Name", "Deceased Last Name", "Date of Death", "Place of Death", "Late Registration", "Purpose", "Phone Number", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String sex = (String) obj.get("sex");
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String bdate = (String) obj.get("birthdate");
+            String bpCountry = (String) obj.get("birthplace(country)");
+            String bpProvince = (String) obj.get("birthplace(province)");
+            String bpCity = (String) obj.get("birthplace(city)");
+            String govID = (String) obj.get("gov'tId");
+            String relationsip = (String) obj.get("relation");
+            String dfname = (String) obj.get("deceasedfname");
+            String dmname = (String) obj.get("deceasedmname");
+            String dlname = (String) obj.get("deceasedlname");
+            String deathDate = (String) obj.get("dateofdeath");
+            String deathPlace = (String) obj.get("placeofdeath");
+            String latereg = (String) obj.get("lateReg");
+            String purp = (String) obj.get("purpose");
+            String phone = (String) obj.get("phone");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, relationsip, dfname, dmname, dlname, deathDate, deathPlace, latereg, purp, phone, status});
+        }
+        deathReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void displayVoters() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("voters");
+        cursor = coll.find();
+        String[] columnNames = {"First Name", "Middle Name", "Last Name", "Email Address", "Phone Number", "Birth Place", "Government Issued ID", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String emailadd = (String) obj.get("email");
+            String phone_no = (String) obj.get("phone");
+            String bplace = (String) obj.get("birthplace");
+            String govID = (String) obj.get("gov'tId");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{first, midd, last, emailadd, phone_no, bplace, govID, status});
+        }
+        votersReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void displayBusiness() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("business");
+        cursor = coll.find();
+        String[] columnNames = {"Business Type", "DTI/SEC/CDA/Reg.No.", "Payment Mode", "Application Date", "TIN", "Ammendment From", "Ammendment To", "First Name", "Middle Name", "Last Name", "Trade Name", "Gov't Tax", "Business Address", "Business Postal Code", "Business Hotline", "Owner's Address", "Owner's Postal Code", ",Mobile Number", "Contact Person", "Phone Number", "Business Area", "Employee Total", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String btype = (String) obj.get("businessType");
+            String regno = (String) obj.get("regNumber");
+            String paymentmode = (String) obj.get("paymentMode");
+            String applicationdate = (String) obj.get("applicationDate");
+            String tin = (String) obj.get("tinNmber");
+            String ammendfrom = (String) obj.get("ammendFrom");
+            String ammendto = (String) obj.get("ammendTo");
+            String fname = (String) obj.get("fname");
+            String mname = (String) obj.get("mname");
+            String lname = (String) obj.get("lname");
+            String trade = (String) obj.get("tradeName");
+            String tax = (String) obj.get("govtTax");
+            String businessAdd = (String) obj.get("businessAdd");
+            String businessPostal = (String) obj.get("businessPostalCode");
+            String businessHotline = (String) obj.get("businessHotline");
+            String ownersadd = (String) obj.get("ownersAdd");
+            String ownerspostal = (String) obj.get("ownersPostalCode");
+            String mobile = (String) obj.get("mobileNumber");
+            String contactperson = (String) obj.get("contactPerson");
+            String phone = (String) obj.get("phone");
+            String businessarea = (String) obj.get("businessArea");
+            String employee = (String) obj.get("employeeTotal");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{btype, regno, paymentmode, applicationdate, tin, ammendfrom, ammendto, fname, mname, lname, trade, tax, businessAdd, businessPostal, businessHotline, ownersadd, ownerspostal, mobile, contactperson, phone, businessarea, employee, status});
+        }
+        businessReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void displayScholarship() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("scholarship");
+        cursor = coll.find();
+        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birth Date", "Birth Place", "Civil Status", "Citizenship", "Phone Number", "Present Address", "ZIP Code", "School Sector", "Previous School", "School Address", "Father's Name", "Address", "Father Phone No.", "Occupation", "Employer", "Educational Attainment", "Mother's Name", "Address", "Phone No.", "Occupation", "Employer", "Educational Attainment", "Total Siblings", "4P's", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String sex = (String) obj.get("sex");
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String bdate = (String) obj.get("birthdate");
+            String birth_place = (String) obj.get("birthplace");
+            String civil_status = (String) obj.get("civilStatus");
+            String citizenship = (String) obj.get("citizenship");
+            String phone_no = (String) obj.get("phoneField");
+            String present_address = (String) obj.get("presentAdd");
+            String zipcode = (String) obj.get("zipCode");
+            String school_sector = (String) obj.get("schoolSector");
+            String previous_school = (String) obj.get("previousSchool");
+            String school_add = (String) obj.get("schoolAdd");
+            String fathers_name = (String) obj.get("fathersName");
+            String fathers_address = (String) obj.get("address");
+            String fathers_phone_no = (String) obj.get("fatherPhone");
+            String fathers_occupation = (String) obj.get("occupation");
+            String fathers_employer = (String) obj.get("employer");
+            String edu_attainment = (String) obj.get("eduAttainment");
+            String mothers_name = (String) obj.get("mothersName");
+            String mothers_address = (String) obj.get("motherAddress");
+            String mothers_phone_no = (String) obj.get("motherPhone");
+            String mothers_occupation = (String) obj.get("motherOccupation");
+            String mothers_employer = (String) obj.get("motherEmployer");
+            String mothers_edu_attainment = (String) obj.get("mEduAttainment");
+            String total_siblings = (String) obj.get("totalSiblings");
+            String pantawid = (String) obj.get("4P's");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{sex, first, midd, last, bdate, birth_place, civil_status, citizenship, phone_no, present_address, zipcode, school_sector, previous_school, school_add, fathers_name, fathers_address, fathers_phone_no, fathers_occupation, fathers_employer, edu_attainment, mothers_name, mothers_address, mothers_phone_no, mothers_occupation, mothers_employer, mothers_edu_attainment, total_siblings, pantawid, status});
+        }
+        scholarReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void displayAppointment() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("appointment");
+        cursor = coll.find();
+        String[] columnNames = {"First Name", "Middle Name", "Last Name", "Email Address", "Phone Number", "Address", "Subject", "Date", "Time", "Status"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String emailadd = (String) obj.get("email");
+            String phone_no = (String) obj.get("phone");
+            String address = (String) obj.get("address");
+            String subject = (String) obj.get("subject");
+            String date = (String) obj.get("date");
+            String time = (String) obj.get("time");
+            String status = (String) obj.get("status");
+
+            model.addRow(new Object[]{first, midd, last, emailadd, phone_no, address, subject, date, time, status});
+        }
+        appointReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void displaySuggestions() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DBCursor cursor;
+        DB db = mongoClient.getDB("CCE_Pass");
+        DBCollection coll = db.getCollection("suggestions");
+        cursor = coll.find();
+        String[] columnNames = {"First Name", "Middle Name", "Last Name", "Email Address", "Subject", "Details"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        while (cursor.hasNext()) {
+            DBObject obj = cursor.next();
+            String first = (String) obj.get("fname");
+            String midd = (String) obj.get("mname");
+            String last = (String) obj.get("lname");
+            String emailadd = (String) obj.get("email");
+            String subject = (String) obj.get("subject");
+            String details = (String) obj.get("details");
+
+            model.addRow(new Object[]{first, midd, last, emailadd, subject, details});
+        }
+        suggestionReqTable.setModel(model);
+
+        cursor.close();
+        mongoClient.close();
+    }
+
+    public void updateBirthStatus() {
+
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DB dbName = mongoClient.getDB("CCE_Pass");
+        DBCollection birthCollection = dbName.getCollection("birth");
+
+        BasicDBObject obj = new BasicDBObject();
+        obj.put("sex", this.sexSection.getText());
+        obj.put("fname", this.firstnameSection.getText());
+        obj.put("mname", this.middlenameSection.getText());
+        obj.put("lname", this.lastnameSection.getText());
+        obj.put("birthdate", this.birthdateSection.getText());
+        obj.put("birthplace(country)", this.countrySection.getText());
+        obj.put("birthplace(province)", this.provinceSection.getText());
+        obj.put("birthplace(city)", this.citySection.getText());
+        obj.put("gov'tId", this.govidSection.getText());
+        obj.put("ffname", this.fatherfnSection.getText());
+        obj.put("fmname", this.fathermnSection.getText());
+        obj.put("flname", this.fatherlnSection.getText());
+        obj.put("mfname", this.motherfnSection.getText());
+        obj.put("mmname", this.mothermnSection.getText());
+        obj.put("mlname", this.motherlnSection.getText());
+        obj.put("lateRegField", this.purposeSection.getText());
+        obj.put("purpose", this.lateregSection.getText());
+        obj.put("phone", this.phoneSection.getText());
+        obj.put("status", this.statusSection.getText());
+
+        birthCollection.findAndModify(backup, obj);
+    }
+
+    public void updateMarriageStatus() {
+
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DB dbName = mongoClient.getDB("CCE_Pass");
+        DBCollection marriageCollection = dbName.getCollection("marriage");
+
+        BasicDBObject obj = new BasicDBObject();
+        obj.put("sex", this.marriagesex.getText());
+        obj.put("fname", this.marriagefname.getText());
+        obj.put("mname", this.marriagemname.getText());
+        obj.put("lname", this.marriagelname.getText());
+        obj.put("birthdate", this.marriagebday.getText());
+        obj.put("birthplace(country)", this.marriagebirthplaceCounty.getText());
+        obj.put("birthplace(province)", this.marriagebirthplaceProvince.getText());
+        obj.put("birthplace(city)", this.marriagebirthplaceCity.getText());
+        obj.put("gov'tId", this.marriageissuedId.getText());
+        obj.put("sfname", this.marriagesfname.getText());
+        obj.put("smname", this.marriagesmname.getText());
+        obj.put("slname", this.marriageslname.getText());
+        obj.put("marriage_date", this.marriagemarriageDate.getText());
+        obj.put("marriageplace", this.marriagemarriagePlace.getText());
+        obj.put("lateRegField", this.marriagelatereg.getText());
+        obj.put("purpose", this.purpose.getText());
+        obj.put("phone", this.marriagephone.getText());
+        obj.put("status", this.marriagestatus.getText());
+
+        marriageCollection.findAndModify(backup, obj);
+    }
+
+    public void deleteBirth() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DB dbName = mongoClient.getDB("CCE_Pass");
+        DBCollection birthCollection = dbName.getCollection("birth");
+
+        birthCollection.findAndRemove(backup);
+    }
+
+    public void deleteMarriage() {
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DB dbName = mongoClient.getDB("CCE_Pass");
+        DBCollection marriageCollection = dbName.getCollection("marriage");
+
+        marriageCollection.findAndRemove(backup);
     }
 
     /**
@@ -42,6 +446,7 @@ public class StaffHome extends javax.swing.JFrame {
         votersPane = new javax.swing.JLabel();
         minimizebtn = new javax.swing.JLabel();
         closebtn = new javax.swing.JLabel();
+        jPanel39 = new javax.swing.JPanel();
         panel = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
@@ -67,7 +472,6 @@ public class StaffHome extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
         addressField = new javax.swing.JTextField();
         jSeparator11 = new javax.swing.JSeparator();
-        userIdField = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -112,9 +516,9 @@ public class StaffHome extends javax.swing.JFrame {
         purposeSection = new javax.swing.JTextField();
         motherfnSection = new javax.swing.JTextField();
         phoneSection = new javax.swing.JTextField();
-        cancelBtn = new javax.swing.JButton();
-        updateBtn = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
+        birthCancelBtn = new javax.swing.JButton();
+        birthUpdateBtn = new javax.swing.JButton();
+        birthDeleteBtn = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -160,6 +564,8 @@ public class StaffHome extends javax.swing.JFrame {
         marriageUpdateBtn = new javax.swing.JButton();
         marriageDeleteBtn = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
+        purpose = new javax.swing.JTextField();
+        jLabel170 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -334,6 +740,8 @@ public class StaffHome extends javax.swing.JFrame {
         businessemployee = new javax.swing.JTextField();
         businessbusinessarea = new javax.swing.JTextField();
         jLabel121 = new javax.swing.JLabel();
+        jLabel167 = new javax.swing.JLabel();
+        govtax = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
@@ -398,6 +806,10 @@ public class StaffHome extends javax.swing.JFrame {
         scholarmedu = new javax.swing.JTextField();
         scholarsiblings = new javax.swing.JTextField();
         jLabel157 = new javax.swing.JLabel();
+        scholarbplace = new javax.swing.JTextField();
+        jLabel168 = new javax.swing.JLabel();
+        benefeciary = new javax.swing.JTextField();
+        jLabel169 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -416,7 +828,7 @@ public class StaffHome extends javax.swing.JFrame {
         appointmname = new javax.swing.JTextField();
         appointlname = new javax.swing.JTextField();
         jLabel98 = new javax.swing.JLabel();
-        appointemail = new javax.swing.JTextField();
+        appointaddress = new javax.swing.JTextField();
         appointdate = new javax.swing.JTextField();
         appointphone = new javax.swing.JTextField();
         appointsubject = new javax.swing.JTextField();
@@ -426,12 +838,14 @@ public class StaffHome extends javax.swing.JFrame {
         appointUpdateBtn = new javax.swing.JButton();
         appointDeleteBtn = new javax.swing.JButton();
         jPanel25 = new javax.swing.JPanel();
+        appointemail = new javax.swing.JTextField();
+        jLabel166 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel82 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        suggestionReqTable = new javax.swing.JTable();
         jLabel83 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
         jLabel91 = new javax.swing.JLabel();
@@ -446,7 +860,7 @@ public class StaffHome extends javax.swing.JFrame {
         suggestionsubject = new javax.swing.JTextField();
         jPanel28 = new javax.swing.JPanel();
         suggestionDeleteBtn = new javax.swing.JButton();
-        homePane = new javax.swing.JLabel();
+        profilePane = new javax.swing.JLabel();
         birthPane = new javax.swing.JLabel();
         cenomarPane = new javax.swing.JLabel();
         marriagePane = new javax.swing.JLabel();
@@ -460,8 +874,7 @@ public class StaffHome extends javax.swing.JFrame {
         signout = new javax.swing.JLabel();
         jPanel40 = new javax.swing.JPanel();
         jSeparator6 = new javax.swing.JSeparator();
-        staffNameTop = new javax.swing.JTextField();
-        homeBtn1 = new javax.swing.JLabel();
+        userNameField = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -507,14 +920,24 @@ public class StaffHome extends javax.swing.JFrame {
         });
         jPanel1.add(closebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 30, 30));
 
+        jPanel39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 2));
+
+        javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
+        jPanel39.setLayout(jPanel39Layout);
+        jPanel39Layout.setHorizontalGroup(
+            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1202, Short.MAX_VALUE)
+        );
+        jPanel39Layout.setVerticalGroup(
+            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 56, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 1210, 60));
+
         panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 2));
         panel.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         panel.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelMouseClicked(evt);
-            }
-        });
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -550,15 +973,17 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel130.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile.png"))); // NOI18N
         jPanel41.add(jLabel130, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 190));
 
+        staffNameField.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         staffNameField.setBorder(null);
         jPanel41.add(staffNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 270, 30));
 
+        staffEmailField.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         staffEmailField.setBorder(null);
         jPanel41.add(staffEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 270, 30));
 
         jLabel158.setFont(new java.awt.Font("Segoe UI Symbol", 3, 14)); // NOI18N
         jLabel158.setText("Personal Information");
-        jPanel41.add(jLabel158, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 170, 30));
+        jPanel41.add(jLabel158, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 170, 30));
 
         jLabel161.setFont(new java.awt.Font("Segoe UI Symbol", 3, 14)); // NOI18N
         jLabel161.setText("Sex:");
@@ -572,7 +997,7 @@ public class StaffHome extends javax.swing.JFrame {
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 204, 0));
         jSeparator5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel41.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 270, 10));
+        jPanel41.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 270, 10));
 
         jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator7.setForeground(new java.awt.Color(0, 204, 0));
@@ -581,7 +1006,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel162.setFont(new java.awt.Font("Segoe UI Symbol", 3, 14)); // NOI18N
         jLabel162.setText("Cebu City Easy Passage");
-        jPanel41.add(jLabel162, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 170, 30));
+        jPanel41.add(jLabel162, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 540, 170, 30));
 
         jLabel163.setFont(new java.awt.Font("Segoe UI Symbol", 3, 14)); // NOI18N
         jLabel163.setText("Staff");
@@ -593,8 +1018,9 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel165.setFont(new java.awt.Font("Segoe UI Symbol", 3, 14)); // NOI18N
         jLabel165.setText("Age:");
-        jPanel41.add(jLabel165, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 90, 30));
+        jPanel41.add(jLabel165, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 90, 30));
 
+        sexField.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         sexField.setBorder(null);
         jPanel41.add(sexField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 270, 30));
 
@@ -603,14 +1029,16 @@ public class StaffHome extends javax.swing.JFrame {
         jSeparator8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel41.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 270, 10));
 
+        ageField.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         ageField.setBorder(null);
-        jPanel41.add(ageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 270, 30));
+        jPanel41.add(ageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 270, 30));
 
         jSeparator9.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator9.setForeground(new java.awt.Color(0, 204, 0));
         jSeparator9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel41.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 270, 10));
+        jPanel41.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 270, 10));
 
+        addressField.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         addressField.setBorder(null);
         jPanel41.add(addressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 270, 30));
 
@@ -618,7 +1046,6 @@ public class StaffHome extends javax.swing.JFrame {
         jSeparator11.setForeground(new java.awt.Color(0, 204, 0));
         jSeparator11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel41.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 270, 10));
-        jPanel41.add(userIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 70, 30));
 
         jPanel38.add(jPanel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 760, 580));
 
@@ -749,41 +1176,92 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel23.setText("Phone Number");
         jPanel9.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 120, -1));
+
+        fatherlnSection.setEditable(false);
         jPanel9.add(fatherlnSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
+
+        sexSection.setEditable(false);
         jPanel9.add(sexSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+
+        firstnameSection.setEditable(false);
         jPanel9.add(firstnameSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
+
+        middlenameSection.setEditable(false);
         jPanel9.add(middlenameSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
+
+        lastnameSection.setEditable(false);
         jPanel9.add(lastnameSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel24.setText("Birthdate");
         jPanel9.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, -1));
+
+        birthdateSection.setEditable(false);
         jPanel9.add(birthdateSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
+
+        govidSection.setEditable(false);
         jPanel9.add(govidSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 270, -1));
+
+        provinceSection.setEditable(false);
         jPanel9.add(provinceSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
+
+        countrySection.setEditable(false);
         jPanel9.add(countrySection, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
+
+        citySection.setEditable(false);
         jPanel9.add(citySection, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, -1));
+
+        lateregSection.setEditable(false);
         jPanel9.add(lateregSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 490, 180, -1));
+
+        fathermnSection.setEditable(false);
         jPanel9.add(fathermnSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
+
+        fatherfnSection.setEditable(false);
         jPanel9.add(fatherfnSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
         jPanel9.add(statusSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 550, 180, -1));
+
+        mothermnSection.setEditable(false);
         jPanel9.add(mothermnSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
+
+        motherlnSection.setEditable(false);
         jPanel9.add(motherlnSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, -1));
+
+        purposeSection.setEditable(false);
         jPanel9.add(purposeSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 180, -1));
+
+        motherfnSection.setEditable(false);
         jPanel9.add(motherfnSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
+
+        phoneSection.setEditable(false);
         jPanel9.add(phoneSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 550, 180, -1));
 
-        cancelBtn.setText("Cancel");
-        cancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel9.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
+        birthCancelBtn.setText("Cancel");
+        birthCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        birthCancelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                birthCancelBtnMouseClicked(evt);
+            }
+        });
+        jPanel9.add(birthCancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
 
-        updateBtn.setText("UPDATE");
-        updateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel9.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
+        birthUpdateBtn.setText("UPDATE");
+        birthUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        birthUpdateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                birthUpdateBtnMouseClicked(evt);
+            }
+        });
+        jPanel9.add(birthUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
 
-        deleteBtn.setText("Delete");
-        deleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        jPanel9.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
+        birthDeleteBtn.setText("Delete");
+        birthDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        birthDeleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                birthDeleteBtnMouseClicked(evt);
+            }
+        });
+        jPanel9.add(birthDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
 
@@ -847,6 +1325,11 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        marriageReqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                marriageReqTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(marriageReqTable);
 
         jPanel14.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
@@ -872,7 +1355,7 @@ public class StaffHome extends javax.swing.JFrame {
         jPanel14.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 350, 140, -1));
 
         jLabel30.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
-        jLabel30.setText("Birthplace(Provice)");
+        jLabel30.setText("Birthplace(Province)");
         jPanel14.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 350, 130, -1));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
@@ -909,11 +1392,11 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel39.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel39.setText("Late Registration?");
-        jPanel14.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 470, 130, -1));
+        jPanel14.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, 130, -1));
 
         jLabel41.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel41.setText("Phone Number");
-        jPanel14.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 470, 120, -1));
+        jPanel14.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 470, 120, -1));
         jPanel14.add(marriageslname, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
         jPanel14.add(marriagesex, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
         jPanel14.add(marriagefname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
@@ -928,24 +1411,39 @@ public class StaffHome extends javax.swing.JFrame {
         jPanel14.add(marriagebirthplaceProvince, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
         jPanel14.add(marriagebirthplaceCounty, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
         jPanel14.add(marriagebirthplaceCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, -1));
-        jPanel14.add(marriagelatereg, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 180, -1));
+        jPanel14.add(marriagelatereg, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, 180, -1));
         jPanel14.add(marriagesmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
         jPanel14.add(marriagesfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
         jPanel14.add(marriagestatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 180, -1));
         jPanel14.add(marriagemarriagePlace, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
         jPanel14.add(marriagemarriageDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, -1));
-        jPanel14.add(marriagephone, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, 180, -1));
+        jPanel14.add(marriagephone, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 490, 180, -1));
 
         marriageCancelBtn.setText("Cancel");
         marriageCancelBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        marriageCancelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                marriageCancelBtnMouseClicked(evt);
+            }
+        });
         jPanel14.add(marriageCancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 110, 30));
 
         marriageUpdateBtn.setText("UPDATE");
         marriageUpdateBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        marriageUpdateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                marriageUpdateBtnMouseClicked(evt);
+            }
+        });
         jPanel14.add(marriageUpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 580, 110, 30));
 
         marriageDeleteBtn.setText("DELETE");
         marriageDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
+        marriageDeleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                marriageDeleteBtnMouseClicked(evt);
+            }
+        });
         jPanel14.add(marriageDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
@@ -962,6 +1460,11 @@ public class StaffHome extends javax.swing.JFrame {
         );
 
         jPanel14.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 560, 380, 70));
+        jPanel14.add(purpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 180, -1));
+
+        jLabel170.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
+        jLabel170.setText("Purpose");
+        jPanel14.add(jLabel170, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 130, -1));
 
         jPanel4.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 650));
 
@@ -1008,6 +1511,11 @@ public class StaffHome extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        cenomarReqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cenomarReqTableMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(cenomarReqTable);
@@ -1178,6 +1686,11 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        deathReqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deathReqTableMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(deathReqTable);
 
         jPanel20.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
@@ -1277,11 +1790,6 @@ public class StaffHome extends javax.swing.JFrame {
 
         deathDeleteBtn.setText("Delete");
         deathDeleteBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 102), 3, true));
-        deathDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deathDeleteBtnActionPerformed(evt);
-            }
-        });
         jPanel20.add(deathDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 110, 30));
 
         jPanel22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
@@ -1354,6 +1862,11 @@ public class StaffHome extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        votersReqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                votersReqTableMouseClicked(evt);
             }
         });
         jScrollPane8.setViewportView(votersReqTable);
@@ -1474,6 +1987,11 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        businessReqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                businessReqTableMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(businessReqTable);
 
         jPanel29.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
@@ -1512,11 +2030,11 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel108.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel108.setText("Business Postal Code");
-        jPanel29.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 410, 140, -1));
+        jPanel29.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 410, 140, -1));
 
         jLabel109.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel109.setText("Business Address");
-        jPanel29.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 410, 160, -1));
+        jPanel29.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 410, 160, -1));
 
         jLabel110.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel110.setText("Owner's Address");
@@ -1528,7 +2046,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel112.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel112.setText("Trade Name/Franchise");
-        jPanel29.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 160, -1));
+        jPanel29.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 150, -1));
 
         jLabel113.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel113.setText("Contact Person");
@@ -1541,7 +2059,7 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel115.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel115.setText("Phone Number");
         jPanel29.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 120, -1));
-        jPanel29.add(businesspostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 180, -1));
+        jPanel29.add(businesspostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 430, 150, -1));
         jPanel29.add(businessType, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
         jPanel29.add(businessreg, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
         jPanel29.add(businesspayment, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
@@ -1554,8 +2072,8 @@ public class StaffHome extends javax.swing.JFrame {
         jPanel29.add(businessto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 170, -1));
         jPanel29.add(businessfrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 190, -1));
         jPanel29.add(businesscontact, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 490, 180, -1));
-        jPanel29.add(businessadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 180, -1));
-        jPanel29.add(businesstrade, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 180, -1));
+        jPanel29.add(businessadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 430, 180, -1));
+        jPanel29.add(businesstrade, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 170, -1));
         jPanel29.add(businessstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 180, -1));
         jPanel29.add(businessownersadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 180, -1));
         jPanel29.add(businessownerspostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, -1));
@@ -1615,6 +2133,11 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel121.setText("Business Area");
         jPanel29.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 120, -1));
 
+        jLabel167.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
+        jLabel167.setText("Gov't Tax");
+        jPanel29.add(jLabel167, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 410, 80, -1));
+        jPanel29.add(govtax, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 100, -1));
+
         jPanel7.add(jPanel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 650));
 
         panel.addTab("Business Permit Request", jPanel7);
@@ -1634,41 +2157,50 @@ public class StaffHome extends javax.swing.JFrame {
 
         scholarReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Civil Status", "Citizenship", "Phone Number", "Present Address", "ZIP Code", "School Sector", "School Last Attended", "School Address", "Father's Name", "Address", "Phone Number", "Occupation", "Name of Employer", "Educational Attainment", "Mother's Name", "Address", "Phone Number", "Occupation", "Name of Employer", "Educational Attainment", "Number of Siblings", "4P's?", "Status"
+                "Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace", "Civil Status", "Citizenship", "Phone Number", "Present Address", "ZIP Code", "School Sector", "School Last Attended", "School Address", "Father's Name", "Address", "Phone Number", "Occupation", "Name of Employer", "Educational Attainment", "Mother's Name", "Address", "Phone Number", "Occupation", "Name of Employer", "Educational Attainment", "Number of Siblings", "4P's?", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true
+                false, false, false, false, false, true, false, true, true, true, true, true, true, true, true, false, false, true, false, false, false, false, false, false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        scholarReqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                scholarReqTableMouseClicked(evt);
+            }
+        });
         jScrollPane9.setViewportView(scholarReqTable);
+        if (scholarReqTable.getColumnModel().getColumnCount() > 0) {
+            scholarReqTable.getColumnModel().getColumn(4).setResizable(false);
+            scholarReqTable.getColumnModel().getColumn(14).setResizable(false);
+        }
 
         jPanel35.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
         jLabel105.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel105.setText("Present Address");
-        jPanel35.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 160, -1));
+        jPanel35.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 160, -1));
 
         jLabel132.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel132.setText("Sex");
@@ -1680,39 +2212,39 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel134.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel134.setText("Middle Name");
-        jPanel35.add(jLabel134, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 110, -1));
+        jPanel35.add(jLabel134, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 110, -1));
 
         jLabel135.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel135.setText("Last Name");
-        jPanel35.add(jLabel135, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 90, -1));
+        jPanel35.add(jLabel135, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 90, -1));
 
         jLabel136.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel136.setText("Civil Status");
-        jPanel35.add(jLabel136, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 140, -1));
+        jPanel35.add(jLabel136, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 350, 140, -1));
 
         jLabel137.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel137.setText("Citizenship");
-        jPanel35.add(jLabel137, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 350, 130, -1));
+        jPanel35.add(jLabel137, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 120, -1));
 
         jLabel138.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel138.setText("Phone Number");
-        jPanel35.add(jLabel138, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 350, 110, -1));
+        jPanel35.add(jLabel138, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 110, -1));
 
         jLabel139.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel139.setText("First Name");
-        jPanel35.add(jLabel139, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 90, -1));
+        jPanel35.add(jLabel139, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 90, -1));
 
         jLabel140.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel140.setText("STATUS");
-        jPanel35.add(jLabel140, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 580, 70, -1));
+        jPanel35.add(jLabel140, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 580, 70, -1));
 
         jLabel141.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel141.setText("School Last Attended");
-        jPanel35.add(jLabel141, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 140, -1));
+        jPanel35.add(jLabel141, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 400, 140, -1));
 
         jLabel142.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel142.setText("School Sector");
-        jPanel35.add(jLabel142, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 190, -1));
+        jPanel35.add(jLabel142, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, 140, -1));
 
         jLabel143.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel143.setText("Address");
@@ -1724,7 +2256,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel145.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel145.setText("ZIP Code");
-        jPanel35.add(jLabel145, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 140, -1));
+        jPanel35.add(jLabel145, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 100, -1));
 
         jLabel146.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel146.setText("Name of Employer");
@@ -1737,24 +2269,24 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel148.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel148.setText("Educational Attainment");
         jPanel35.add(jLabel148, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 460, 150, -1));
-        jPanel35.add(scholarattended, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 220, -1));
+        jPanel35.add(scholarattended, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 150, -1));
         jPanel35.add(scholarsex, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
-        jPanel35.add(scholarfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
-        jPanel35.add(scholarmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, -1));
-        jPanel35.add(scholarlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 130, -1));
+        jPanel35.add(scholarfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 130, -1));
+        jPanel35.add(scholarmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 130, -1));
+        jPanel35.add(scholarlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 130, -1));
 
         jLabel149.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
-        jLabel149.setText("Birthdate");
-        jPanel35.add(jLabel149, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, -1));
-        jPanel35.add(scholarbdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 130, -1));
-        jPanel35.add(scholarpresadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 210, -1));
-        jPanel35.add(scholarcitizenship, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 370, 120, -1));
-        jPanel35.add(scholarcivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 140, -1));
-        jPanel35.add(scholarphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 370, 120, -1));
+        jLabel149.setText("Birth Date");
+        jPanel35.add(jLabel149, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 350, 80, -1));
+        jPanel35.add(scholarbdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, 130, -1));
+        jPanel35.add(scholarpresadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 160, -1));
+        jPanel35.add(scholarcitizenship, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 120, -1));
+        jPanel35.add(scholarcivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 370, 140, -1));
+        jPanel35.add(scholarphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 120, -1));
         jPanel35.add(scholarfemployer, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 180, -1));
-        jPanel35.add(scholarsector, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, 220, -1));
-        jPanel35.add(scholarzipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 140, -1));
-        jPanel35.add(scholarstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, 180, -1));
+        jPanel35.add(scholarsector, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 140, -1));
+        jPanel35.add(scholarzipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 100, -1));
+        jPanel35.add(scholarstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 600, 180, -1));
         jPanel35.add(scholarfaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 180, -1));
         jPanel35.add(scholarfphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 180, -1));
         jPanel35.add(scholarfoccupation, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, 180, -1));
@@ -1793,15 +2325,15 @@ public class StaffHome extends javax.swing.JFrame {
                     .addComponent(scholarCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scholarDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scholarUpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel35.add(jPanel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 580, 380, 70));
-        jPanel35.add(scholarschooladd, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 420, 220, -1));
+        jPanel35.add(jPanel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 570, 380, 60));
+        jPanel35.add(scholarschooladd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 420, 170, -1));
 
         jLabel150.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel150.setText("School Address");
-        jPanel35.add(jLabel150, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 400, 140, -1));
+        jPanel35.add(jLabel150, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 400, 140, -1));
 
         jLabel151.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel151.setText("Phone Number");
@@ -1832,11 +2364,21 @@ public class StaffHome extends javax.swing.JFrame {
         jPanel35.add(scholarmoccupation, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, 180, -1));
         jPanel35.add(scholarmfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 180, -1));
         jPanel35.add(scholarmedu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 540, 180, -1));
-        jPanel35.add(scholarsiblings, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 600, 180, -1));
+        jPanel35.add(scholarsiblings, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 600, 180, -1));
 
         jLabel157.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel157.setText("Number of Siblings");
-        jPanel35.add(jLabel157, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 580, 160, -1));
+        jPanel35.add(jLabel157, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, 160, -1));
+        jPanel35.add(scholarbplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 370, 130, -1));
+
+        jLabel168.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
+        jLabel168.setText("Birth Place");
+        jPanel35.add(jLabel168, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, 80, -1));
+        jPanel35.add(benefeciary, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 600, 180, -1));
+
+        jLabel169.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
+        jLabel169.setText("4P's Benefesiaries?");
+        jPanel35.add(jLabel169, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 580, 160, -1));
 
         jPanel8.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 670));
 
@@ -1885,6 +2427,11 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        appointReqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                appointReqTableMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(appointReqTable);
 
         jPanel23.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
@@ -1903,7 +2450,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jLabel86.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel86.setText("Phone Number");
-        jPanel23.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 350, 190, -1));
+        jPanel23.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 350, 190, -1));
 
         jLabel88.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel88.setText("Appoinment Subject");
@@ -1925,11 +2472,11 @@ public class StaffHome extends javax.swing.JFrame {
         jPanel23.add(appointlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 130, -1));
 
         jLabel98.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
-        jLabel98.setText("Email Address");
-        jPanel23.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 190, -1));
-        jPanel23.add(appointemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 240, -1));
+        jLabel98.setText("Address");
+        jPanel23.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 180, -1));
+        jPanel23.add(appointaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 180, -1));
         jPanel23.add(appointdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 180, -1));
-        jPanel23.add(appointphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, 250, -1));
+        jPanel23.add(appointphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 370, 220, -1));
         jPanel23.add(appointsubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 330, -1));
         jPanel23.add(appointtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 180, -1));
         jPanel23.add(appointstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 180, -1));
@@ -1960,6 +2507,11 @@ public class StaffHome extends javax.swing.JFrame {
         );
 
         jPanel23.add(jPanel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 560, 380, 70));
+        jPanel23.add(appointemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 180, -1));
+
+        jLabel166.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
+        jLabel166.setText("Email Address");
+        jPanel23.add(jLabel166, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 190, -1));
 
         jPanel10.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 650));
 
@@ -1978,7 +2530,7 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel26.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 210, 50));
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        suggestionReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -2008,7 +2560,12 @@ public class StaffHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(jTable6);
+        suggestionReqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                suggestionReqTableMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(suggestionReqTable);
 
         jPanel26.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1180, 240));
 
@@ -2031,15 +2588,27 @@ public class StaffHome extends javax.swing.JFrame {
         jLabel94.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel94.setText("First Name");
         jPanel26.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 90, -1));
+
+        suggestionfname.setEditable(false);
         jPanel26.add(suggestionfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 220, -1));
+
+        suggestionmname.setEditable(false);
         jPanel26.add(suggestionmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 220, -1));
+
+        suggestionlname.setEditable(false);
         jPanel26.add(suggestionlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 220, -1));
 
         jLabel99.setFont(new java.awt.Font("Segoe UI Symbol", 2, 14)); // NOI18N
         jLabel99.setText("Email Address");
         jPanel26.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 360, 190, -1));
+
+        suggestionemail.setEditable(false);
         jPanel26.add(suggestionemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, 280, -1));
+
+        suggestiondetails.setEditable(false);
         jPanel26.add(suggestiondetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 760, -1));
+
+        suggestionsubject.setEditable(false);
         jPanel26.add(suggestionsubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 330, -1));
 
         jPanel28.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
@@ -2072,17 +2641,17 @@ public class StaffHome extends javax.swing.JFrame {
 
         jPanel1.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 1210, 670));
 
-        homePane.setBackground(new java.awt.Color(255, 255, 255));
-        homePane.setFont(new java.awt.Font("Segoe UI Light", 1, 16)); // NOI18N
-        homePane.setText("Profile");
-        homePane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 2, true));
-        homePane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        homePane.addMouseListener(new java.awt.event.MouseAdapter() {
+        profilePane.setBackground(new java.awt.Color(255, 255, 255));
+        profilePane.setFont(new java.awt.Font("Segoe UI Light", 1, 16)); // NOI18N
+        profilePane.setText("Profile");
+        profilePane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 2, true));
+        profilePane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        profilePane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                homePaneMouseClicked(evt);
+                profilePaneMouseClicked(evt);
             }
         });
-        jPanel1.add(homePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 240, 40));
+        jPanel1.add(profilePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 240, 40));
 
         birthPane.setBackground(new java.awt.Color(255, 255, 255));
         birthPane.setFont(new java.awt.Font("Segoe UI Light", 1, 16)); // NOI18N
@@ -2171,11 +2740,11 @@ public class StaffHome extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 10, 40));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 10, 40));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel9.setText("Manage Requests");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 350, 60));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, 350, 40));
 
         suggestionsPane.setBackground(new java.awt.Color(255, 255, 255));
         suggestionsPane.setFont(new java.awt.Font("Segoe UI Light", 1, 16)); // NOI18N
@@ -2196,7 +2765,7 @@ public class StaffHome extends javax.swing.JFrame {
                 signoutMouseClicked(evt);
             }
         });
-        jPanel1.add(signout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 40, 70, 30));
+        jPanel1.add(signout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 40, 70, 30));
 
         jPanel40.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2205,20 +2774,11 @@ public class StaffHome extends javax.swing.JFrame {
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel40.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 10, 40));
 
-        staffNameTop.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        staffNameTop.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153)));
-        jPanel40.add(staffNameTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, 240, 30));
+        userNameField.setEditable(false);
+        userNameField.setFont(new java.awt.Font("Segoe UI Light", 3, 14)); // NOI18N
+        jPanel40.add(userNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 230, 30));
 
-        jPanel1.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 20, 270, 50));
-
-        homeBtn1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        homeBtn1.setText("Home");
-        homeBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                homeBtn1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(homeBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 60, 30));
+        jPanel1.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 250, 50));
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator4.setForeground(new java.awt.Color(0, 204, 0));
@@ -2232,8 +2792,7 @@ public class StaffHome extends javax.swing.JFrame {
 
     private void votersPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_votersPaneMouseClicked
         panel.setSelectedIndex(5);
-        
-        
+        displayVoters();
 
     }//GEN-LAST:event_votersPaneMouseClicked
 
@@ -2245,272 +2804,83 @@ public class StaffHome extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_closebtnMouseClicked
 
-    private void homePaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePaneMouseClicked
+    private void profilePaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profilePaneMouseClicked
         panel.setSelectedIndex(0);
-    }//GEN-LAST:event_homePaneMouseClicked
-
-    private void birthPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthPaneMouseClicked
-        panel.setSelectedIndex(1);
 
         MongoClient mongoClient = null;
         DBCursor cursor = null;
         mongoClient = new MongoClient("localhost", 27017);
         DB db = mongoClient.getDB("CCE_Pass");
-        DBCollection coll = db.getCollection("birth");
+        DBCollection coll = db.getCollection("staff");
         cursor = coll.find();
-        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", " Father's First Name", "Father's Middle Name", "Father's Last Name", "Mother's First Name", "Mother's Middle Name", "Mother's Last Name", "Late Registration", "Purpose", "Phone Number", "Status"};
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
         while (cursor.hasNext()) {
             DBObject obj = cursor.next();
+            String staffName = (String) obj.get("name");
+            String email = (String) obj.get("email");
             String sex = (String) obj.get("sex");
-            String first = (String) obj.get("fname");
-            String midd = (String) obj.get("mname");
-            String last = (String) obj.get("lname");
-            String bdate = (String) obj.get("birthdate");
-            String bpCountry = (String) obj.get("birthplace(country)");
-            String bpProvince = (String) obj.get("birthplace(province)");
-            String bpCity = (String) obj.get("birthplace(city)");
-            String govID = (String) obj.get("gov'tId");
-            String ffname = (String) obj.get("ffname");
-            String fmname = (String) obj.get("fmname");
-            String flname = (String) obj.get("flname");
-            String mfname = (String) obj.get("mfname");
-            String mmname = (String) obj.get("mmname");
-            String mlname = (String) obj.get("mlname");
-            String lateReg = (String) obj.get("lateRegField");
-            String purp = (String) obj.get("purpose");
-            String phone = (String) obj.get("phone");
-            String status = (String) obj.get("status");
+            String age = (String) obj.get("age");
+            String address = (String) obj.get("address");
 
-            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, ffname, fmname, flname, mfname, mmname, mlname, lateReg, purp, phone, status});
-        }
-        birthReqTable.setModel(model);
+            this.staffNameField.setText(staffName);
+            this.staffEmailField.setText(email);
+            this.sexField.setText(sex);
+            this.ageField.setText(age);
+            this.addressField.setText(address);
 
-        cursor.close();
-        mongoClient.close();
-        if (cursor != null) {
-            cursor.close();
         }
-        if (mongoClient != null) {
-            mongoClient.close();
-        }
+
+
+    }//GEN-LAST:event_profilePaneMouseClicked
+
+    private void birthPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthPaneMouseClicked
+        panel.setSelectedIndex(1);
+        displayBirth();
     }//GEN-LAST:event_birthPaneMouseClicked
 
     private void cenomarPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenomarPaneMouseClicked
         panel.setSelectedIndex(3);
-
-        MongoClient mongoClient = null;
-        DBCursor cursor = null;
-        mongoClient = new MongoClient("localhost", 27017);
-        DB db = mongoClient.getDB("CCE_Pass");
-        DBCollection coll = db.getCollection("cenomar");
-        cursor = coll.find();
-        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", " Father's First Name", "Father's Middle Name", "Father's Last Name", "Mother's First Name", "Mother's Middle Name", "Mother's Last Name", "Purpose", "Phone Number", "Status"};
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-        while (cursor.hasNext()) {
-            DBObject obj = cursor.next();
-            String sex = (String) obj.get("sex");
-            String first = (String) obj.get("fname");
-            String midd = (String) obj.get("mname");
-            String last = (String) obj.get("lname");
-            String bdate = (String) obj.get("birthdate");
-            String bpCountry = (String) obj.get("birthplace(country)");
-            String bpProvince = (String) obj.get("birthplace(province)");
-            String bpCity = (String) obj.get("birthplace(city)");
-            String govID = (String) obj.get("gov'tId");
-            String ffname = (String) obj.get("ffname");
-            String fmname = (String) obj.get("fmname");
-            String flname = (String) obj.get("flname");
-            String mfname = (String) obj.get("mfname");
-            String mmname = (String) obj.get("mmname");
-            String mlname = (String) obj.get("mlname");
-            String purp = (String) obj.get("purpose");
-            String phone = (String) obj.get("phone");
-            String status = (String) obj.get("status");
-
-            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, ffname, fmname, flname, mfname, mmname, mlname, purp, phone, status});
-        }
-        cenomarReqTable.setModel(model);
-
-        cursor.close();
-        mongoClient.close();
-        if (cursor != null) {
-            cursor.close();
-        }
-        if (mongoClient != null) {
-            mongoClient.close();
-        }
+        displayCenomar();
     }//GEN-LAST:event_cenomarPaneMouseClicked
 
     private void marriagePaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marriagePaneMouseClicked
         panel.setSelectedIndex(2);
-
-        MongoClient mongoClient = null;
-        DBCursor cursor = null;
-        mongoClient = new MongoClient("localhost", 27017);
-        DB db = mongoClient.getDB("CCE_Pass");
-        DBCollection coll = db.getCollection("marriage");
-        cursor = coll.find();
-        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", "Spouse's First Name", "Spouse's Middle Name", "Spouse's Last Name", "Marriage Date", "Marriage Place", "Late Registration", "Purpose", "Phone Number", "Status"};
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-        while (cursor.hasNext()) {
-            DBObject obj = cursor.next();
-            String sex = (String) obj.get("sex");
-            String first = (String) obj.get("fname");
-            String midd = (String) obj.get("mname");
-            String last = (String) obj.get("lname");
-            String bdate = (String) obj.get("birthdate");
-            String bpCountry = (String) obj.get("birthplace(country)");
-            String bpProvince = (String) obj.get("birthplace(province)");
-            String bpCity = (String) obj.get("birthplace(city)");
-            String govID = (String) obj.get("gov'tId");
-            String sfname = (String) obj.get("sfname");
-            String smname = (String) obj.get("smname");
-            String slname = (String) obj.get("slname");
-            String mdate = (String) obj.get("marriage_date");
-            String mplace = (String) obj.get("marriageplace");
-            String lateReg = (String) obj.get("lateRegField");
-            String purp = (String) obj.get("purpose");
-            String phone = (String) obj.get("phone");
-            String status = (String) obj.get("status");
-
-            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, sfname, smname, slname, mdate, mplace, lateReg, purp, phone, status});
-        }
-        marriageReqTable.setModel(model);
-
-        cursor.close();
-        mongoClient.close();
-        if (cursor != null) {
-            cursor.close();
-        }
-        if (mongoClient != null) {
-            mongoClient.close();
-        }
-
+        displayMarriage();
     }//GEN-LAST:event_marriagePaneMouseClicked
 
     private void deathPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deathPaneMouseClicked
         panel.setSelectedIndex(4);
-
-        MongoClient mongoClient = null;
-        DBCursor cursor = null;
-        mongoClient = new MongoClient("localhost", 27017);
-        DB db = mongoClient.getDB("CCE_Pass");
-        DBCollection coll = db.getCollection("death");
-        cursor = coll.find();
-        String[] columnNames = {"Sex", "First Name", "Middle Name", "Last Name", "Birthdate", "Birthplace(Country)", "Birthplace(Province)", "Birthplace(City)", "Government Issued ID", "Relationship", " Deceased First Name", "Deceased Middle Name", "Deceased Last Name", "Date of Death", "Place of Death", "Late Registration", "Purpose", "Phone Number", "Status"};
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-        while (cursor.hasNext()) {
-            DBObject obj = cursor.next();
-            String sex = (String) obj.get("sex");
-            String first = (String) obj.get("fname");
-            String midd = (String) obj.get("mname");
-            String last = (String) obj.get("lname");
-            String bdate = (String) obj.get("birthdate");
-            String bpCountry = (String) obj.get("birthplace(country)");
-            String bpProvince = (String) obj.get("birthplace(province)");
-            String bpCity = (String) obj.get("birthplace(city)");
-            String govID = (String) obj.get("gov'tId");
-            String relationsip = (String) obj.get("relation");
-            String dfname = (String) obj.get("deceasedfname");
-            String dmname = (String) obj.get("deceasedmname");
-            String dlname = (String) obj.get("deceasedlname");
-            String deathDate = (String) obj.get("dateofdeath");
-            String deathPlace = (String) obj.get("placeofdeath");
-            String latereg = (String) obj.get("lateReg");
-            String purp = (String) obj.get("purpose");
-            String phone = (String) obj.get("phone");
-            String status = (String) obj.get("status");
-
-            model.addRow(new Object[]{sex, first, midd, last, bdate, bpCountry, bpProvince, bpCity, govID, relationsip, dfname, dmname, dlname, deathDate, deathPlace, latereg, purp, phone, status});
-        }
-        deathReqTable.setModel(model);
-
-        cursor.close();
-        mongoClient.close();
-        if (cursor != null) {
-            cursor.close();
-        }
-        if (mongoClient != null) {
-            mongoClient.close();
-        }
+        displayDeath();
     }//GEN-LAST:event_deathPaneMouseClicked
 
     private void businessPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessPaneMouseClicked
         panel.setSelectedIndex(6);
-
-        MongoClient mongoClient = null;
-        DBCursor cursor = null;
-        mongoClient = new MongoClient("localhost", 27017);
-        DB db = mongoClient.getDB("CCE_Pass");
-        DBCollection coll = db.getCollection("business");
-        cursor = coll.find();
-        String[] columnNames = {"Business Type", "DTI/SEC/CDA/Reg.No.", "Payment Mode", "Application Date", "TIN", "Ammendment From", "Ammendment To", "First Name", "Middle Name", "Last Name", "Trade Name", "Gov't Tax", "Business Address", "Business Postal Code", "Business Hotline", "Owner's Address", "Owner's Postal Code", ",Mobile Number", "Contact Person", "Phone Number", "Business Area", "Employee Total", "Status"};
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-        while (cursor.hasNext()) {
-            DBObject obj = cursor.next();
-            String btype = (String) obj.get("businessType");
-            String regno = (String) obj.get("regNumber");
-            String paymentmode = (String) obj.get("paymentMode");
-            String applicationdate = (String) obj.get("applicationDate");
-            String tin = (String) obj.get("tinNmber");
-            String ammendfrom = (String) obj.get("ammendFrom");
-            String ammendto = (String) obj.get("ammendTo");
-            String fname = (String) obj.get("fname");
-            String mname = (String) obj.get("mname");
-            String lname = (String) obj.get("lname");
-            String trade = (String) obj.get("tradeName");
-            String tax = (String) obj.get("govtTax");
-            String businessAdd = (String) obj.get("businessAdd");
-            String businessPostal = (String) obj.get("businessPostalCode");
-            String businessHotline = (String) obj.get("businessHotline");
-            String ownersadd = (String) obj.get("ownersAdd");
-            String ownerspostal = (String) obj.get("ownersPostalCode");
-            String mobile = (String) obj.get("mobileNumber");
-            String contactperson = (String) obj.get("contactPerson");
-            String phone = (String) obj.get("phone");
-            String businessarea = (String) obj.get("businessArea");
-            String employee = (String) obj.get("employeeTotal");
-            String status = (String) obj.get("status");
-
-            model.addRow(new Object[]{btype, regno, paymentmode, applicationdate, tin, ammendfrom, ammendto, fname, mname, lname, trade, tax, businessAdd, businessPostal, businessHotline, ownersadd, ownerspostal, mobile, contactperson, phone, businessarea, employee, status});
-        }
-        businessReqTable.setModel(model);
-
-        cursor.close();
-        mongoClient.close();
-        if (cursor != null) {
-            cursor.close();
-        }
-        if (mongoClient != null) {
-            mongoClient.close();
-        }
+        displayBusiness();
     }//GEN-LAST:event_businessPaneMouseClicked
 
     private void scholarshipPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scholarshipPaneMouseClicked
         panel.setSelectedIndex(7);
-        
-        
+        displayScholarship();
     }//GEN-LAST:event_scholarshipPaneMouseClicked
 
     private void appointmentPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointmentPaneMouseClicked
         panel.setSelectedIndex(8);
+        displayAppointment();
+
     }//GEN-LAST:event_appointmentPaneMouseClicked
 
     private void jLabel159MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel159MouseClicked
-        CCE_Login a = new CCE_Login();
-        a.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_jLabel159MouseClicked
 
     private void jLabel160MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel160MouseClicked
-        CCE_Registration a = new CCE_Registration();
-        a.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_jLabel160MouseClicked
 
     private void suggestionsPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suggestionsPaneMouseClicked
-        // TODO add your handling code here:
+        panel.setSelectedIndex(9);
+        displaySuggestions();
+
     }//GEN-LAST:event_suggestionsPaneMouseClicked
 
     private void signoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signoutMouseClicked
@@ -2522,14 +2892,6 @@ public class StaffHome extends javax.swing.JFrame {
             JOptionPane.getRootFrame().dispose();
         }
     }//GEN-LAST:event_signoutMouseClicked
-
-    private void homeBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtn1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_homeBtn1MouseClicked
-
-    private void panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseClicked
-
-    }//GEN-LAST:event_panelMouseClicked
 
     private void birthReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthReqTableMouseClicked
         // TODO add your handling code here:
@@ -2556,9 +2918,324 @@ public class StaffHome extends javax.swing.JFrame {
         statusSection.setText(model.getValueAt(i, 18).toString());
     }//GEN-LAST:event_birthReqTableMouseClicked
 
-    private void deathDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deathDeleteBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deathDeleteBtnActionPerformed
+    private void marriageReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marriageReqTableMouseClicked
+        int i = marriageReqTable.getSelectedRow();
+        TableModel model = marriageReqTable.getModel();
+        marriagesex.setText(model.getValueAt(i, 0).toString());
+        marriagefname.setText(model.getValueAt(i, 1).toString());
+        marriagemname.setText(model.getValueAt(i, 2).toString());
+        marriagelname.setText(model.getValueAt(i, 3).toString());
+        marriagebday.setText(model.getValueAt(i, 4).toString());
+        marriagebirthplaceCounty.setText(model.getValueAt(i, 5).toString());
+        marriagebirthplaceProvince.setText(model.getValueAt(i, 6).toString());
+        marriagebirthplaceCity.setText(model.getValueAt(i, 7).toString());
+        marriageissuedId.setText(model.getValueAt(i, 8).toString());
+        marriagesfname.setText(model.getValueAt(i, 9).toString());
+        marriagesmname.setText(model.getValueAt(i, 10).toString());
+        marriageslname.setText(model.getValueAt(i, 11).toString());
+        marriagemarriageDate.setText(model.getValueAt(i, 12).toString());
+        marriagemarriagePlace.setText(model.getValueAt(i, 13).toString());
+        marriagelatereg.setText(model.getValueAt(i, 14).toString());
+        purpose.setText(model.getValueAt(i, 15).toString());
+        marriagephone.setText(model.getValueAt(i, 16).toString());
+        marriagestatus.setText(model.getValueAt(i, 17).toString());
+    }//GEN-LAST:event_marriageReqTableMouseClicked
+
+    private void votersReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_votersReqTableMouseClicked
+        int i = votersReqTable.getSelectedRow();
+        TableModel model = votersReqTable.getModel();
+        votersfname.setText(model.getValueAt(i, 0).toString());
+        votersmname.setText(model.getValueAt(i, 1).toString());
+        voterslname.setText(model.getValueAt(i, 2).toString());
+        votersemail.setText(model.getValueAt(i, 3).toString());
+        votersphone.setText(model.getValueAt(i, 4).toString());
+        votersbplace.setText(model.getValueAt(i, 5).toString());
+        votersId.setText(model.getValueAt(i, 6).toString());
+        votersstatus.setText(model.getValueAt(i, 7).toString());
+    }//GEN-LAST:event_votersReqTableMouseClicked
+
+    private void deathReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deathReqTableMouseClicked
+        int i = deathReqTable.getSelectedRow();
+        TableModel model = deathReqTable.getModel();
+        deathsex.setText(model.getValueAt(i, 0).toString());
+        deathfname.setText(model.getValueAt(i, 1).toString());
+        deathmname.setText(model.getValueAt(i, 2).toString());
+        deathlname.setText(model.getValueAt(i, 3).toString());
+        deathbday.setText(model.getValueAt(i, 4).toString());
+        deathbplacecountry.setText(model.getValueAt(i, 5).toString());
+        deathbplaceprovince.setText(model.getValueAt(i, 6).toString());
+        deathbplacecity.setText(model.getValueAt(i, 7).toString());
+        deathissuedId.setText(model.getValueAt(i, 8).toString());
+        deathwhose.setText(model.getValueAt(i, 9).toString());
+        deathdfname.setText(model.getValueAt(i, 10).toString());
+        deathdmname.setText(model.getValueAt(i, 11).toString());
+        deathdlname.setText(model.getValueAt(i, 12).toString());
+        deathdate.setText(model.getValueAt(i, 13).toString());
+        deathplace.setText(model.getValueAt(i, 14).toString());
+        deathpurpose.setText(model.getValueAt(i, 15).toString());
+        deathlatereg.setText(model.getValueAt(i, 16).toString());
+        deathphone.setText(model.getValueAt(i, 17).toString());
+        deathstatus.setText(model.getValueAt(i, 18).toString());
+    }//GEN-LAST:event_deathReqTableMouseClicked
+
+    private void appointReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointReqTableMouseClicked
+        int i = appointReqTable.getSelectedRow();
+        TableModel model = appointReqTable.getModel();
+        appointfname.setText(model.getValueAt(i, 0).toString());
+        appointmname.setText(model.getValueAt(i, 1).toString());
+        appointlname.setText(model.getValueAt(i, 2).toString());
+        appointemail.setText(model.getValueAt(i, 3).toString());
+        appointaddress.setText(model.getValueAt(i, 5).toString());
+        appointphone.setText(model.getValueAt(i, 4).toString());
+        appointsubject.setText(model.getValueAt(i, 6).toString());
+        appointdate.setText(model.getValueAt(i, 7).toString());
+        appointtime.setText(model.getValueAt(i, 8).toString());
+        appointstatus.setText(model.getValueAt(i, 9).toString());
+        deathwhose.setText(model.getValueAt(i, 10).toString());
+    }//GEN-LAST:event_appointReqTableMouseClicked
+
+    private void scholarReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scholarReqTableMouseClicked
+        int i = scholarReqTable.getSelectedRow();
+        TableModel model = scholarReqTable.getModel();
+        scholarsex.setText(model.getValueAt(i, 0).toString());
+        scholarfname.setText(model.getValueAt(i, 1).toString());
+        scholarmname.setText(model.getValueAt(i, 2).toString());
+        scholarlname.setText(model.getValueAt(i, 3).toString());
+        scholarbdate.setText(model.getValueAt(i, 4).toString());
+        scholarbplace.setText(model.getValueAt(i, 5).toString());
+        scholarcivil.setText(model.getValueAt(i, 6).toString());
+        scholarcitizenship.setText(model.getValueAt(i, 7).toString());
+        scholarphone.setText(model.getValueAt(i, 8).toString());
+        scholarpresadd.setText(model.getValueAt(i, 9).toString());
+        scholarzipcode.setText(model.getValueAt(i, 10).toString());
+        scholarsector.setText(model.getValueAt(i, 11).toString());
+        scholarattended.setText(model.getValueAt(i, 12).toString());
+        scholarschooladd.setText(model.getValueAt(i, 13).toString());
+        scholarffname.setText(model.getValueAt(i, 14).toString());
+        scholarfaddress.setText(model.getValueAt(i, 15).toString());
+        scholarfphone.setText(model.getValueAt(i, 16).toString());
+        scholarfoccupation.setText(model.getValueAt(i, 17).toString());
+        scholarfemployer.setText(model.getValueAt(i, 18).toString());
+        scholarfedu.setText(model.getValueAt(i, 19).toString());
+        scholarmfname.setText(model.getValueAt(i, 20).toString());
+        scholarmaddress.setText(model.getValueAt(i, 21).toString());
+        scholarmphone.setText(model.getValueAt(i, 22).toString());
+        scholarmoccupation.setText(model.getValueAt(i, 23).toString());
+        scholarmemployer.setText(model.getValueAt(i, 24).toString());
+        scholarmedu.setText(model.getValueAt(i, 25).toString());
+        scholarsiblings.setText(model.getValueAt(i, 26).toString());
+        benefeciary.setText(model.getValueAt(i, 27).toString());
+        scholarstatus.setText(model.getValueAt(i, 28).toString());
+    }//GEN-LAST:event_scholarReqTableMouseClicked
+
+    private void suggestionReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suggestionReqTableMouseClicked
+        int i = suggestionReqTable.getSelectedRow();
+        TableModel model = suggestionReqTable.getModel();
+        suggestionfname.setText(model.getValueAt(i, 0).toString());
+        suggestionmname.setText(model.getValueAt(i, 1).toString());
+        suggestionlname.setText(model.getValueAt(i, 2).toString());
+        suggestionemail.setText(model.getValueAt(i, 3).toString());
+        suggestionsubject.setText(model.getValueAt(i, 4).toString());
+        suggestiondetails.setText(model.getValueAt(i, 5).toString());
+    }//GEN-LAST:event_suggestionReqTableMouseClicked
+
+    private void businessReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessReqTableMouseClicked
+        int i = businessReqTable.getSelectedRow();
+        TableModel model = businessReqTable.getModel();
+        businessType.setText(model.getValueAt(i, 0).toString());
+        businessreg.setText(model.getValueAt(i, 1).toString());
+        businesspayment.setText(model.getValueAt(i, 2).toString());
+        businessdate.setText(model.getValueAt(i, 3).toString());
+        businesstin.setText(model.getValueAt(i, 4).toString());
+        businessfrom.setText(model.getValueAt(i, 5).toString());
+        businessto.setText(model.getValueAt(i, 6).toString());
+        businessfname.setText(model.getValueAt(i, 7).toString());
+        businessmname.setText(model.getValueAt(i, 8).toString());
+        businesslname.setText(model.getValueAt(i, 9).toString());
+        businesstrade.setText(model.getValueAt(i, 10).toString());
+        govtax.setText(model.getValueAt(i, 11).toString());
+        businessadd.setText(model.getValueAt(i, 12).toString());
+        businesspostal.setText(model.getValueAt(i, 13).toString());
+        businesshotline.setText(model.getValueAt(i, 14).toString());
+        businessownersadd.setText(model.getValueAt(i, 15).toString());
+        businessownerspostal.setText(model.getValueAt(i, 16).toString());
+        businessmobile.setText(model.getValueAt(i, 17).toString());
+        businesscontact.setText(model.getValueAt(i, 18).toString());
+        businessphone.setText(model.getValueAt(i, 19).toString());
+        businessbusinessarea.setText(model.getValueAt(i, 20).toString());
+        businessemployee.setText(model.getValueAt(i, 21).toString());
+        businessstatus.setText(model.getValueAt(i, 22).toString());
+    }//GEN-LAST:event_businessReqTableMouseClicked
+
+    private void cenomarReqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cenomarReqTableMouseClicked
+        int i = cenomarReqTable.getSelectedRow();
+        TableModel model = cenomarReqTable.getModel();
+        cenomarsex.setText(model.getValueAt(i, 0).toString());
+        cenomarfname.setText(model.getValueAt(i, 1).toString());
+        cenomarmname.setText(model.getValueAt(i, 2).toString());
+        cenomarlname.setText(model.getValueAt(i, 3).toString());
+        cenomarbday.setText(model.getValueAt(i, 4).toString());
+        cenomarbplaceCountry.setText(model.getValueAt(i, 5).toString());
+        cenomarbplaceProvince.setText(model.getValueAt(i, 6).toString());
+        cenomarbplaceCity.setText(model.getValueAt(i, 7).toString());
+        cenomarissuedId.setText(model.getValueAt(i, 8).toString());
+        cenomarffname.setText(model.getValueAt(i, 9).toString());
+        cenomarfmname.setText(model.getValueAt(i, 10).toString());
+        cenomarflname.setText(model.getValueAt(i, 11).toString());
+        cenomarmfname.setText(model.getValueAt(i, 12).toString());
+        cenomarmmname.setText(model.getValueAt(i, 13).toString());
+        cenomarmlname.setText(model.getValueAt(i, 14).toString());
+        cenomarPurpose.setText(model.getValueAt(i, 15).toString());
+        cenomarphone.setText(model.getValueAt(i, 16).toString());
+        cenomarstatus.setText(model.getValueAt(i, 17).toString());
+    }//GEN-LAST:event_cenomarReqTableMouseClicked
+
+    private void birthUpdateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthUpdateBtnMouseClicked
+
+        if ("".equals(firstnameSection.getText())) {
+            JOptionPane.showMessageDialog(null, "No Selected Data!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else if ("".equals(this.statusSection.getText())) {
+            JOptionPane.showMessageDialog(null, "NO status added, please provide!", "Alert", JOptionPane.ERROR_MESSAGE);
+        } else {
+            updateBirthStatus();
+            JOptionPane.showMessageDialog(null, "Successfully Updated.", "Alert", JOptionPane.INFORMATION_MESSAGE);
+            displayBirth();
+        }
+    }//GEN-LAST:event_birthUpdateBtnMouseClicked
+
+    private void birthDeleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthDeleteBtnMouseClicked
+        DefaultTableModel birthTblModel = (DefaultTableModel) birthReqTable.getModel();
+
+        if (birthReqTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "No Selected Data!!", "Alert", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete data?", "Warning", JOptionPane.YES_NO_OPTION);
+            if (a == JOptionPane.YES_OPTION) {
+                birthTblModel.removeRow(birthReqTable.getSelectedRow());
+                deleteBirth();
+                JOptionPane.showMessageDialog(null, "Successfully Deleted.", "Alert", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.getRootFrame().dispose();
+            }
+
+        }
+        sexSection.setText("");
+        firstnameSection.setText("");
+        middlenameSection.setText("");
+        lastnameSection.setText("");
+        birthdateSection.setText("");
+        countrySection.setText("");
+        provinceSection.setText("");
+        citySection.setText("");
+        govidSection.setText("");
+        fatherfnSection.setText("");
+        fathermnSection.setText("");
+        fatherlnSection.setText("");
+        motherfnSection.setText("");
+        mothermnSection.setText("");
+        motherlnSection.setText("");
+        lateregSection.setText("");
+        purposeSection.setText("");
+        phoneSection.setText("");
+        statusSection.setText("");
+
+    }//GEN-LAST:event_birthDeleteBtnMouseClicked
+
+    private void birthCancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthCancelBtnMouseClicked
+        sexSection.setText("");
+        firstnameSection.setText("");
+        middlenameSection.setText("");
+        lastnameSection.setText("");
+        birthdateSection.setText("");
+        countrySection.setText("");
+        provinceSection.setText("");
+        citySection.setText("");
+        govidSection.setText("");
+        fatherfnSection.setText("");
+        fathermnSection.setText("");
+        fatherlnSection.setText("");
+        motherfnSection.setText("");
+        mothermnSection.setText("");
+        motherlnSection.setText("");
+        lateregSection.setText("");
+        purposeSection.setText("");
+        phoneSection.setText("");
+        statusSection.setText("");
+
+    }//GEN-LAST:event_birthCancelBtnMouseClicked
+
+    private void marriageUpdateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marriageUpdateBtnMouseClicked
+
+        if ("".equals(marriagefname.getText())) {
+            JOptionPane.showMessageDialog(null, "No Selected Data!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else if ("".equals(this.marriagestatus.getText())) {
+            JOptionPane.showMessageDialog(null, "No status added, please provide!", "Alert", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            updateMarriageStatus();
+            JOptionPane.showMessageDialog(null, "Successfully Updated.", "Alert", JOptionPane.INFORMATION_MESSAGE);
+            displayMarriage();
+        }
+    }//GEN-LAST:event_marriageUpdateBtnMouseClicked
+
+    private void marriageDeleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marriageDeleteBtnMouseClicked
+        DefaultTableModel marriageTblModel = (DefaultTableModel) marriageReqTable.getModel();
+
+        if (marriageReqTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "No Selected Data!!", "Alert", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete data?", "Warning", JOptionPane.YES_NO_OPTION);
+            if (a == JOptionPane.YES_OPTION) {
+                marriageTblModel.removeRow(marriageReqTable.getSelectedRow());
+                deleteMarriage();
+                JOptionPane.showMessageDialog(null, "Successfully Deleted.", "Alert", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.getRootFrame().dispose();
+            }
+
+        }
+        marriagesex.setText("");
+        marriagefname.setText("");
+        marriagemname.setText("");
+        marriagelname.setText("");
+        marriagebday.setText("");
+        marriagebirthplaceCounty.setText("");
+        marriagebirthplaceProvince.setText("");
+        marriagebirthplaceCity.setText("");
+        marriageissuedId.setText("");
+        marriagesfname.setText("");
+        marriagesmname.setText("");
+        marriageslname.setText("");
+        marriagemarriageDate.setText("");
+        marriagemarriagePlace.setText("");
+        marriagelatereg.setText("");
+        purpose.setText("");
+        marriagephone.setText("");
+        marriagestatus.setText("");
+    }//GEN-LAST:event_marriageDeleteBtnMouseClicked
+
+    private void marriageCancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marriageCancelBtnMouseClicked
+        marriagesex.setText("");
+        marriagefname.setText("");
+        marriagemname.setText("");
+        marriagelname.setText("");
+        marriagebday.setText("");
+        marriagebirthplaceCounty.setText("");
+        marriagebirthplaceProvince.setText("");
+        marriagebirthplaceCity.setText("");
+        marriageissuedId.setText("");
+        marriagesfname.setText("");
+        marriagesmname.setText("");
+        marriageslname.setText("");
+        marriagemarriageDate.setText("");
+        marriagemarriagePlace.setText("");
+        marriagelatereg.setText("");
+        purpose.setText("");
+        marriagephone.setText("");
+        marriagestatus.setText("");
+    }//GEN-LAST:event_marriageCancelBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2579,6 +3256,7 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JButton appointDeleteBtn;
     private javax.swing.JTable appointReqTable;
     private javax.swing.JButton appointUpdateBtn;
+    private javax.swing.JTextField appointaddress;
     private javax.swing.JTextField appointdate;
     private javax.swing.JTextField appointemail;
     private javax.swing.JTextField appointfname;
@@ -2589,8 +3267,12 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JTextField appointstatus;
     private javax.swing.JTextField appointsubject;
     private javax.swing.JTextField appointtime;
+    private javax.swing.JTextField benefeciary;
+    private javax.swing.JButton birthCancelBtn;
+    private javax.swing.JButton birthDeleteBtn;
     private javax.swing.JLabel birthPane;
     private javax.swing.JTable birthReqTable;
+    private javax.swing.JButton birthUpdateBtn;
     private javax.swing.JTextField birthdateSection;
     private javax.swing.JButton businessCancelBtn;
     private javax.swing.JButton businessDeleteBtn;
@@ -2619,7 +3301,6 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JTextField businesstin;
     private javax.swing.JTextField businessto;
     private javax.swing.JTextField businesstrade;
-    private javax.swing.JButton cancelBtn;
     private javax.swing.JButton cenomarCancelBtn;
     private javax.swing.JButton cenomarDeleteBtn;
     private javax.swing.JLabel cenomarPane;
@@ -2670,14 +3351,12 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JTextField deathsex;
     private javax.swing.JTextField deathstatus;
     private javax.swing.JTextField deathwhose;
-    private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField fatherfnSection;
     private javax.swing.JTextField fatherlnSection;
     private javax.swing.JTextField fathermnSection;
     private javax.swing.JTextField firstnameSection;
     private javax.swing.JTextField govidSection;
-    private javax.swing.JLabel homeBtn1;
-    private javax.swing.JLabel homePane;
+    private javax.swing.JTextField govtax;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -2752,7 +3431,12 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel163;
     private javax.swing.JLabel jLabel164;
     private javax.swing.JLabel jLabel165;
+    private javax.swing.JLabel jLabel166;
+    private javax.swing.JLabel jLabel167;
+    private javax.swing.JLabel jLabel168;
+    private javax.swing.JLabel jLabel169;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel170;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -2875,6 +3559,7 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
+    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
@@ -2902,7 +3587,6 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable jTable6;
     private javax.swing.JTextField lastnameSection;
     private javax.swing.JTextField lateregSection;
     private javax.swing.JButton marriageCancelBtn;
@@ -2934,7 +3618,9 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JTextField mothermnSection;
     private javax.swing.JTabbedPane panel;
     private javax.swing.JTextField phoneSection;
+    private javax.swing.JLabel profilePane;
     private javax.swing.JTextField provinceSection;
+    private javax.swing.JTextField purpose;
     private javax.swing.JTextField purposeSection;
     private javax.swing.JButton scholarCancelBtn;
     private javax.swing.JButton scholarDeleteBtn;
@@ -2942,6 +3628,7 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JButton scholarUpdateBtn;
     private javax.swing.JTextField scholarattended;
     private javax.swing.JTextField scholarbdate;
+    private javax.swing.JTextField scholarbplace;
     private javax.swing.JTextField scholarcitizenship;
     private javax.swing.JTextField scholarcivil;
     private javax.swing.JTextField scholarfaddress;
@@ -2973,9 +3660,9 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JLabel signout;
     private javax.swing.JTextField staffEmailField;
     private javax.swing.JTextField staffNameField;
-    private javax.swing.JTextField staffNameTop;
     private javax.swing.JTextField statusSection;
     private javax.swing.JButton suggestionDeleteBtn;
+    private javax.swing.JTable suggestionReqTable;
     private javax.swing.JTextField suggestiondetails;
     private javax.swing.JTextField suggestionemail;
     private javax.swing.JTextField suggestionfname;
@@ -2983,8 +3670,7 @@ public class StaffHome extends javax.swing.JFrame {
     private javax.swing.JTextField suggestionmname;
     private javax.swing.JLabel suggestionsPane;
     private javax.swing.JTextField suggestionsubject;
-    private javax.swing.JButton updateBtn;
-    private javax.swing.JTextField userIdField;
+    public javax.swing.JTextField userNameField;
     private javax.swing.JButton votersCancelBtn;
     private javax.swing.JButton votersDeleteBtn;
     private javax.swing.JTextField votersId;

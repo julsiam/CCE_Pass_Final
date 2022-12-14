@@ -25,16 +25,14 @@ public class BirthCertificate extends javax.swing.JFrame {
      */
     public BirthCertificate() {
         initComponents();
-        MongoConnect();
 
     }
-
+    
     public void MongoConnect() {
         MongoClient mongo = new MongoClient("localhost", 27017);
-        MongoDatabase marriageCollection = mongo.getDatabase("CCE_Pass");
-        marriageCollection.createCollection("birth");
+        MongoDatabase birthCollection = mongo.getDatabase("CCE_Pass");
+        birthCollection.createCollection("birth"); //to create the collection from db
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -470,8 +468,8 @@ public class BirthCertificate extends javax.swing.JFrame {
 
         } else {
             MongoClient mongo = new MongoClient("localhost", 27017);
-            MongoDatabase marriageCollection = mongo.getDatabase("CCE_Pass");
-            marriageCollection.getCollection("birth"); //to get the collection from db
+            MongoDatabase birthCollection = mongo.getDatabase("CCE_Pass");
+            birthCollection.getCollection("birth"); //to get the collection from db
 
             Document d = new Document("sex", this.sexCombo.getSelectedItem());
             d.append("fname", this.fnameField.getText());
@@ -493,7 +491,7 @@ public class BirthCertificate extends javax.swing.JFrame {
             d.append("phone", this.phoneField.getText());
             d.append("status", "Pending");
 
-            marriageCollection.getCollection("birth").insertOne(d);
+            birthCollection.getCollection("birth").insertOne(d);
             JOptionPane.showMessageDialog(this, "Request Sent Successfully");
 
         }
